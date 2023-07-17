@@ -1,0 +1,63 @@
+$sub-color: rgb(0, 0, 0);
+$main-color: black;
+
+@mixin shrinkLabel {
+	top: -5px;
+	font-size: 12px;
+	color: $main-color;
+}
+
+.group {
+	position: relative;
+
+	.form-input {
+		background: none;
+		background-color: rgba(255, 255, 255, 0);
+		color: $sub-color;
+		font-size: 18px;
+		/* padding: 10px 10px 10px 5px; */
+		padding: 0.7rem;
+		display: block;
+		width: 18rem;
+		border: none;
+		border-radius: 0;
+		border-bottom: 1px solid $sub-color;
+		margin: 0.4rem 6rem 0.4rem 0;
+		&:focus {
+			outline: none;
+		}
+
+		&:focus ~ .form-input-label {
+			@include shrinkLabel();
+		}
+	}
+
+	input[type="password"] {
+		letter-spacing: 0.3em;
+	}
+
+	.form-input-label {
+		color: $sub-color;
+		font-size: 16px;
+		font-weight: normal;
+		position: absolute;
+		pointer-events: none;
+		left: 0.5rem;
+		top: 1.3rem;
+		transition: 300ms ease all;
+
+		&.shrink {
+			@include shrinkLabel();
+		}
+	}
+	.date-picker {
+		color: rgb(255, 255, 255);
+	}
+
+	input[type="date"]:focus {
+		color: black;
+	}
+	.date-picker-after {
+		color: rgb(0, 0, 0);
+	}
+}

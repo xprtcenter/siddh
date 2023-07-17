@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/HospApp/static/css/main.62079f5f.chunk.css",
+    "main.js": "/HospApp/static/js/main.5a71fb6d.chunk.js",
+    "main.js.map": "/HospApp/static/js/main.5a71fb6d.chunk.js.map",
+    "runtime-main.js": "/HospApp/static/js/runtime-main.f85153b1.js",
+    "runtime-main.js.map": "/HospApp/static/js/runtime-main.f85153b1.js.map",
+    "static/css/2.ff602127.chunk.css": "/HospApp/static/css/2.ff602127.chunk.css",
+    "static/js/2.5b305394.chunk.js": "/HospApp/static/js/2.5b305394.chunk.js",
+    "static/js/2.5b305394.chunk.js.map": "/HospApp/static/js/2.5b305394.chunk.js.map",
+    "static/js/3.5c49bf22.chunk.js": "/HospApp/static/js/3.5c49bf22.chunk.js",
+    "static/js/3.5c49bf22.chunk.js.map": "/HospApp/static/js/3.5c49bf22.chunk.js.map",
+    "static/js/4.85882628.chunk.js": "/HospApp/static/js/4.85882628.chunk.js",
+    "static/js/4.85882628.chunk.js.map": "/HospApp/static/js/4.85882628.chunk.js.map",
+    "static/js/5.ddcfc136.chunk.js": "/HospApp/static/js/5.ddcfc136.chunk.js",
+    "static/js/5.ddcfc136.chunk.js.map": "/HospApp/static/js/5.ddcfc136.chunk.js.map",
+    "index.html": "/HospApp/index.html",
+    "static/css/2.ff602127.chunk.css.map": "/HospApp/static/css/2.ff602127.chunk.css.map",
+    "static/css/main.62079f5f.chunk.css.map": "/HospApp/static/css/main.62079f5f.chunk.css.map",
+    "static/js/2.5b305394.chunk.js.LICENSE.txt": "/HospApp/static/js/2.5b305394.chunk.js.LICENSE.txt",
+    "static/js/3.5c49bf22.chunk.js.LICENSE.txt": "/HospApp/static/js/3.5c49bf22.chunk.js.LICENSE.txt",
+    "static/js/4.85882628.chunk.js.LICENSE.txt": "/HospApp/static/js/4.85882628.chunk.js.LICENSE.txt",
+    "static/js/5.ddcfc136.chunk.js.LICENSE.txt": "/HospApp/static/js/5.ddcfc136.chunk.js.LICENSE.txt",
+    "static/media/COMLOGO2.079029bc.png": "/HospApp/static/media/COMLOGO2.079029bc.png",
+    "static/media/arrow-right.9b84dde7.svg": "/HospApp/static/media/arrow-right.9b84dde7.svg",
+    "static/media/swami2.808446dc.png": "/HospApp/static/media/swami2.808446dc.png",
+    "static/media/xraysample.cc1e4dd5.jpg": "/HospApp/static/media/xraysample.cc1e4dd5.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f85153b1.js",
+    "static/css/2.ff602127.chunk.css",
+    "static/js/2.5b305394.chunk.js",
+    "static/css/main.62079f5f.chunk.css",
+    "static/js/main.5a71fb6d.chunk.js"
+  ]
+}

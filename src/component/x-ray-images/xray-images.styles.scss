@@ -1,0 +1,30 @@
+.page-container {
+	display: flex;
+	flex-direction: column;
+	.toolbar {
+		display: flex;
+		justify-content: space-between;
+		padding: 1vh 4vw;
+		border-bottom: 0.1rem solid var(--primary-color);
+		margin-bottom: 1vh;
+	}
+	.image-container {
+		display: flex;
+		width: 20vw;
+		height: 20vw;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid black;
+		margin: 0 7.5px 15px;
+		/* overflow: hidden; */
+		.image {
+			width: 20vw;
+			img {
+				width: 100%;
+
+				background-position: center;
+				background-size: cover;
+			}
+		}
+	}
+}

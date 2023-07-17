@@ -1,0 +1,71 @@
+.leftside-menu-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 0 15px 15px 0;
+	.side-menu-text-block {
+		.sidebar-menu {
+			z-index: 5;
+			cursor: pointer;
+			border-radius: 5px;
+
+			&:hover {
+				background-color: var(--primary-color);
+				color: var(--secondary-color);
+			}
+			.icon-container {
+				padding: 0 0.2rem;
+			}
+			.side-menu-text {
+				white-space: nowrap;
+				font-size: calc(0.5rem + 1vh);
+				margin-right: 0.8rem;
+			}
+			.close {
+				display: none;
+			}
+
+			.form-side-list {
+				display: flex;
+				color: var(--primary-color-m);
+				align-items: center;
+				&:hover {
+					color: var(--secondary-color);
+				}
+				.icon-container {
+					svg {
+						width: 2em;
+						height: 2em;
+						margin: 0.3em 0.3em;
+					}
+				}
+			}
+		}
+		.side-active {
+			background-color: var(--primary-color);
+			.form-side-list {
+				color: var(--secondary-color);
+			}
+		}
+	}
+	.sidebar-close-button {
+		cursor: pointer;
+		position: sticky;
+		bottom: 5vh;
+		align-self: center;
+		.right-button {
+			height: 2.5rem;
+			width: 2.5rem;
+			background-color: var(--primary-color-m);
+			border-radius: 50%;
+			transform: rotate(180deg);
+			transition: transform 2s;
+		}
+	}
+	.close {
+		.right-button {
+			transform: rotate(1800deg);
+			transition: transform 2s;
+		}
+	}
+}

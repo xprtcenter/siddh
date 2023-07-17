@@ -1,0 +1,47 @@
+.selection-menu {
+	display: flex;
+	justify-content: start;
+	.dropdown-menu {
+		width: 400px;
+		margin: 15px 5px;
+	}
+}
+.base-form {
+	background-color: var(--form-container-background);
+}
+.card-for-image-text {
+	display: flex;
+	margin: 1.5rem 0;
+	.header-image {
+		margin-right: 10px;
+		border: 2px solid rgb(189, 30, 30);
+		border-radius: 50%;
+		width: 80px;
+		height: 80px;
+		background-color: rgb(255, 255, 255);
+	}
+
+	.card-for-header {
+		display: flex;
+		width: 100%;
+		flex-wrap: wrap;
+		background-color: var(--primary-color-m);
+
+		.header-text {
+			width: 25%;
+			padding: 5px 5px;
+		}
+	}
+}
+.card-for-add-ded {
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	/* padding: 0 0 3px 0; */
+	background-color: var(--primary-color);
+
+	.header-text {
+		width: 15%;
+		padding: 5px 5px;
+	}
+}

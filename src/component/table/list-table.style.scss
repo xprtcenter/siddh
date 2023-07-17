@@ -1,0 +1,75 @@
+.table-page {
+	border-collapse: collapse;
+	margin-top: 1.6rem;
+	background-color: var(--primary-color-m);
+	box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+	-webkit-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+	-moz-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+
+	.table-header {
+		border: 0.07rem solid var(--primary-color);
+		background-color: var(--primary-color);
+
+		th {
+			border: 0.07rem solid var(--primary-color-m);
+		}
+		.th1,
+		.th2 {
+			width: 2rem;
+		}
+	}
+	tbody {
+		.table-data-row {
+			td {
+				border: 0.1rem solid var(--primary-color);
+			}
+			td,
+			th {
+				padding: 0 1.5vw;
+				white-space: nowrap;
+			}
+			.emp-code {
+				text-align: center;
+			}
+			.table-image-container {
+				img {
+					object-fit: cover;
+					width: 2rem;
+					height: 2rem;
+					border-radius: 50%;
+				}
+			}
+		}
+		.table-data-row:hover {
+			background-color: var(--primary-color);
+		}
+	}
+}
+
+.btn {
+	width: 4rem;
+	height: 1.5rem;
+	border-radius: 0.3rem;
+	margin: 0 0.2rem;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn-edit {
+	background-color: rgb(253, 216, 5);
+	color: rgb(5, 4, 4);
+}
+.btn-delete {
+	background-color: rgb(255, 0, 0);
+	color: white;
+}
+.MuiTableRow-root:hover {
+	background-color: var(--primary-color);
+}
+.custom-table {
+	margin-top: 2vh;
+	z-index: 1;
+	box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+	-webkit-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+	-moz-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
+}
