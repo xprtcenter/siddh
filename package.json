@@ -1,8 +1,8 @@
 {
-  "name": "Siddh-Payroll-App",
+  "name": "SiddhPayrollApp",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://xprtcenter.github.io/siddh/",
+  "homepage": "https://xprtcenter.github.io/siddh",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -36,7 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
