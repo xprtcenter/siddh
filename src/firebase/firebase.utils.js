@@ -3,7 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
 
-const config = {
+/* const config = {
 	apiKey: "AIzaSyCCLLEUyHEZZUThEJqwPTY4pI6D1x70J6o",
 	authDomain: "crwn-db-fbee8.firebaseapp.com",
 	projectId: "crwn-db-fbee8",
@@ -11,6 +11,15 @@ const config = {
 	messagingSenderId: "1010796874722",
 	appId: "1:1010796874722:web:981ab45d4413393273c7bb",
 	measurementId: "G-R76F0D4ST5",
+}; */
+const config = {
+	apiKey: "AIzaSyCnxnKGyGRcpOpNI4DaNrYJCTWJhpNapAA",
+	authDomain: "siddhdb-6aa7a.firebaseapp.com",
+	projectId: "siddhdb-6aa7a",
+	storageBucket: "siddhdb-6aa7a.appspot.com",
+	messagingSenderId: "507768835225",
+	appId: "1:507768835225:web:289acdeb549e2a66a0fc08",
+	measurementId: "G-RJXLMYNG0Z",
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {

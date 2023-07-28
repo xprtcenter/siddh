@@ -3,24 +3,36 @@ import avatar from "../../assets/avatar.png";
 import "./image-box.styles.scss";
 import { storage } from "../../firebase/firebase.utils";
 
-const ImageBox = ({ storageAddress }) => {
+const ImageBox = (storageAddress) => {
 	const initialstate = {
-		ImagePreviewUrl: "",
-		ImageStatus: "Not Upload",
-		imageFile: "",
-		ImageUrl: "",
+		ImgPreviewUrl: "",
+		ImgStatus: "Not Upload",
+		imgFile: "",
+		ImgUrl: "",
 	};
+	// State to store uploaded file
+
+	// progress
+	const [percent, setPercent] = useState(0);
+	//Other Data
 	const [data, setData] = useState(initialstate);
 
 	const handleImageUpload = (image) => {
-		if (image) {
+		if (!image) {
+			alert("Please Select your Image");
+		} else {
 			const uploadTask = storage
 				.ref(`${storageAddress}/${image.name}`)
 				.put(image);
 
 			uploadTask.on(
 				"state_changes",
-				(snapshot) => {},
+				(snapshot) => {
+					var progress =
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+					var rounded = Math.round(progress * 10) / 10;
+					setPercent({ percent: rounded });
+				},
 				(error) => {
 					console.log(error);
 				},
@@ -32,15 +44,14 @@ const ImageBox = ({ storageAddress }) => {
 						.then((url) => {
 							console.log(url);
 							setData({
-								...data,
-								ImageUrl: url,
-								ImageStatus: "Upload Successfully",
+								ImgFile: image,
+								ImgPreviewUrl: url,
+								ImgStatus: "Uploaded",
+								ImgUrl: url,
 							});
 						});
 				},
 			);
-		} else {
-			alert("Please Select Image");
 		}
 	};
 
@@ -54,37 +65,40 @@ const ImageBox = ({ storageAddress }) => {
 			reader.onloadend = () => {
 				setData({
 					...data,
-					imageFile: imageFile,
-					ImagePreviewUrl: reader.result,
+					ImgFile: imageFile,
+					ImgPreviewUrl: reader.result,
 				});
 			};
 
 			reader.readAsDataURL(imageFile);
 		} else {
-			setData({ ...data, imageFile: "", ImagePreviewUrl: "", ImageUrl: "" });
+			setData({
+				...data,
+				imgFile: "",
+				ImgPreviewUrl: "",
+				ImgUrl: "",
+				ImgStatus: "Not Upload",
+			});
 			alert("Please select Image");
 		}
 	};
 
-	const { ImagePreviewUrl, ImageStatus, imageFile } = data;
+	const { ImgPreviewUrl, ImgStatus, ImgFile } = data;
 	return (
 		<div className="image-container">
 			<div className="imgPreview">
-				{ImagePreviewUrl ? (
-					<img src={ImagePreviewUrl} alt="img" />
+				{ImgPreviewUrl ? (
+					<img src={ImgPreviewUrl} alt="img" />
 				) : (
 					<img src={avatar} alt="img" />
 				)}
 			</div>
 			<div className="status">
-				<h4>{ImageStatus}</h4>
+				<h4>{ImgStatus}</h4>
 			</div>
 			<input type="file" onChange={handleImage} />
-			<div
-				className="button-upload"
-				onClick={() => handleImageUpload(imageFile)}
-			>
-				Upload
+			<div className="button-upload" onClick={() => handleImageUpload(ImgFile)}>
+				Upload <p>{percent} "% done"</p>
 			</div>
 		</div>
 	);

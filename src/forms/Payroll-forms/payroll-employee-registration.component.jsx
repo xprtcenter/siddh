@@ -4,17 +4,18 @@ import FormInput from "../../component/form-input/form-input.component";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import { firestore } from "../../firebase/firebase.utils";
 import ParollEmpRegService from "./payroll-emp-reg-service";
-import ImageBox from "../../component/image-box/image-box.component";
-import { storage } from "../../firebase/firebase.utils";
-
+//import ImageBox from "../../component/image-box/image-box.component";
 import { options } from "./payroll-dropdown.option";
 import Select from "react-select";
+import avatar from "../../assets/avatar.png";
+import { storage } from "../../firebase/firebase.utils";
+//import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
 var todayDate = new Date();
 //todayDate.setDate(todayDate.getDate() + 2);
 var finalDate = todayDate.toISOString().substr(0, 10);
 const initialState = {
 	Editid: "",
-
 	EmployeeCode: "",
 	EmployeeName: "",
 	EmployeeGender: "",
@@ -40,6 +41,11 @@ const initialState = {
 	EmployerCompanyName: "xprt Hospital",
 	ESICCalculation: "",
 	TabtoggleState: 1,
+	ImgUrl: "",
+	ImgPreviewUrl: "",
+	ImgStatus: "Not Upload",
+	ImgFile: "",
+	percent: "",
 };
 
 class PayrollEmpRegMaster extends React.Component {
@@ -57,6 +63,10 @@ class PayrollEmpRegMaster extends React.Component {
 			`payrollData/payrollEmpRegistration/payrollEmployee/${getIDData}`,
 		);
 
+		// progress
+
+		//Other Data
+
 		dbRef
 			.get()
 			.then((doc) => {
@@ -65,7 +75,7 @@ class PayrollEmpRegMaster extends React.Component {
 					const newData = doc.data();
 					this.setState({
 						Editid: getIDData,
-						EmployeeImgUrl: newData.EmployeeImgUrl,
+						ImgUrl: newData.EmployeeImgUrl,
 						EmployeeCode: newData.EmployeeCode,
 						EmployeeName: newData.EmployeeName,
 						EmployeeGender: newData.EmployeeGender,
@@ -88,7 +98,7 @@ class PayrollEmpRegMaster extends React.Component {
 						EmployeePANNo: newData.EmployeePANNo,
 						EmployeeAadharNo: newData.EmployeeAadharNo,
 						PayrollCompanyName: newData.PayrollCompanyName,
-						EmployeeImagePreviewUrl: newData.EmployeeImgUrl,
+						ImgPreviewUrl: newData.EmployeeImgUrl,
 					});
 				} else {
 					// doc.data() will be undefined in this case
@@ -99,12 +109,85 @@ class PayrollEmpRegMaster extends React.Component {
 				console.log("Error getting document:", error);
 			});
 	}
+	handleImageUpload = (image) => {
+		if (!image) {
+			alert("Please Select your Image");
+		} else {
+			const uploadTask = storage
+				.ref(`PayrollEmployeeImages/${image.name}`)
+				.put(image);
 
+			uploadTask.on(
+				"state_changes",
+				(snapshot) => {
+					var progress =
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+					var rounded = Math.round(progress * 10) / 10;
+					this.setState({ percent: rounded });
+				},
+				(error) => {
+					console.log(error);
+				},
+				() => {
+					storage
+						.ref("PayrollEmployeeImages")
+						.child(image.name)
+						.getDownloadURL()
+						.then((url) => {
+							console.log(url);
+							this.setState({
+								ImgFile: image,
+								ImgPreviewUrl: url,
+								ImgStatus: "Uploaded",
+								ImgUrl: url,
+							});
+						});
+				},
+			);
+		}
+	};
+
+	handleImage = (e) => {
+		e.preventDefault();
+		let ImgFile = e.target.files[0];
+		const fileforfixsize = ImgFile.size / 1024 / 1024;
+		if (fileforfixsize > 0.5) {
+			alert(
+				"File size is greater than 500 kb. Please select file between 20kb to 500 kb",
+			);
+			this.setState({
+				ImgFile: "",
+				ImgPreviewUrl: "",
+				Img: "",
+				ImgStatus: "Not Upload",
+			});
+		} else {
+			if (ImgFile !== undefined) {
+				let reader = new FileReader();
+				reader.onloadend = () => {
+					this.setState({
+						ImgFile: ImgFile,
+						ImgPreviewUrl: reader.result,
+					});
+				};
+
+				reader.readAsDataURL(ImgFile);
+			} else {
+				this.setState({
+					ImgFile: "",
+					ImgPreviewUrl: "",
+					Img: "",
+					ImgStatus: "Not Upload",
+				});
+				alert("Please select Image");
+			}
+		}
+	};
 	handleSubmit = async (event) => {
 		event.preventDefault();
-		if (this.state.EmployeeImgUrl) {
+		if (this.state.ImgStatus === "Uploaded") {
 			let sData = {
-				EmployeeImgUrl: this.state.EmployeeImgUrl,
+				EmployeeImgUrl: this.state.ImgUrl,
 				EmployeeCode: this.state.EmployeeCode,
 				EmployeeName: this.state.EmployeeName,
 				EmployeeGender: this.state.EmployeeGender,
@@ -183,6 +266,10 @@ class PayrollEmpRegMaster extends React.Component {
 			EmployeeAadharNo,
 			ESICCalculation,
 			TabtoggleState,
+			ImgPreviewUrl,
+			ImgStatus,
+			ImgFile,
+			percent,
 		} = this.state;
 
 		return (
@@ -217,7 +304,26 @@ class PayrollEmpRegMaster extends React.Component {
 						>
 							<h3 className="tab-title">Basic Information </h3>
 							<div className="image-form-page">
-								<ImageBox storageAddress="PayrollEmployeeImages" />
+								{/* <ImageBox storageAddress="PayrollEmployeeImages" /> */}
+								<div className="image-container">
+									<div className="imgPreview">
+										{ImgPreviewUrl ? (
+											<img src={ImgPreviewUrl} alt="img" />
+										) : (
+											<img src={avatar} alt="img" />
+										)}
+									</div>
+									<div className="status">
+										<h4>{ImgStatus}</h4>
+									</div>
+									<input type="file" onChange={this.handleImage} />
+									<div
+										className="button-upload"
+										onClick={() => this.handleImageUpload(ImgFile)}
+									>
+										Upload <p>{percent} "% done"</p>
+									</div>
+								</div>
 								<div className="tab-container">
 									<FormInput
 										type="number"

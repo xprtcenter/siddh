@@ -53,6 +53,7 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 					data={updatedData}
 					options={{
 						exportButton: true,
+						EditRow: true,
 						sorting: true,
 						actionsColumnIndex: -1,
 						headerStyle: {

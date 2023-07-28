@@ -49,7 +49,7 @@ const PayrollDeductionEntry = () => {
 
 	var dt = new Date();
 	var monthNo = dt.getMonth();
-	var cyrrentMonthName = months1[monthNo]; // "July" (or current month)
+	var currentMonthName = months1[monthNo]; // "July" (or current month)
 	var currentYear = dt.getFullYear(); // "2022" (or current year)
 
 	function daysInMonth(month, year) {
@@ -67,7 +67,7 @@ const PayrollDeductionEntry = () => {
 		EmployeeAddress: "",
 		EmployeeContact: "",
 		EmployeeImgUrl: avatar,
-		month: cyrrentMonthName,
+		month: currentMonthName,
 		year: currentYear,
 		EmployeeDepartment: "",
 		fixBasic: "",
