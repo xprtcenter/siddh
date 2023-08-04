@@ -47,10 +47,13 @@
 			.text {
 				margin: 0 1vw;
 				font-size: calc(8px + 0.5vw);
-			}
-			&:hover {
-				background-color: var(--primary-color);
-				color: var(--font-primary-color);
+				padding: 1vh 0.5vw;
+				border-radius: 5px;
+
+				&:hover {
+					background-color: var(--primary-color);
+					color: var(--font-primary-color);
+				}
 			}
 		}
 		.nav-options-container {

@@ -55,7 +55,7 @@ const Header = ({
 				<HeaderDateTime />
 			</div>
 			<div className="header">
-				<div onClick={() => activeHeaderButton("home")}>
+				{/* <div onClick={() => activeHeaderButton("home")}>
 					<Link
 						to="/"
 						className={
@@ -67,6 +67,21 @@ const Header = ({
 						<img src={logo} alt="swamiji" />
 
 						<span className="text">HOME</span>
+					</Link>
+				</div> */}
+				<div onClick={() => activeHeaderButton("home")}>
+					<Link to="/" className="logo-container">
+						<img src={logo} alt="swamiji" />
+
+						<span
+							className={
+								activeheader.toLowerCase() === "home"
+									? "active-header-button text"
+									: "text"
+							}
+						>
+							HOME
+						</span>
 					</Link>
 				</div>
 				<div className="nav-options-container .nav__menu">
