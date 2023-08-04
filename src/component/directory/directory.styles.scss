@@ -3,3 +3,12 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
+@media (max-width: 1081px) {
+	/* smartphones, iPhone, portrait 480x320 phones */
+	.header1 {
+		display: none;
+	}
+	.header-menu {
+		background-color: antiquewhite;
+	}
+}

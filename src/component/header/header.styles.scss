@@ -162,46 +162,64 @@
 	}
 }
 
-@media only screen and (max-width: 700px) {
-	#root {
-		.main-container {
-			.main-header {
-				.header {
-					.nav-options-container {
-						width: 20vw;
-						.header-menu {
-							flex-direction: column;
-							/* position: absolute;
+@media only screen and (max-width: 1081px) {
+	.main-header {
+		.header1 {
+			flex-direction: column;
+			p {
+				font-size: 2rem;
+			}
+		}
+		.header {
+			.logo-container {
+				img {
+					height: 3rem;
+				}
+				.text {
+					font-size: 2rem;
+				}
+			}
+			.nav-options-container {
+				width: 20vw;
+				.header-menu {
+					flex-direction: column;
+					/* position: absolute;
 							top: 10vh;
 							background-color: white;
 							width: 10vw; */
 
-							position: absolute;
-							top: 10.7vh;
-							width: 12vw;
-							padding: 2vh;
-							background-color: var(--primary-color-m);
-							z-index: 5;
-							.nav-option {
-								/* padding: 0 5vw;
+					position: absolute;
+					top: 10.7vh;
+					width: 12vw;
+					padding: 2vh;
+					background-color: var(--primary-color-m);
+					z-index: 5;
+					.nav-option {
+						/* padding: 0 5vw;
 								border: 0.03rem solid var(--primary-color); */
-								color: var(--font-primary-color);
-								display: block;
-								/* border: 0.1rem solid var(--primary-color); */
-								text-align: center;
-							}
-							:hover {
-								background-color: var(--primary-color);
-								color: var(--font-secondary-color);
-							}
-						}
-						.menu-button-icon {
-							display: block;
-						}
+						color: var(--font-primary-color);
+						display: block;
+						/* border: 0.1rem solid var(--primary-color); */
+						text-align: center;
+					}
+					:hover {
+						background-color: var(--primary-color);
+						color: var(--font-secondary-color);
+					}
+				}
+				.menu-button-icon {
+					display: block;
+				}
+				.user-info-container {
+					img {
+						height: 5vw;
+						margin: 0 0.2vw;
+					}
+					.text {
+						font-size: 2rem;
 					}
 				}
 			}
 		}
-		background-color: rgb(253, 253, 253);
 	}
 }
