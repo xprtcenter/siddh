@@ -26,7 +26,7 @@ import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
 
 class App extends Component {
-	unsubscriveFromAuth = null;
+	//unsubscriveFromAuth = null;
 
 	componentDidMount() {
 		const { setCurrentUser } = this.props;

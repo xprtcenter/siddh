@@ -10,7 +10,9 @@ const PayrollReportPage = () => {
 		{ value: "1", label: "Employee List" },
 		{ value: "2", label: "Employee Bank Report" },
 	];
-
+	// set selected value
+	const setSelectedValue =
+		reportSelection.find((obj) => obj.label === report.selectedreport) || "";
 	return (
 		<div className="report-container">
 			<p className="tite">Payroll Report Page</p>
@@ -18,11 +20,7 @@ const PayrollReportPage = () => {
 				<Select
 					className="dropdown-menu"
 					placeholder="Select Report Type"
-					value={
-						reportSelection.find(
-							(obj) => obj.label === report.selectedreport,
-						) || ""
-					} // set selected value
+					value={setSelectedValue}
 					options={reportSelection} // set list of the data
 					onChange={(e) => {
 						setReport({

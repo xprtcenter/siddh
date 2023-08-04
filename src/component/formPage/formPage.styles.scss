@@ -27,8 +27,9 @@
 		.form-container {
 			display: flex;
 			flex-direction: column;
-			padding: 2vh 2vw;
+			padding: 1.6vh 2vw;
 			width: 100%;
+
 			.dropdown-menu {
 				width: 400px;
 				margin: 15px 5px;
@@ -63,7 +64,7 @@
 			.content-tabs {
 				.content {
 					background: var(--primary-color-m);
-					padding: 20px;
+					padding: 0 10px;
 					display: none;
 					flex-direction: column;
 					/* height: 80vh; */
