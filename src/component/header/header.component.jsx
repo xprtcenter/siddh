@@ -55,20 +55,6 @@ const Header = ({
 				<HeaderDateTime />
 			</div>
 			<div className="header">
-				{/* <div onClick={() => activeHeaderButton("home")}>
-					<Link
-						to="/"
-						className={
-							activeheader.toLowerCase() === "home"
-								? "logo-container active-header-button"
-								: "logo-container"
-						}
-					>
-						<img src={logo} alt="swamiji" />
-
-						<span className="text">HOME</span>
-					</Link>
-				</div> */}
 				<div onClick={() => activeHeaderButton("home")}>
 					<Link to="/" className="logo-container">
 						<img src={logo} alt="swamiji" />

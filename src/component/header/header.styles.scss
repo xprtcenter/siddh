@@ -169,40 +169,34 @@
 	.main-header {
 		.header1 {
 			flex-direction: column;
-			p {
-				font-size: 4vh;
+			p:nth-child(1) {
+				font-size: 3vh;
 			}
 		}
 		.header {
 			.logo-container {
 				img {
-					height: 3vw;
+					height: 8vw;
 				}
 				.text {
-					font-size: 2rem;
+					font-size: 1rem;
 				}
 			}
 			.nav-options-container {
-				width: 20vw;
+				width: 50vw;
 				.header-menu {
 					flex-direction: column;
-					/* position: absolute;
-							top: 10vh;
-							background-color: white;
-							width: 10vw; */
-
 					position: absolute;
-					top: 10.7vh;
-					width: 12vw;
-					padding: 2vh;
+					top: 12vh;
+					width: 52vw;
+
 					background-color: var(--primary-color-m);
 					z-index: 5;
+
 					.nav-option {
-						/* padding: 0 5vw;
-								border: 0.03rem solid var(--primary-color); */
 						color: var(--font-primary-color);
 						display: block;
-						/* border: 0.1rem solid var(--primary-color); */
+
 						text-align: center;
 					}
 					:hover {
@@ -211,15 +205,26 @@
 					}
 				}
 				.menu-button-icon {
-					display: block;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					img {
+						height: 8vw;
+						margin: 0.5vh;
+					}
 				}
 				.user-info-container {
+					margin-right: 1vw;
 					img {
 						height: 5vw;
 						margin: 0 0.2vw;
 					}
 					.text {
-						font-size: 2rem;
+						font-size: 1rem;
+					}
+					.nav__submenu {
+						width: 30vw;
+						margin-top: 1.5vh;
 					}
 				}
 			}

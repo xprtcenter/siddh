@@ -27,3 +27,34 @@
 		}
 	}
 }
+@media only screen and (max-width: 1081px) {
+	.cart-icon {
+		position: relative;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		/* padding: 0 1vw;
+	 */
+		.shopping-icon {
+			width: 5vw;
+			height: 5vw;
+		}
+
+		.item-count {
+			position: absolute;
+			color: rgb(0, 0, 0);
+			font-size: 0.6rem;
+			margin-left: 1.7vw;
+		}
+
+		&:hover {
+			.shopping-icon {
+				width: 5.2vw;
+				height: 5.2vw;
+			}
+			.item-count {
+				font-size: 0.9rem;
+			}
+		}
+	}
+}

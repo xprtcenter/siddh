@@ -20,7 +20,7 @@ import PayrollHomePage from "./pages/payrollPages/payrollHomePage.component";
 import XrayImages from "./component/x-ray-images/xray-images.component";
 import ModuleCreation from "./forms/Admin-form/AppMasters/ModuleCreation.component";
 import ReceptionHomePage from "./forms/Reception-forms/ReceptionHomePages/ReceptionHomePage.component";
-
+//import RouteComponent from "../src/component/route/route.component";
 /****************************************************  Header Footer Component  ************************************************************/
 import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
@@ -50,8 +50,15 @@ class App extends Component {
 	componentWillUnmount() {
 		this.unsubscriveFromAuth();
 	}
-
+	pageLink = [
+		{
+			path: "/",
+			component: "Homepage",
+		},
+		{ path: "/sme", component: "SmeHomePage" },
+	];
 	render() {
+		console.log("user print from home component", this.props.currentUser);
 		return (
 			<div className="root-container">
 				<Header />
@@ -125,6 +132,14 @@ class App extends Component {
 						<Route exact path="/xray" component={XrayImages} />
 						<Route exact path="/modulecreation" component={ModuleCreation} />
 					</Switch>
+					{/* <Switch>
+						{this.pageLink.map((pagecomponent) => (
+							<RouteComponent
+								path={pagecomponent.path}
+								componentname={pagecomponent.component}
+							/>
+						))}
+					</Switch> */}
 				</div>
 				<Footer />
 			</div>

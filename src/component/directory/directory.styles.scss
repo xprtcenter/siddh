@@ -3,3 +3,12 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
+@media only screen and (max-width: 1081px) {
+	.directory-menu {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		justify-content: space-between;
+		margin-bottom: 50px;
+	}
+}
