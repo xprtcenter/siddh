@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { createStructuredSelector } from "reselect";
 import { activeHeaderButton } from "../../redux/menu/menu.action";
 
 import { withRouter } from "react-router-dom";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
 
 import "./menu-item.styles.scss";
 
 const MenuItem = ({
+	currentUser,
 	title,
 	imageUrl,
 	size,
@@ -19,8 +21,15 @@ const MenuItem = ({
 	<div
 		className={`${size} menu-item`}
 		onClick={() => {
-			history.push(`${match.url}${linkUrl}`);
-			activeHeaderButton(linkUrl);
+			if (currentUser.role.includes(title)) {
+				history.push(`${match.url}${linkUrl}`);
+				activeHeaderButton(linkUrl);
+			} else {
+				alert("You are not Authorize please ask Administrator for this Module");
+				return;
+			}
+			/* history.push(`${match.url}${linkUrl}`);
+			activeHeaderButton(linkUrl); */
 		}}
 	>
 		<div
@@ -39,5 +48,9 @@ const MenuItem = ({
 const mapDispatchToProps = (dispatch) => ({
 	activeHeaderButton: (url) => dispatch(activeHeaderButton(url)),
 });
-
-export default withRouter(connect(null, mapDispatchToProps)(MenuItem));
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
+});
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(MenuItem),
+);

@@ -17,6 +17,7 @@ class SignIn extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
+			userType: "Hospital",
 		};
 	}
 
@@ -70,7 +71,6 @@ class SignIn extends React.Component {
 									height: "2rem",
 									width: "2rem",
 									alignSelf: "center",
-
 									marginRight: ".5rem",
 								}}
 							/>

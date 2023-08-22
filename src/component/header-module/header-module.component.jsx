@@ -1,11 +1,11 @@
 import React from "react";
 
 import HeaderMenuItem from "./header-menu-item.component";
-import headerdata from "../header/headerdata";
+import moduleNamedata from "../header/moduleNamedata";
 
 const HeaderModules = ({ userrole = [] }) => {
 	const roleResult = userrole.map((role) =>
-		headerdata.sections.filter((value) => {
+		moduleNamedata.sections.filter((value) => {
 			return value.title === role;
 		}),
 	);

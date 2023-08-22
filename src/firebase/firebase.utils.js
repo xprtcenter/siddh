@@ -23,15 +23,18 @@ const config = {
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
+	console.log("user Auth only at the time of function run", userAuth);
 	if (!userAuth) return;
-	const userRef = firestore.doc(`users/${userAuth.uid}`);
-	console.log(userRef);
-	const snapShot = await userRef.get();
 	console.log("user Auth info", userAuth.uid);
+	const userRef = firestore.doc(`users/${userAuth.uid}`);
+	console.log("User Ref Info", userRef);
+	const snapShot = await userRef.get();
 
 	if (!snapShot.exists) {
-		const { displayName, userType, email } = userAuth;
-
+		const { displayName, userType = "Guest", email } = userAuth;
+		console.log("Display Name ", displayName);
+		console.log("User Type ", userType);
+		console.log("email ", email);
 		const createdAt = new Date();
 
 		var role = ["user"];
@@ -46,7 +49,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 				...additionalData,
 			});
 		} catch (error) {
-			alert("error creting user1", error.message);
+			console.log("error creting user1", error.message);
 		}
 	}
 
@@ -63,7 +66,10 @@ export const storage = firebase.storage();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-provider.setCustomParameters({ prompt: "select_account" });
+provider.setCustomParameters({
+	prompt: "select_account",
+	userType: "Hospital",
+});
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 

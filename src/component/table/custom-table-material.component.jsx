@@ -35,11 +35,16 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 					title={tableTitle}
 					actions={[
 						{
+							icon: tableIcons.Edit,
+							tooltip: "Edit User",
+							onClick: (event, rowData) => alert("You Edit " + rowData.id),
+						},
+						{
 							icon: tableIcons.Delete,
 							tooltip: "Delete Employee",
 
 							onClick: (event, rowData) =>
-								alert("You want to delete " + rowData.name),
+								alert("You want to delete " + rowData.id),
 						},
 						{
 							icon: tableIcons.Add,
@@ -53,7 +58,7 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 					data={updatedData}
 					options={{
 						exportButton: true,
-						EditRow: true,
+
 						sorting: true,
 						actionsColumnIndex: -1,
 						headerStyle: {

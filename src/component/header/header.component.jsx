@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -9,7 +9,6 @@ import HeaderModules from "../header-module/header-module.component";
 import avtar from "../../assets/avatar.png";
 import Menubutton from "../../assets/menubutton.png";
 
-import { firestore } from "../../firebase/firebase.utils";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectMenuHidden } from "../../redux/menu/menu.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
