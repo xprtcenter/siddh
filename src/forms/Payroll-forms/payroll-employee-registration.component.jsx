@@ -1,11 +1,13 @@
 import React from "react";
 
 import FormInput from "../../component/form-input/form-input.component";
+import FormDropDown from "../../component/form-dropdown/form-dropdown.component";
+
 import CustomButton from "../../component/custom-button/custom-button.component";
 import { firestore } from "../../firebase/firebase.utils";
-import ParollEmpRegService from "./payroll-emp-reg-service";
+import ParollEmpRegService from "./Functions/payroll-emp-reg-service";
 //import ImageBox from "../../component/image-box/image-box.component";
-import { options } from "./payroll-dropdown.option";
+import options from "./data/payroll-dropdown.option";
 import Select from "react-select";
 import avatar from "../../assets/avatar.png";
 import { storage } from "../../firebase/firebase.utils";
@@ -341,7 +343,8 @@ class PayrollEmpRegMaster extends React.Component {
 										label="Employee Name"
 										required
 									/>
-									<Select
+
+									<FormDropDown
 										className="form-dropdown"
 										placeholder="Select Gender"
 										value={
@@ -349,7 +352,7 @@ class PayrollEmpRegMaster extends React.Component {
 												(obj) => obj.value === EmployeeGender,
 											) || ""
 										} // set selected value
-										options={options.Gender} // set list of the data
+										data={options.Gender} // set list of the data
 										onChange={(e) => {
 											this.setState({ EmployeeGender: e.value });
 										}} // assign onChange function

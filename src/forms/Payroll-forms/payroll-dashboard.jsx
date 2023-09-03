@@ -1,6 +1,6 @@
 import React from "react";
 import CustomHomeCard from "../../component/home-page-card/home-page-card.component";
-import { payrollDashboardOption } from "./payroll-dashboard-data";
+import { payrollDashboardOption } from "./data/payroll-dashboard-data";
 const PayrollDashboardPage = () => {
 	return (
 		<CustomHomeCard

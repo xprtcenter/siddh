@@ -26,7 +26,7 @@ import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
 
 class App extends Component {
-	//unsubscriveFromAuth = null;
+	unsubscriveFromAuth = null;
 
 	componentDidMount() {
 		const { setCurrentUser } = this.props;
@@ -58,14 +58,14 @@ class App extends Component {
 		{ path: "/sme", component: "SmeHomePage" },
 	];
 	render() {
-		console.log("user print from home component", this.props.currentUser);
+		//console.log("user print from home component", this.props.currentUser);
 		return (
 			<div className="root-container">
 				<Header />
 				<div className="main-section">
 					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<Route exact path="/profile" component={UserProfile} />
+						<Route exact path="/" render={() => <HomePage />} />
+						<Route exact path="/profile" render={() => <UserProfile />} />
 
 						<Route
 							path="/shop"
@@ -129,8 +129,12 @@ class App extends Component {
 								)
 							}
 						/>
-						<Route exact path="/xray" component={XrayImages} />
-						<Route exact path="/modulecreation" component={ModuleCreation} />
+						<Route exact path="/xray" render={() => <XrayImages />} />
+						<Route
+							exact
+							path="/modulecreation"
+							render={() => <ModuleCreation />}
+						/>
 					</Switch>
 					{/* <Switch>
 						{this.pageLink.map((pagecomponent) => (

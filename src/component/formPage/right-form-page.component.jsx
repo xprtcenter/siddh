@@ -19,12 +19,13 @@ import DoctorMaster from "../../forms/Reception-forms/doctor-master.component";
 import OpdRegList from "../../forms/Reception-forms/reception-opd-list.component";
 import ReceptionOpdRegistration from "../../forms/Reception-forms/reception-opd-registration.component";
 
-/********************************************* Admin Pages *****************************************************/
+/****************************** Admin Pages **********************************/
 
 const RightFormPageContainer = () => {
 	return (
 		<div className="right-side-main-section">
 			<Switch>
+				{/* ************* Payroll Route************** */}
 				<Route
 					exact
 					path="/payroll/paymaster"
@@ -48,37 +49,62 @@ const RightFormPageContainer = () => {
 				<Route
 					exact
 					path="/payroll/PayrollEmpList"
-					component={PayrollEmpList}
+					render={() => <PayrollEmpList />}
 				/>
 				<Route
 					exact
 					path="/payroll/salentry"
-					component={PayrollDeductionEntry}
+					render={() => <PayrollDeductionEntry />}
 				/>
-				<Route exact path="/payroll" component={PayrollDashboardPage} />
+				<Route exact path="/payroll" render={() => <PayrollDashboardPage />} />
 				<Route
 					exact
 					path="/payroll/salcalcmaster"
-					component={PayrollSalaryCaculationMaster}
+					render={() => <PayrollSalaryCaculationMaster />}
 				/>
-				<Route exact path="/payroll/payreports" component={PayrollReportPage} />
+				<Route
+					exact
+					path="/payroll/payreports"
+					render={() => <PayrollReportPage />}
+				/>
 
-				<Route exact path="/sme/smeconmaster" component={ContractorMaster} />
+				{/* ************* SME Route************** */}
+
+				<Route
+					exact
+					path="/sme/smeconmaster"
+					render={() => <ContractorMaster />}
+				/>
 				<Route
 					exact
 					path="/sme/smeconempentry"
-					component={ContractorEmployeeEntry}
+					render={() => <ContractorEmployeeEntry />}
 				/>
-				<Route exact path="/sme/smecontlist" component={ContractorMasterList} />
-				<Route exact path="/sme/smepaydetails" component={ContractorPayment} />
-				<Route exact path="/sme" component={SMEDashboardPage} />
-				<Route exact path="/reception" component={ReceptionDashboardPage} />
-				<Route path="/reception/doctormaster" component={DoctorMaster} />
-				<Route exact path="/reception/opdlist" component={OpdRegList} />
+				<Route
+					exact
+					path="/sme/smecontlist"
+					render={() => <ContractorMasterList />}
+				/>
+				<Route
+					exact
+					path="/sme/smepaydetails"
+					render={() => <ContractorPayment />}
+				/>
+				<Route exact path="/sme" render={() => <SMEDashboardPage />} />
+
+				{/* ************* Reception Route************** */}
+
+				<Route
+					exact
+					path="/reception"
+					render={() => <ReceptionDashboardPage />}
+				/>
+				<Route path="/reception/doctormaster" render={() => <DoctorMaster />} />
+				<Route exact path="/reception/opdlist" render={() => <OpdRegList />} />
 				<Route
 					exact
 					path="/reception/patregentry"
-					component={ReceptionOpdRegistration}
+					render={() => <ReceptionOpdRegistration />}
 				/>
 			</Switch>
 		</div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./list-table.style.scss";
 import "../spinners/loder.css";
-
 import MaterialTable from "material-table";
 import tableIcons from "./MaterialTableIcons";
 
@@ -18,7 +17,7 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 			updatedData.docs.forEach((doc) => {
 				employee.push({ ...doc.data(), id: doc.id });
 			});
-			console.log(employee);
+			//console.log(employee);
 			setMyData(employee);
 			setLoder(false);
 		};
@@ -50,7 +49,9 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 							icon: tableIcons.Add,
 							tooltip: "Add New Employee",
 							isFreeAction: true,
-							onClick: (event) => alert("You want to add a new row"),
+							onClick: (event) => {
+								alert("You want to add a new row");
+							},
 						},
 					]}
 					icons={tableIcons}

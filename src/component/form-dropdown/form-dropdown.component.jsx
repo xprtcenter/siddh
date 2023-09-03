@@ -6,7 +6,7 @@ const FormDropDown = (props) => {
 	return (
 		<div className="group">
 			<Select
-				className="form-dropdown"
+				className={props.className}
 				placeholder={props.placeholder}
 				name={props.name}
 				onChange={props.onChange}

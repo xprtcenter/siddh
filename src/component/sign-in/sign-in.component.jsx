@@ -17,7 +17,6 @@ class SignIn extends React.Component {
 		this.state = {
 			email: "",
 			password: "",
-			userType: "Hospital",
 		};
 	}
 
@@ -30,7 +29,7 @@ class SignIn extends React.Component {
 			await auth.signInWithEmailAndPassword(email, password);
 			this.setState({ email: "", password: "" });
 		} catch (error) {
-			console.log(error);
+			alert(error.message);
 		}
 	};
 

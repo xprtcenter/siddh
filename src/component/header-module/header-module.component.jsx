@@ -10,13 +10,13 @@ const HeaderModules = ({ userrole = [] }) => {
 		}),
 	);
 
-	console.log("New array check", roleResult);
+	//console.log("New array check", roleResult);
 	/* ****************************************************************************************  */
 	const newarray = roleResult.reduce(function (pre, cur) {
 		return pre.concat(cur);
 	}, []);
 
-	console.log("New array check", newarray);
+	//console.log("New array check", newarray);
 	/* ****************************************************************************************  */
 	return (
 		<React.Fragment>

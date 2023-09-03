@@ -24,7 +24,7 @@ const PayrollEmpList = () => {
 						objectFit: "cover",
 						borderRadius: "50%",
 					}}
-					alt="Emp Image"
+					alt="Emp Img"
 				/>
 			),
 			cellStyle: { padding: "0 1.5vw", textAlign: "center" },

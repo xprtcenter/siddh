@@ -5,9 +5,8 @@ import CustomButton from "../../component/custom-button/custom-button.component"
 import { firestore } from "../../firebase/firebase.utils";
 import ReceptionOpdRegService from "./reception-opd-reg-service";
 import ImageBox from "../../component/image-box/image-box.component";
-import { storage } from "../../firebase/firebase.utils";
 
-import { options } from "../Payroll-forms/payroll-dropdown.option";
+import options from "../Payroll-forms/data/payroll-dropdown.option";
 import Select from "react-select";
 var todayDate = new Date();
 //todayDate.setDate(todayDate.getDate() + 2);

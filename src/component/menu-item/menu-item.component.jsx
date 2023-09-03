@@ -21,15 +21,15 @@ const MenuItem = ({
 	<div
 		className={`${size} menu-item`}
 		onClick={() => {
-			if (currentUser.role.includes(title)) {
+			/* 	if (currentUser.role.includes(title)) {
 				history.push(`${match.url}${linkUrl}`);
 				activeHeaderButton(linkUrl);
 			} else {
 				alert("You are not Authorize please ask Administrator for this Module");
 				return;
-			}
-			/* history.push(`${match.url}${linkUrl}`);
-			activeHeaderButton(linkUrl); */
+			} */
+			history.push(`${match.url}${linkUrl}`);
+			activeHeaderButton(linkUrl);
 		}}
 	>
 		<div

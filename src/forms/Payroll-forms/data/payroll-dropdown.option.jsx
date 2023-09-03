@@ -1,4 +1,4 @@
-export const options = {
+const options = {
 	Active: [
 		{ value: "Active", label: "Active" },
 		{ value: "De-Active", label: "De-Active" },
@@ -23,3 +23,4 @@ export const options = {
 		{ value: "IT Department", label: "IT Department" },
 	],
 };
+export default options;

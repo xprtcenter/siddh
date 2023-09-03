@@ -2,11 +2,31 @@
 	background: none;
 	background-color: rgba(255, 255, 255, 0);
 	color: rgb(0, 0, 0);
-	font-size: 18px;
-	border-radius: 15px;
-	width: 400px;
-	margin: 10px 10px;
-	display: block;
+	font-size: inherit;
+	div {
+		border-radius: 5px;
+		border-color: black;
+	}
+	width: 14rem;
+	//margin: 10px 10px;
+	//display: block;
 }
-.dropdown-group {
+.form-dropdown {
+	div:hover {
+		border-color: rgb(248, 134, 4);
+	}
+}
+.form-dropdown-fix {
+	background: none;
+	background-color: rgba(255, 255, 255, 0);
+	color: rgb(0, 0, 0);
+	font-size: inherit;
+	div {
+		border-radius: 4px;
+		border-color: rgb(5, 3, 3);
+	}
+
+	width: 16rem;
+	//margin: 10px 10px;
+	//display: block;
 }

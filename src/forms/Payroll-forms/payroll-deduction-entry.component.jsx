@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./payroll-deduction-entry.styles.scss";
+import "./styles/payroll-deduction-entry.styles.scss";
 import Select from "react-select";
 import FormInput from "../../component/form-input/form-input.component";
 import {
@@ -8,48 +8,12 @@ import {
 } from "./Functions/getemployeedetails";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import avatar from "../../assets/avatar.png";
+import { monthsObject, monthsList, yearsList } from "./data/monthdata";
 
 const PayrollDeductionEntry = () => {
-	var months = [
-		{ value: "1", label: "January" },
-		{ value: "2", label: "February" },
-		{ value: "3", label: "March" },
-		{ value: "4", label: "April" },
-		{ value: "5", label: "May" },
-		{ value: "6", label: "June" },
-		{ value: "7", label: "July" },
-		{ value: "8", label: "August" },
-		{ value: "9", label: "September" },
-		{ value: "10", label: "October" },
-		{ value: "11", label: "November" },
-		{ value: "12", label: "December" },
-	];
-	var months1 = [
-		"January",
-		"February",
-		"March",
-		"April",
-		"May",
-		"June",
-		"July",
-		"August",
-		"September",
-		"October",
-		"November",
-		"December",
-	];
-
-	var years = [
-		{ value: 2021, label: 2021 },
-		{ value: 2022, label: 2022 },
-		{ value: 2023, label: 2023 },
-		{ value: 2024, label: 2024 },
-		{ value: 2025, label: 2025 },
-	];
-
 	var dt = new Date();
 	var monthNo = dt.getMonth();
-	var currentMonthName = months1[monthNo]; // "July" (or current month)
+	var currentMonthName = monthsList[monthNo]; // "July" (or current month)
 	var currentYear = dt.getFullYear(); // "2022" (or current year)
 
 	function daysInMonth(month, year) {
@@ -241,10 +205,10 @@ const PayrollDeductionEntry = () => {
 			<div className="deduction-dropdown-with-header">
 				<div className="selection-menu">
 					<Select
-						className="dropdown-menu"
+						className="form-dropdown"
 						placeholder="Month for Deduction"
-						value={months.find((obj) => obj.label === month) || ""} // set selected value
-						options={months} // set list of the data
+						value={monthsObject.find((obj) => obj.label === month) || ""} // set selected value
+						options={monthsObject} // set list of the data
 						onChange={(e) => {
 							setDedData({
 								...dedData,
@@ -254,16 +218,16 @@ const PayrollDeductionEntry = () => {
 						}} // assign onChange function
 					/>
 					<Select
-						className="dropdown-menu"
+						className="form-dropdown"
 						placeholder="Year for Deduction"
-						value={years.find((obj) => obj.value === year) || ""} // set selected value
-						options={years} // set list of the data
+						value={yearsList.find((obj) => obj.value === year) || ""} // set selected value
+						options={yearsList} // set list of the data
 						onChange={(e) => {
 							setDedData({ ...dedData, year: e.value });
 						}} // assign onChange function
 					/>
 					<Select
-						className="dropdown-menu"
+						className="form-dropdown"
 						placeholder="Select Employee"
 						value={
 							newOptions.EmployeeName.find(
