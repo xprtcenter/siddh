@@ -1,7 +1,6 @@
 import React from "react";
 
 import FormInput from "../../component/form-input/form-input.component";
-import FormDropDown from "../../component/form-dropdown/form-dropdown.component";
 
 import CustomButton from "../../component/custom-button/custom-button.component";
 import { firestore } from "../../firebase/firebase.utils";
@@ -48,6 +47,7 @@ const initialState = {
 	ImgStatus: "Not Upload",
 	ImgFile: "",
 	percent: "",
+	fillStatus: 1,
 };
 
 class PayrollEmpRegMaster extends React.Component {
@@ -58,58 +58,62 @@ class PayrollEmpRegMaster extends React.Component {
 	}
 
 	componentDidMount() {
-		var getidArray = window.location.href.split("/");
-		/* var getidArray = "2132sds"; */
-		const getIDData = getidArray[getidArray.length - 1];
-		const dbRef = firestore.doc(
-			`payrollData/payrollEmpRegistration/payrollEmployee/${getIDData}`,
-		);
+		if (this.state.fillStatus === 1) {
+			var getidArray = window.location.href.split("/");
+			/* var getidArray = "2132sds"; */
+			const getIDData = getidArray[getidArray.length - 1];
+			const dbRef = firestore.doc(
+				`payrollData/payrollEmpRegistration/payrollEmployee/${getIDData}`,
+			);
 
-		// progress
+			// progress
 
-		//Other Data
+			//Other Data
 
-		dbRef
-			.get()
-			.then((doc) => {
-				if (doc.exists) {
-					/* console.log("Document data:", doc.data()); */
-					const newData = doc.data();
-					this.setState({
-						Editid: getIDData,
-						ImgUrl: newData.EmployeeImgUrl,
-						EmployeeCode: newData.EmployeeCode,
-						EmployeeName: newData.EmployeeName,
-						EmployeeGender: newData.EmployeeGender,
-						EmployeeDOB: newData.EmployeeDOB,
-						EmployeeAddress: newData.EmployeeAddress,
-						EmployeePAddress: newData.EmployeePAddress,
-						EmployeeContact: newData.EmployeeContact,
-						EmployeeEmail: newData.EmployeeEmail,
-						EmployeeDepartment: newData.EmployeeDepartment,
-						EmployeeStatusActive: newData.EmployeeStatusActive,
-						EmployeeDateofJoining: newData.EmployeeDateofJoining,
-						EmployeeDateofLeaving: newData.EmployeeDateofLeaving,
-						EmployeeBasicSalary: newData.EmployeeBasicSalary,
-						EmployeeOnrollContractor: newData.EmployeeOnrollContractor,
-						EmployeeBankName: newData.EmployeeBankName,
-						EmployeeBankIFSCCode: newData.EmployeeBankIFSCCode,
-						EmployeeAccountNo: newData.EmployeeAccountNo,
-						EmployeeUANNo: newData.EmployeeUANNo,
-						EmployeeESICNo: newData.EmployeeESICNo,
-						EmployeePANNo: newData.EmployeePANNo,
-						EmployeeAadharNo: newData.EmployeeAadharNo,
-						PayrollCompanyName: newData.PayrollCompanyName,
-						ImgPreviewUrl: newData.EmployeeImgUrl,
-					});
-				} else {
-					// doc.data() will be undefined in this case
-					console.log("No such document!");
-				}
-			})
-			.catch((error) => {
-				console.log("Error getting document:", error);
-			});
+			dbRef
+				.get()
+				.then((doc) => {
+					if (doc.exists) {
+						/* console.log("Document data:", doc.data()); */
+						const newData = doc.data();
+						this.setState({
+							Editid: getIDData,
+							ImgUrl: newData.EmployeeImgUrl,
+							EmployeeCode: newData.EmployeeCode,
+							EmployeeName: newData.EmployeeName,
+							EmployeeGender: newData.EmployeeGender,
+							EmployeeDOB: newData.EmployeeDOB,
+							EmployeeAddress: newData.EmployeeAddress,
+							EmployeePAddress: newData.EmployeePAddress,
+							EmployeeContact: newData.EmployeeContact,
+							EmployeeEmail: newData.EmployeeEmail,
+							EmployeeDepartment: newData.EmployeeDepartment,
+							EmployeeStatusActive: newData.EmployeeStatusActive,
+							EmployeeDateofJoining: newData.EmployeeDateofJoining,
+							EmployeeDateofLeaving: newData.EmployeeDateofLeaving,
+							EmployeeBasicSalary: newData.EmployeeBasicSalary,
+							EmployeeOnrollContractor: newData.EmployeeOnrollContractor,
+							EmployeeBankName: newData.EmployeeBankName,
+							EmployeeBankIFSCCode: newData.EmployeeBankIFSCCode,
+							EmployeeAccountNo: newData.EmployeeAccountNo,
+							EmployeeUANNo: newData.EmployeeUANNo,
+							EmployeeESICNo: newData.EmployeeESICNo,
+							EmployeePANNo: newData.EmployeePANNo,
+							EmployeeAadharNo: newData.EmployeeAadharNo,
+							PayrollCompanyName: newData.PayrollCompanyName,
+							ImgPreviewUrl: newData.EmployeeImgUrl,
+							fillStatus: 2,
+							ImgStatus: "Uploaded",
+						});
+					} else {
+						// doc.data() will be undefined in this case
+						console.log("No such document!");
+					}
+				})
+				.catch((error) => {
+					console.log("Error getting document:", error);
+				});
+		}
 	}
 	handleImageUpload = (image) => {
 		if (!image) {
@@ -344,7 +348,7 @@ class PayrollEmpRegMaster extends React.Component {
 										required
 									/>
 
-									<FormDropDown
+									<Select
 										className="form-dropdown"
 										placeholder="Select Gender"
 										value={

@@ -4,7 +4,7 @@ import "../spinners/loder.css";
 import MaterialTable from "material-table";
 import tableIcons from "./MaterialTableIcons";
 
-const CustomTable = ({ data, columns, tableTitle }) => {
+const CustomTable = ({ data, columns, tableTitle, editFunction }) => {
 	const [mydata, setMyData] = useState([]);
 	const [loder, setLoder] = useState(true);
 
@@ -36,7 +36,10 @@ const CustomTable = ({ data, columns, tableTitle }) => {
 						{
 							icon: tableIcons.Edit,
 							tooltip: "Edit User",
-							onClick: (event, rowData) => alert("You Edit " + rowData.id),
+							//onClick: (event, rowData) => alert("You Edit " + rowData.id),
+							onClick: (event, rowData) => {
+								editFunction(rowData.id);
+							},
 						},
 						{
 							icon: tableIcons.Delete,

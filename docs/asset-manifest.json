@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/siddh/static/css/main.dba68988.chunk.css",
-    "main.js": "/siddh/static/js/main.626b6efb.chunk.js",
-    "main.js.map": "/siddh/static/js/main.626b6efb.chunk.js.map",
+    "main.css": "/siddh/static/css/main.2032d040.chunk.css",
+    "main.js": "/siddh/static/js/main.f3829f07.chunk.js",
+    "main.js.map": "/siddh/static/js/main.f3829f07.chunk.js.map",
     "runtime-main.js": "/siddh/static/js/runtime-main.5335b4ff.js",
     "runtime-main.js.map": "/siddh/static/js/runtime-main.5335b4ff.js.map",
     "static/css/2.ff602127.chunk.css": "/siddh/static/css/2.ff602127.chunk.css",
-    "static/js/2.09914b50.chunk.js": "/siddh/static/js/2.09914b50.chunk.js",
-    "static/js/2.09914b50.chunk.js.map": "/siddh/static/js/2.09914b50.chunk.js.map",
+    "static/js/2.38390309.chunk.js": "/siddh/static/js/2.38390309.chunk.js",
+    "static/js/2.38390309.chunk.js.map": "/siddh/static/js/2.38390309.chunk.js.map",
     "static/js/3.bbc42281.chunk.js": "/siddh/static/js/3.bbc42281.chunk.js",
     "static/js/3.bbc42281.chunk.js.map": "/siddh/static/js/3.bbc42281.chunk.js.map",
     "static/js/4.995340da.chunk.js": "/siddh/static/js/4.995340da.chunk.js",
@@ -16,8 +16,8 @@
     "static/js/5.1aedf56a.chunk.js.map": "/siddh/static/js/5.1aedf56a.chunk.js.map",
     "index.html": "/siddh/index.html",
     "static/css/2.ff602127.chunk.css.map": "/siddh/static/css/2.ff602127.chunk.css.map",
-    "static/css/main.dba68988.chunk.css.map": "/siddh/static/css/main.dba68988.chunk.css.map",
-    "static/js/2.09914b50.chunk.js.LICENSE.txt": "/siddh/static/js/2.09914b50.chunk.js.LICENSE.txt",
+    "static/css/main.2032d040.chunk.css.map": "/siddh/static/css/main.2032d040.chunk.css.map",
+    "static/js/2.38390309.chunk.js.LICENSE.txt": "/siddh/static/js/2.38390309.chunk.js.LICENSE.txt",
     "static/js/3.bbc42281.chunk.js.LICENSE.txt": "/siddh/static/js/3.bbc42281.chunk.js.LICENSE.txt",
     "static/js/4.995340da.chunk.js.LICENSE.txt": "/siddh/static/js/4.995340da.chunk.js.LICENSE.txt",
     "static/js/5.1aedf56a.chunk.js.LICENSE.txt": "/siddh/static/js/5.1aedf56a.chunk.js.LICENSE.txt",
@@ -37,8 +37,8 @@
   "entrypoints": [
     "static/js/runtime-main.5335b4ff.js",
     "static/css/2.ff602127.chunk.css",
-    "static/js/2.09914b50.chunk.js",
-    "static/css/main.dba68988.chunk.css",
-    "static/js/main.626b6efb.chunk.js"
+    "static/js/2.38390309.chunk.js",
+    "static/css/main.2032d040.chunk.css",
+    "static/js/main.f3829f07.chunk.js"
   ]
 }

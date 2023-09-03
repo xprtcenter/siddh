@@ -2,8 +2,14 @@ import React from "react";
 
 import { EmployeeData } from "./Functions/getemployeedetails";
 import CustomTable from "../../component/table/custom-table-material.component";
-
+import { useHistory } from "react-router-dom";
 const PayrollEmpList = () => {
+	const history = useHistory();
+
+	const registrationEditPath = (id) => {
+		let path = `payrollempregmaster/${id}`;
+		history.push(path);
+	};
 	const tableTitle = "Payroll Employee List";
 	const columns = [
 		{
@@ -57,6 +63,7 @@ const PayrollEmpList = () => {
 			data={EmployeeData}
 			columns={columns}
 			tableTitle={tableTitle}
+			editFunction={registrationEditPath}
 		/>
 	);
 };
