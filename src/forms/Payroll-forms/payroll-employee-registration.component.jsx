@@ -47,7 +47,7 @@ const initialState = {
 	ImgStatus: "Not Upload",
 	ImgFile: "",
 	percent: "",
-	fillStatus: 1,
+	fillStatus: 2,
 };
 
 class PayrollEmpRegMaster extends React.Component {
@@ -108,6 +108,7 @@ class PayrollEmpRegMaster extends React.Component {
 					} else {
 						// doc.data() will be undefined in this case
 						console.log("No such document!");
+						//this.setState({ fillStatus: 2 });
 					}
 				})
 				.catch((error) => {
@@ -356,7 +357,7 @@ class PayrollEmpRegMaster extends React.Component {
 												(obj) => obj.value === EmployeeGender,
 											) || ""
 										} // set selected value
-										data={options.Gender} // set list of the data
+										options={options.Gender} // set list of the data
 										onChange={(e) => {
 											this.setState({ EmployeeGender: e.value });
 										}} // assign onChange function
@@ -524,13 +525,26 @@ class PayrollEmpRegMaster extends React.Component {
 									label="Aadhar No"
 									required
 								/>
-								<FormInput
+								{/* <FormInput
 									type="text"
 									name="EmployeeBankName"
 									value={EmployeeBankName || ""}
 									onChange={this.handleChange}
 									label="Bank Name"
 									required
+								/> */}
+								<Select
+									className="form-dropdown"
+									placeholder="Bank Name"
+									value={
+										options.Banks.find(
+											(obj) => obj.value === EmployeeBankName,
+										) || ""
+									} // set selected value
+									options={options.Banks} // set list of the data
+									onChange={(e) => {
+										this.setState({ EmployeeBankName: e.value });
+									}} // assign onChange function
 								/>
 								<FormInput
 									type="text"

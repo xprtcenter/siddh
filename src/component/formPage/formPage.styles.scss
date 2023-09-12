@@ -12,12 +12,12 @@
 	}
 
 	.right-side-main-section {
+		display: flex;
 		flex: 1 1 auto;
-
-		/* display: flex;
-		 align-items: center;
+		align-items: center;
 		flex-direction: column;
-		padding: 0 2rem; */
+		padding: 0 2rem;
+		justify-content: flex-start;
 
 		.section-title {
 			padding: 0.5rem 1rem;
@@ -30,6 +30,8 @@
 			flex-direction: column;
 			padding: 1.6vh 2vw;
 			width: 100%;
+			background-color: var(--primary-color-m);
+			margin-top: 1vw;
 
 			/* .dropdown-menu {
 				width: 400px;
@@ -79,7 +81,7 @@
 				.active-content {
 					display: flex;
 				}
-				.form-container {
+				/* .form-container {
 					display: flex;
 					flex-direction: column;
 					flex-wrap: wrap;
@@ -98,7 +100,7 @@
 						margin: 10px 0;
 						display: block;
 					}
-				}
+				} */
 			}
 			.status {
 				font-size: 0.8rem;

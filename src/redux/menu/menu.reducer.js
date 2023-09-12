@@ -1,7 +1,7 @@
 import MenuActionTypes from "./menu.types";
 
 const INITIAL_STATE = {
-	menuhidden: true,
+	menuhidden: false,
 	sideactive: "",
 	sidehide: true,
 	activeheader: "home",

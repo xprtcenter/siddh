@@ -4,7 +4,7 @@ import PayrollDashboardPage from "../../forms/Payroll-forms/payroll-dashboard";
 import PayrollEmpRegMaster from "../../forms/Payroll-forms/payroll-employee-registration.component";
 import PayrollMaster from "../../forms/Payroll-forms/payroll-master.component";
 import PayrollEmpList from "../../forms/Payroll-forms/payroll-emp-list.component";
-import PayrollDeductionEntry from "../../forms/Payroll-forms/payroll-deduction-entry.component";
+import PayrollSalaryEntry from "../../forms/Payroll-forms/payroll-salary-entry.component";
 import PayrollSalaryCaculationMaster from "../../forms/Payroll-forms/payroll-salary-calculation-master";
 import PayrollReportPage from "../../forms/Payroll-forms/payroll-reports/payroll-report-page";
 /********************************************* SME Pages *****************************************************/
@@ -54,7 +54,7 @@ const RightFormPageContainer = () => {
 				<Route
 					exact
 					path="/payroll/salentry"
-					render={() => <PayrollDeductionEntry />}
+					render={() => <PayrollSalaryEntry />}
 				/>
 				<Route exact path="/payroll" render={() => <PayrollDashboardPage />} />
 				<Route
