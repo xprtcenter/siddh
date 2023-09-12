@@ -74,7 +74,7 @@ const PayrollSalaryEntry = () => {
 					let data = item.data();
 					employeeList.push({
 						...data,
-						value: data.id,
+						value: item.id,
 						label: data.EmployeeName,
 					});
 					setNewOptions({ EmployeeArray: employeeList });
@@ -104,7 +104,13 @@ const PayrollSalaryEntry = () => {
 						item.month === salaryData.month && item.year === salaryData.year,
 				);
 				let newSalaryDataSingle = SalaryDataSingle[0];
-				setSalaryData({ ...selectedEmployeeInfo[0], ...newSalaryDataSingle });
+				setSalaryData({
+					...selectedEmployeeInfo[0],
+					...newSalaryDataSingle,
+					month: salaryData.month,
+					year: salaryData.year,
+					days: salaryData.days,
+				});
 
 				console.log("SalaryDataSingle", newSalaryDataSingle);
 			});
