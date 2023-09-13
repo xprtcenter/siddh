@@ -1,9 +1,14 @@
 const options = {
 	Active: [
 		{ value: "Active", label: "Active" },
-		{ value: "De-Active", label: "De-Active" },
+		{ value: "Hold", label: "Hold" },
+		{ value: "Leaving", label: "Leaving" },
 	],
 	ESIC: [
+		{ value: "Yes", label: "Yes" },
+		{ value: "No", label: "No" },
+	],
+	PFOption: [
 		{ value: "Yes", label: "Yes" },
 		{ value: "No", label: "No" },
 	],
@@ -21,6 +26,11 @@ const options = {
 		{ value: "Ward Boy", label: "Ward Boy" },
 		{ value: "House Keeping", label: "House Keeping" },
 		{ value: "IT Department", label: "IT Department" },
+		{ value: "Electrician", label: "Electrician" },
+		{ value: "HR", label: "HR" },
+		{ value: "Billing", label: "Billing" },
+		{ value: "Account", label: "Account" },
+		{ value: "Pharmacy", label: "Pharmacy" },
 	],
 	Banks: [
 		{ value: "	Allahabad Bank	", label: "	Allahabad Bank	" },

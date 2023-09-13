@@ -41,13 +41,14 @@ const initialState = {
 	PayrollCompanyName: "VKBORL Hospital",
 	EmployerCompanyName: "xprt Hospital",
 	ESICCalculation: "",
+	PFCalculation: "",
 	TabtoggleState: 1,
 	ImgUrl: "",
 	ImgPreviewUrl: "",
 	ImgStatus: "Not Upload",
 	ImgFile: "",
 	percent: "",
-	fillStatus: 2,
+	fillStatus: 1,
 };
 
 class PayrollEmpRegMaster extends React.Component {
@@ -102,6 +103,8 @@ class PayrollEmpRegMaster extends React.Component {
 							EmployeeAadharNo: newData.EmployeeAadharNo,
 							PayrollCompanyName: newData.PayrollCompanyName,
 							ImgPreviewUrl: newData.EmployeeImgUrl,
+							ESICCalculation: newData.ESICCalculation,
+							PFCalculation: newData.PFCalculation,
 							fillStatus: 2,
 							ImgStatus: "Uploaded",
 						});
@@ -217,6 +220,8 @@ class PayrollEmpRegMaster extends React.Component {
 				EmployeePANNo: this.state.EmployeePANNo,
 				EmployeeAadharNo: this.state.EmployeeAadharNo,
 				PayrollCompanyName: this.state.PayrollCompanyName,
+				ESICCalculation: this.state.ESICCalculation,
+				PFCalculation: this.state.PFCalculation,
 			};
 			if (!this.state.Editid) {
 				ParollEmpRegService.create(sData)
@@ -244,7 +249,6 @@ class PayrollEmpRegMaster extends React.Component {
 
 	handleChange = (event) => {
 		const { name, value } = event.target;
-
 		this.setState({ [name]: value });
 	};
 
@@ -272,6 +276,7 @@ class PayrollEmpRegMaster extends React.Component {
 			EmployeePANNo,
 			EmployeeAadharNo,
 			ESICCalculation,
+			PFCalculation,
 			TabtoggleState,
 			ImgPreviewUrl,
 			ImgStatus,
@@ -427,19 +432,6 @@ class PayrollEmpRegMaster extends React.Component {
 										this.setState({ EmployeeDepartment: e.value });
 									}} // assign onChange function
 								/>
-								<Select
-									className="form-dropdown"
-									placeholder="Active or De-active"
-									value={
-										options.Active.find(
-											(obj) => obj.value === EmployeeStatusActive,
-										) || ""
-									} // set selected value
-									options={options.Active} // set list of the data
-									onChange={(e) => {
-										this.setState({ EmployeeStatusActive: e.value });
-									}} // assign onChange function
-								/>
 								<FormInput
 									type="date"
 									name="EmployeeDateofJoining"
@@ -448,13 +440,7 @@ class PayrollEmpRegMaster extends React.Component {
 									label="Date of Joining"
 									required
 								/>
-								<FormInput
-									type="date"
-									name="EmployeeDateofLeaving"
-									value={EmployeeDateofLeaving || ""}
-									onChange={this.handleChange}
-									label="Date of Leaving"
-								/>
+
 								<FormInput
 									type="text"
 									name="EmployeeESICNo"
@@ -499,6 +485,41 @@ class PayrollEmpRegMaster extends React.Component {
 										this.setState({ ESICCalculation: e.value });
 									}} // assign onChange function
 								/>
+								<Select
+									className="form-dropdown"
+									placeholder="Active or De-active"
+									value={
+										options.PFOption.find(
+											(obj) => obj.value === PFCalculation,
+										) || ""
+									} // set selected value
+									options={options.PFOption} // set list of the data
+									onChange={(e) => {
+										this.setState({ PFCalculation: e.value });
+									}} // assign onChange function
+								/>
+								<Select
+									className="form-dropdown"
+									placeholder="Set Status"
+									value={
+										options.Active.find(
+											(obj) => obj.value === EmployeeStatusActive,
+										) || ""
+									} // set selected value
+									options={options.Active} // set list of the data
+									onChange={(e) => {
+										this.setState({ EmployeeStatusActive: e.value });
+									}} // assign onChange function
+								/>
+								{EmployeeStatusActive === "Leaving" ? (
+									<FormInput
+										type="date"
+										name="EmployeeDateofLeaving"
+										value={EmployeeDateofLeaving || ""}
+										onChange={this.handleChange}
+										label="Date of Leaving"
+									/>
+								) : null}
 							</div>
 						</div>
 

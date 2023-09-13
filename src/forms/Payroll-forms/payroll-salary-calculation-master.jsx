@@ -135,6 +135,9 @@ const PayrollSalaryCaculationMaster = () => {
 						required
 					/>
 				</div>
+				<CustomButton type="submit" sizefix>
+					SUBMIT
+				</CustomButton>
 			</form>
 		</React.Fragment>
 	);
