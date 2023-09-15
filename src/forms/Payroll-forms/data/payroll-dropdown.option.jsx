@@ -104,5 +104,9 @@ const options = {
 		{ value: "	Vijaya Bank	", label: "	Vijaya Bank	" },
 		{ value: "	Yes Bank Ltd	", label: "	Yes Bank Ltd	" },
 	],
+	cashBankOption: [
+		{ value: "Yes", label: "Yes" },
+		{ value: "No", label: "No" },
+	],
 };
 export default options;

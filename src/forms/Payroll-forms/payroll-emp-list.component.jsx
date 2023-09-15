@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { EmployeeData } from "./Functions/getemployeedetails";
 import CustomTable from "../../component/table/custom-table-material.component";
 import { useHistory } from "react-router-dom";
+import { firestore } from "../../firebase/firebase.utils";
 const PayrollEmpList = () => {
 	const history = useHistory();
 
 	const registrationEditPath = (id) => {
 		let path = `payrollempregmaster/${id}`;
 		history.push(path);
+	};
+	function addFunction() {
+		let path = `payrollempregmaster`;
+		history.push(path);
+	}
+	const deleteFunction = (id) => {
+		const db = firestore.doc(
+			`payrollData/payrollEmpRegistration/payrollEmployee/${id}`,
+		);
+		db.delete().then(() => {
+			alert("deleted");
+		});
+
+		console.log("user for delete", id);
 	};
 	const tableTitle = "Payroll Employee List";
 	const columns = [
@@ -64,6 +79,8 @@ const PayrollEmpList = () => {
 			columns={columns}
 			tableTitle={tableTitle}
 			editFunction={registrationEditPath}
+			addFunction={addFunction}
+			deleteFunction={deleteFunction}
 		/>
 	);
 };

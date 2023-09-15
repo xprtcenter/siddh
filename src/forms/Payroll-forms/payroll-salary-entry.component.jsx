@@ -59,6 +59,8 @@ const PayrollSalaryEntry = () => {
 		inHandSalary: 0,
 		ctc: 0,
 		Editid: false,
+		ESICCalculation: "",
+		PFCalculation: "",
 	};
 
 	const [salaryData, setSalaryData] = useState(initialstate);
@@ -78,7 +80,10 @@ const PayrollSalaryEntry = () => {
 						value: item.id,
 						label: data.EmployeeName,
 					});
-					setNewOptions({ EmployeeArray: employeeList });
+					const employeeListnew = employeeList.filter(
+						(item) => item.EmployeeStatusActive !== "Leaving",
+					);
+					setNewOptions({ EmployeeArray: employeeListnew });
 				});
 			});
 		}
@@ -157,14 +162,18 @@ const PayrollSalaryEntry = () => {
 		let new_calculativeBasic = new_calculativeBasicD.toFixed(2);
 		let new_esicEmployeeD =
 			(parseFloat(salaryData.EmployeeBasicSalary) * 0.75) / 100;
-		let new_esicEmployee = new_esicEmployeeD.toFixed(2);
+		let new_esicEmployee =
+			salaryData.ESICCalculation === "Yes" ? new_esicEmployeeD.toFixed(2) : 0;
 		let new_esicEmployerD =
 			(parseFloat(salaryData.EmployeeBasicSalary) * 3.25) / 100;
-		let new_esicEmployer = new_esicEmployerD.toFixed(2);
+		let new_esicEmployer =
+			salaryData.ESICCalculation === "Yes" ? new_esicEmployerD.toFixed(2) : 0;
 		let new_pfEmployeeD = (new_calculativeBasic * 12) / 100;
-		let new_pfEmployee = new_pfEmployeeD.toFixed(2);
+		let new_pfEmployee =
+			salaryData.PFCalculation === "Yes" ? new_pfEmployeeD.toFixed(2) : 0;
 		let new_pfEmployerD = (new_calculativeBasic * 12) / 100;
-		let new_pfEmployer = new_pfEmployerD.toFixed(2);
+		let new_pfEmployer =
+			salaryData.PFCalculation === "Yes" ? new_pfEmployerD.toFixed(2) : 0;
 		let new_totalDeduction =
 			parseFloat(new_pfEmployee) +
 			parseFloat(new_esicEmployee) +
@@ -307,12 +316,11 @@ const PayrollSalaryEntry = () => {
 	} = salaryData;
 
 	return (
-		<React.Fragment>
+		<form className="form-container" onSubmit={handleSubmit}>
 			<h2 className="section-title">Salary Entry form</h2>
 			<p className="section-subtitle">
 				Select month/year/Employee for enter Addition Deduction Value .
 			</p>
-
 			<div className="deduction-dropdown-with-header">
 				<div className="selection-menu">
 					<Select
@@ -356,207 +364,198 @@ const PayrollSalaryEntry = () => {
 							getSalaryData(e);
 						}} // assign onChange function
 					/>
-					{/* <CustomButton
-						onClick={() => {
-							calculativeStateUpdatefunction();
-						}}
-					> 
-						Recalculate
-					</CustomButton>*/}
 				</div>
 			</div>
 
-			<form className="form-container" onSubmit={handleSubmit}>
-				<div className="card-for-image-text">
+			<div className="card-for-image-text">
+				<div
+					className="header-image"
+					style={{
+						backgroundImage: `url(${EmployeeImgUrl})`,
+						backgroundPosition: "center",
+						backgroundSize: "cover",
+						backgroundRepeat: "no-repeat",
+					}}
+				></div>
+
+				<div className="card-for-header">
+					<div className="header-text">
+						Employee Code: <strong>{EmployeeCode}</strong>
+					</div>
+					<div className="header-text">
+						Employee Name: <strong>{EmployeeName}</strong>
+					</div>
+					<div className="header-text">
+						Employee Department: <strong>{EmployeeDepartment}</strong>
+					</div>
+					<div className="header-text">
+						Email: <strong>{EmployeeEmail}</strong>
+					</div>
+					<div className="header-text">
+						Contact:<strong> {EmployeeContact}</strong>
+					</div>
+					<div className="header-text">
+						FixBasic:<strong> {EmployeeBasicSalary}</strong>
+					</div>
+					<div className="header-text">
+						In Hand Salary:<strong> {inHandSalary}</strong>
+					</div>
+					<div className="header-text">
+						CTC Amount:<strong> {ctc}</strong>
+					</div>
+				</div>
+			</div>
+
+			<div className="card-for-add-ded">
+				<div className="header-text">
+					Days in Month:<strong> {salaryData.days}</strong>
+				</div>
+				<div className="header-text">
+					Non Working days: <strong>{nonWorkingdays}</strong>
+				</div>
+				<div className="header-text">
+					Total Leave: <strong>{totalLeave}</strong>
+				</div>
+				<div className="header-text">
+					Working days: <strong>{workingDays}</strong>
+				</div>
+				<div className="header-text">
+					Leave deduction:<strong> {leaveDeduction}</strong>
+				</div>
+				<div className="header-text">
+					ESIC Employee: <strong>{esicEmployee}</strong>
+				</div>
+
+				<div className="header-text">
+					PF Employee: <strong>{pfEmployee}</strong>
+				</div>
+				<div className="header-text">
+					Calculative Basic: <strong>{calculativeBasic}</strong>
+				</div>
+				<div className="header-text">
+					Total Deduction:<strong> {totalDeduction}</strong>
+				</div>
+
+				<div className="header-text">
+					Total addition: <strong>{totalAddition}</strong>
+				</div>
+				<div className="header-text">
+					ESIC Employer: <strong>{esicEmployer}</strong>
+				</div>
+				<div className="header-text">
+					PF Employer: <strong>{pfEmployer}</strong>
+				</div>
+			</div>
+			<div className="container">
+				<div className="bloc-tabs">
 					<div
-						className="header-image"
-						style={{
-							backgroundImage: `url(${EmployeeImgUrl})`,
-							backgroundPosition: "center",
-							backgroundSize: "cover",
-							backgroundRepeat: "no-repeat",
-						}}
-					></div>
+						className={toogleState === 1 ? "tabs active-tabs" : "tabs"}
+						onClick={() => setToogleState(1)}
+					>
+						Deduction
+					</div>
+					<div
+						className={toogleState === 2 ? "tabs active-tabs" : "tabs"}
+						onClick={() => setToogleState(2)}
+					>
+						Addition
+					</div>
+				</div>
+				<div className="content-tabs">
+					<div
+						className={
+							toogleState === 1 ? "content  active-content" : "content"
+						}
+					>
+						<div className="tab-container">
+							<FormInput
+								type="number"
+								name="weeklyoff"
+								value={weeklyoff || ""}
+								onChange={handleChange}
+								label="WEEKLY OFF"
+								required
+							/>
+							<FormInput
+								type="number"
+								name="coff"
+								value={coff || ""}
+								onChange={handleChange}
+								label="C OFF"
+							/>
 
-					<div className="card-for-header">
-						<div className="header-text">
-							Employee Code: <strong>{EmployeeCode}</strong>
+							<FormInput
+								type="number"
+								name="unpaidLeave"
+								value={unpaidLeave || ""}
+								onChange={handleChange}
+								label="UNPAID LEAVE/LWP"
+							/>
+
+							<FormInput
+								type="number"
+								name="professionalTax"
+								value={professionalTax || ""}
+								onChange={handleChange}
+								label="PROFESSIONAL TAX"
+								required
+							/>
+							<FormInput
+								type="number"
+								name="advanceLoan"
+								value={advanceLoan || ""}
+								onChange={handleChange}
+								label="ADVANCE LOAN"
+								required
+							/>
 						</div>
-						<div className="header-text">
-							Employee Name: <strong>{EmployeeName}</strong>
-						</div>
-						<div className="header-text">
-							Employee Department: <strong>{EmployeeDepartment}</strong>
-						</div>
-						<div className="header-text">
-							Email: <strong>{EmployeeEmail}</strong>
-						</div>
-						<div className="header-text">
-							Contact:<strong> {EmployeeContact}</strong>
-						</div>
-						<div className="header-text">
-							FixBasic:<strong> {EmployeeBasicSalary}</strong>
-						</div>
-						<div className="header-text">
-							In Hand Salary:<strong> {inHandSalary}</strong>
-						</div>
-						<div className="header-text">
-							CTC Amount:<strong> {ctc}</strong>
+					</div>
+					<div
+						className={
+							toogleState === 2 ? "content  active-content" : "content"
+						}
+					>
+						<div className="tab-container">
+							<FormInput
+								type="number"
+								name="paidLeave"
+								value={paidLeave || ""}
+								onChange={handleChange}
+								label="PAID LEAVE/EXTRA WORK"
+							/>
+							<FormInput
+								type="number"
+								name="vehicleAllownces"
+								value={vehicleAllownces || ""}
+								onChange={handleChange}
+								label="VEHICLE ALLOWNCES"
+								required
+							/>
+							<FormInput
+								type="number"
+								name="houseAllownces"
+								value={houseAllownces || ""}
+								onChange={handleChange}
+								label="HOUSE ALLOWNCES"
+								required
+							/>
+
+							<FormInput
+								type="number"
+								name="allowncesOther"
+								value={allowncesOther || ""}
+								onChange={handleChange}
+								label="ALLOWNCES OTHER"
+								required
+							/>
 						</div>
 					</div>
 				</div>
-
-				<div className="card-for-add-ded">
-					<div className="header-text">
-						Days in Month:<strong> {salaryData.days}</strong>
-					</div>
-					<div className="header-text">
-						Non Working days: <strong>{nonWorkingdays}</strong>
-					</div>
-					<div className="header-text">
-						Total Leave: <strong>{totalLeave}</strong>
-					</div>
-					<div className="header-text">
-						Working days: <strong>{workingDays}</strong>
-					</div>
-					<div className="header-text">
-						Leave deduction:<strong> {leaveDeduction}</strong>
-					</div>
-					<div className="header-text">
-						ESIC Employee: <strong>{esicEmployee}</strong>
-					</div>
-
-					<div className="header-text">
-						PF Employee: <strong>{pfEmployee}</strong>
-					</div>
-					<div className="header-text">
-						Calculative Basic: <strong>{calculativeBasic}</strong>
-					</div>
-					<div className="header-text">
-						Total Deduction:<strong> {totalDeduction}</strong>
-					</div>
-
-					<div className="header-text">
-						Total addition: <strong>{totalAddition}</strong>
-					</div>
-					<div className="header-text">
-						ESIC Employer: <strong>{esicEmployer}</strong>
-					</div>
-					<div className="header-text">
-						PF Employer: <strong>{pfEmployer}</strong>
-					</div>
-				</div>
-				<div className="container">
-					<div className="bloc-tabs">
-						<div
-							className={toogleState === 1 ? "tabs active-tabs" : "tabs"}
-							onClick={() => setToogleState(1)}
-						>
-							Deduction
-						</div>
-						<div
-							className={toogleState === 2 ? "tabs active-tabs" : "tabs"}
-							onClick={() => setToogleState(2)}
-						>
-							Addition
-						</div>
-					</div>
-					<div className="content-tabs">
-						<div
-							className={
-								toogleState === 1 ? "content  active-content" : "content"
-							}
-						>
-							<div className="tab-container">
-								<FormInput
-									type="number"
-									name="weeklyoff"
-									value={weeklyoff || ""}
-									onChange={handleChange}
-									label="WEEKLY OFF"
-									required
-								/>
-								<FormInput
-									type="number"
-									name="coff"
-									value={coff || ""}
-									onChange={handleChange}
-									label="C OFF"
-								/>
-
-								<FormInput
-									type="number"
-									name="unpaidLeave"
-									value={unpaidLeave || ""}
-									onChange={handleChange}
-									label="UNPAID LEAVE/LWP"
-								/>
-
-								<FormInput
-									type="number"
-									name="professionalTax"
-									value={professionalTax || ""}
-									onChange={handleChange}
-									label="PROFESSIONAL TAX"
-									required
-								/>
-								<FormInput
-									type="number"
-									name="advanceLoan"
-									value={advanceLoan || ""}
-									onChange={handleChange}
-									label="ADVANCE LOAN"
-									required
-								/>
-							</div>
-						</div>
-						<div
-							className={
-								toogleState === 2 ? "content  active-content" : "content"
-							}
-						>
-							<div className="tab-container">
-								<FormInput
-									type="number"
-									name="paidLeave"
-									value={paidLeave || ""}
-									onChange={handleChange}
-									label="PAID LEAVE/EXTRA WORK"
-								/>
-								<FormInput
-									type="number"
-									name="vehicleAllownces"
-									value={vehicleAllownces || ""}
-									onChange={handleChange}
-									label="VEHICLE ALLOWNCES"
-									required
-								/>
-								<FormInput
-									type="number"
-									name="houseAllownces"
-									value={houseAllownces || ""}
-									onChange={handleChange}
-									label="HOUSE ALLOWNCES"
-									required
-								/>
-
-								<FormInput
-									type="number"
-									name="allowncesOther"
-									value={allowncesOther || ""}
-									onChange={handleChange}
-									label="ALLOWNCES OTHER"
-									required
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<CustomButton type="submit" sizefix>
-					SUBMIT
-				</CustomButton>
-			</form>
-		</React.Fragment>
+			</div>
+			<CustomButton type="submit" sizefix>
+				SUBMIT
+			</CustomButton>
+		</form>
 	);
 };
 export default PayrollSalaryEntry;

@@ -4,11 +4,16 @@ import "../spinners/loder.css";
 import MaterialTable from "material-table";
 import tableIcons from "./MaterialTableIcons";
 
-const CustomTable = ({ data, columns, tableTitle, editFunction }) => {
+const CustomTable = ({
+	data,
+	columns,
+	tableTitle,
+	editFunction,
+	addFunction,
+	deleteFunction,
+}) => {
 	const [mydata, setMyData] = useState([]);
 	const [loder, setLoder] = useState(true);
-
-	const updatedData = mydata;
 
 	useEffect(() => {
 		const getData = async () => {
@@ -45,24 +50,24 @@ const CustomTable = ({ data, columns, tableTitle, editFunction }) => {
 							icon: tableIcons.Delete,
 							tooltip: "Delete Employee",
 
-							onClick: (event, rowData) =>
-								alert("You want to delete " + rowData.id),
+							onClick: (event, rowData) => {
+								deleteFunction(rowData.id);
+							},
 						},
 						{
 							icon: tableIcons.Add,
 							tooltip: "Add New Employee",
 							isFreeAction: true,
 							onClick: (event) => {
-								alert("You want to add a new row");
+								addFunction();
 							},
 						},
 					]}
 					icons={tableIcons}
 					columns={columns}
-					data={updatedData}
+					data={mydata}
 					options={{
 						exportButton: true,
-
 						sorting: true,
 						actionsColumnIndex: -1,
 						headerStyle: {

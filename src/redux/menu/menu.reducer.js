@@ -3,7 +3,7 @@ import MenuActionTypes from "./menu.types";
 const INITIAL_STATE = {
 	menuhidden: false,
 	sideactive: "",
-	sidehide: true,
+	sidehide: false,
 	activeheader: "home",
 };
 

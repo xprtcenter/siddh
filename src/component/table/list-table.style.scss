@@ -1,4 +1,4 @@
-.table-page {
+.table-page-formasterpage {
 	border-collapse: collapse;
 	margin-top: 1.6rem;
 	background-color: var(--primary-color-m);
@@ -6,7 +6,7 @@
 	-webkit-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
 	-moz-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
 
-	.table-header {
+	 .table-header-formasterpage {
 		border: 0.07rem solid var(--primary-color);
 		background-color: var(--primary-color);
 
@@ -17,9 +17,9 @@
 		.th2 {
 			width: 2rem;
 		}
-	}
+	} 
 	tbody {
-		.table-data-row {
+		.table-data-row-formasterpage {
 			td {
 				border: 0.1rem solid var(--primary-color);
 			}
@@ -28,10 +28,10 @@
 				padding: 0 1.5vw;
 				white-space: nowrap;
 			}
-			.emp-code {
+			.emp-code-formasterpage {
 				text-align: center;
 			}
-			.table-image-container {
+			.table-image-container-formasterpage {
 				img {
 					object-fit: cover;
 					width: 2rem;
@@ -40,13 +40,13 @@
 				}
 			}
 		}
-		.table-data-row:hover {
+		.table-data-row-formasterpage:hover {
 			background-color: var(--primary-color);
 		}
 	}
 }
 
-.btn {
+.btn-formasterpage {
 	width: 4rem;
 	height: 1.5rem;
 	border-radius: 0.3rem;
@@ -55,18 +55,18 @@
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.btn-edit {
+.btn-edit-formasterpage {
 	background-color: rgb(253, 216, 5);
 	color: rgb(5, 4, 4);
 }
-.btn-delete {
+.btn-delete-formasterpage {
 	background-color: rgb(255, 0, 0);
 	color: white;
 }
-.MuiTableRow-root:hover {
+.MuiTableRow-root-formasterpage:hover {
 	background-color: var(--primary-color);
 }
-.custom-table {
+.custom-table-formasterpage {
 	margin-top: 2vh;
 	z-index: 1;
 	box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);

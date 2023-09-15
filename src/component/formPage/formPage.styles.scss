@@ -81,26 +81,6 @@
 				.active-content {
 					display: flex;
 				}
-				/* .form-container {
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
-					margin: 0 15px;
-					max-height: 25em;
-					width: 100%;
-					background-color: var(--primary-color-m);
-
-					.form-dropdown {
-						background: none;
-						background-color: rgba(255, 255, 255, 0);
-						color: rgb(0, 0, 0);
-						font-size: 18px;
-						border-radius: 15px;
-						width: 400px;
-						margin: 10px 0;
-						display: block;
-					}
-				} */
 			}
 			.status {
 				font-size: 0.8rem;
@@ -136,8 +116,8 @@
 				background-color: var(--primary-color-m);
 
 				.form-dropdown {
-					width: 18rem;
-					margin: 0.5rem 0;
+					//width: 18rem;
+					//margin: 0.5rem 0;
 				}
 			}
 			.image-form-page {

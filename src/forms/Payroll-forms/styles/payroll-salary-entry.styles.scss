@@ -1,13 +1,23 @@
 .selection-menu {
 	display: flex;
-	justify-content: start;
-	.dropdown-menu {
+	justify-content: space-evenly;
+	width: 60vw;
+
+	/* justify-content: start;
+	margin-right: 0.5rem; */
+	/* .dropdown-menu {
 		width: 400px;
 		margin: 15px 5px;
-	}
+		
+	} */
 }
 .base-form {
 	background-color: var(--form-container-background);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 50%;
+	margin-top: 0.5rem;
 }
 .card-for-image-text {
 	display: flex;

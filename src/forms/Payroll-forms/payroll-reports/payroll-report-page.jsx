@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import PayrollEmpListDetails from "../payroll-emp-list-details.component";
+import PayrollBankReport from "../payroll-bank-report.component";
 import "./styles.scss";
 import FormDropDown from "../../../component/form-dropdown/form-dropdown.component";
 
 const PayrollReportPage = () => {
 	const [report, setReport] = useState({
 		selectedreport: "",
+		viewReport: "",
 	});
 	var reportSelection = [
 		{ value: "1", label: "Employee Details List" },
@@ -14,10 +16,16 @@ const PayrollReportPage = () => {
 	// set selected value
 	const setSelectedValue =
 		reportSelection.find((obj) => obj.label === report.selectedreport) || "";
+
+	function onSubmit() {
+		setReport({
+			viewReport: report.selectedreport,
+		});
+	}
 	return (
-		<div className="report-container">
+		<div className="form-container">
 			<p className="tite">Payroll Report Page</p>
-			<div className="selection-menu">
+			<div className="selection-menu-forreportpage">
 				<FormDropDown
 					className="form-dropdown form-dropdown-fix"
 					placeholder="Select Report Type"
@@ -31,12 +39,24 @@ const PayrollReportPage = () => {
 					}} // assign onChange function
 				/>
 
-				<div className="button-submit">Submit</div>
+				<div
+					onClick={() => {
+						onSubmit();
+					}}
+					className="button-submit-formpage"
+				>
+					Submit
+				</div>
 			</div>
-			<div className="Report-container">
-				{report.selectedreport === "Employee Details List" ? (
-					<PayrollEmpListDetails />
-				) : null}
+			<div className="report-container-forreportpage">
+				<div>
+					{report.viewReport === "Employee Details List" ? (
+						<PayrollEmpListDetails />
+					) : null}
+					{report.viewReport === "Employee Bank Report" ? (
+						<PayrollBankReport />
+					) : null}
+				</div>
 			</div>
 		</div>
 	);

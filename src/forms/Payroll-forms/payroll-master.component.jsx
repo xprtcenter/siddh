@@ -2,11 +2,8 @@ import React from "react";
 import FormInput from "../../component/form-input/form-input.component";
 import { Link } from "react-router-dom";
 import CustomButton from "../../component/custom-button/custom-button.component";
-import { firestore } from "../../firebase/firebase.utils";
-import ParollEmpRegService from "./payroll-master-reg-service";
-
-import { storage } from "../../firebase/firebase.utils";
-
+import ParollEmpRegService from "../Payroll-forms/Functions/payroll-master-reg-service";
+import { storage, firestore } from "../../firebase/firebase.utils";
 import comlogo from "../../assets/COMLOGO2.png";
 
 const initialState = {
@@ -261,11 +258,11 @@ class PayrollMaster extends React.Component {
 
 		return (
 			<div className="form-container">
-				<h2 className="section-title">Employer List</h2>
+				<h2 className="section-title-formasterpage">Employer List</h2>
 
-				<table className="table-page">
+				<table className="table-page-formasterpage">
 					<thead>
-						<tr className="table-header">
+						<tr className="table-header-formasterpage">
 							<th className="th1">Employer Code</th>
 							<th className="th2">Company Logo</th>
 							<th className="th3">Employer Name</th>
@@ -278,9 +275,9 @@ class PayrollMaster extends React.Component {
 					</thead>
 					<tbody>
 						{mydata.map((item) => (
-							<tr className="table-data-row">
-								<td className="emp-code">{item.EmployerCode}</td>
-								<td className="table-image-container">
+							<tr className="table-data-row-formasterpage">
+								<td className="emp-code-formasterpage">{item.EmployerCode}</td>
+								<td className="table-image-container-formasterpage">
 									<img
 										src={item.CompanyLogo ? item.CompanyLogo : comlogo}
 										alt="dummyimg"
@@ -292,13 +289,19 @@ class PayrollMaster extends React.Component {
 								<td>{item.EmployerAddress}</td>
 								<td>{item.EmployerContact}</td>
 								<td>
-									<button className="btn btn-view">View</button>
+									<button className="btn-formasterpage btn-view-formasterpage">
+										View
+									</button>
 
 									<Link to={`/payroll/paymaster/${item.id}`}>
-										<button className="btn btn-edit">Edit</button>
+										<button className="btn-formasterpage btn-edit-formasterpage">
+											Edit
+										</button>
 									</Link>
 
-									<button className="btn btn-delete">Delete</button>
+									<button className="btn-formasterpage btn-delete-formasterpage">
+										Delete
+									</button>
 								</td>
 							</tr>
 						))}

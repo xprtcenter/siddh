@@ -32,6 +32,7 @@ const initialState = {
 	EmployeeBasicSalary: "",
 	EmployeeOnrollContractor: "",
 	EmployeeBankName: "",
+	salaryInBank: "",
 	EmployeeBankIFSCCode: "",
 	EmployeeAccountNo: "",
 	EmployeeUANNo: "",
@@ -107,6 +108,7 @@ class PayrollEmpRegMaster extends React.Component {
 							PFCalculation: newData.PFCalculation,
 							fillStatus: 2,
 							ImgStatus: "Uploaded",
+							salaryInBank: newData.salaryInBank,
 						});
 					} else {
 						// doc.data() will be undefined in this case
@@ -222,6 +224,7 @@ class PayrollEmpRegMaster extends React.Component {
 				PayrollCompanyName: this.state.PayrollCompanyName,
 				ESICCalculation: this.state.ESICCalculation,
 				PFCalculation: this.state.PFCalculation,
+				salaryInBank: this.state.salaryInBank,
 			};
 			if (!this.state.Editid) {
 				ParollEmpRegService.create(sData)
@@ -282,6 +285,7 @@ class PayrollEmpRegMaster extends React.Component {
 			ImgStatus,
 			ImgFile,
 			percent,
+			salaryInBank,
 		} = this.state;
 
 		return (
@@ -487,7 +491,7 @@ class PayrollEmpRegMaster extends React.Component {
 								/>
 								<Select
 									className="form-dropdown"
-									placeholder="Active or De-active"
+									placeholder="PF Calculation"
 									value={
 										options.PFOption.find(
 											(obj) => obj.value === PFCalculation,
@@ -546,17 +550,10 @@ class PayrollEmpRegMaster extends React.Component {
 									label="Aadhar No"
 									required
 								/>
-								{/* <FormInput
-									type="text"
-									name="EmployeeBankName"
-									value={EmployeeBankName || ""}
-									onChange={this.handleChange}
-									label="Bank Name"
-									required
-								/> */}
+
 								<Select
 									className="form-dropdown"
-									placeholder="Bank Name"
+									placeholder="Salary In Bank or Cash"
 									value={
 										options.Banks.find(
 											(obj) => obj.value === EmployeeBankName,
@@ -582,6 +579,19 @@ class PayrollEmpRegMaster extends React.Component {
 									onChange={this.handleChange}
 									label="Account No"
 									required
+								/>
+								<Select
+									className="form-dropdown"
+									placeholder="Bank Name"
+									value={
+										options.cashBankOption.find(
+											(obj) => obj.value === salaryInBank,
+										) || ""
+									} // set selected value
+									options={options.cashBankOption} // set list of the data
+									onChange={(e) => {
+										this.setState({ salaryInBank: e.value });
+									}} // assign onChange function
 								/>
 							</div>
 						</div>
