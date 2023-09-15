@@ -86,7 +86,7 @@ const PayrollSalaryCaculationMaster = () => {
 					setState({ ...state, EmployerCompanyName: e.label });
 				}} // assign onChange function
 			/>
-			<div className="base-form">
+			<div className="base-form base-form-wrap">
 				<FormInput
 					type="number"
 					name="pfEmployee"

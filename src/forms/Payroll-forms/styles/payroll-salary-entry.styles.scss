@@ -15,9 +15,11 @@
 	background-color: var(--form-container-background);
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 	height: 50%;
 	margin-top: 0.5rem;
+}
+.base-form-wrap {
+	flex-wrap: wrap;
 }
 .card-for-image-text {
 	display: flex;
