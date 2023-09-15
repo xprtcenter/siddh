@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	width: 60vw;
-
+	margin-top: 0.5rem;
 	/* justify-content: start;
 	margin-right: 0.5rem; */
 	/* .dropdown-menu {
@@ -15,7 +15,7 @@
 	background-color: var(--form-container-background);
 	display: flex;
 	flex-direction: column;
-	height: 50%;
+	height: 80%;
 	margin-top: 0.5rem;
 }
 .base-form-wrap {
@@ -23,7 +23,10 @@
 }
 .card-for-image-text {
 	display: flex;
-	margin: 1.5rem 0;
+	margin: 1rem 0;
+	border: 0.5px solid var(--primary-color);
+	border-radius: 5px;
+	padding: 2px;
 	.header-image {
 		margin-right: 10px;
 		border: 2px solid rgb(189, 30, 30);

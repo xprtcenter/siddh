@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PayrollEmpListDetails from "../payroll-emp-list-details.component";
 import PayrollBankReport from "../payroll-bank-report.component";
+import PayrollSalaryReport from "../payroll-salary-report.component";
 import "./styles.scss";
 import FormDropDown from "../../../component/form-dropdown/form-dropdown.component";
 
@@ -9,9 +10,10 @@ const PayrollReportPage = () => {
 		selectedreport: "",
 		viewReport: "",
 	});
-	var reportSelection = [
+	let reportSelection = [
 		{ value: "1", label: "Employee Details List" },
 		{ value: "2", label: "Employee Bank Report" },
+		{ value: "3", label: "Salary Report" },
 	];
 	// set selected value
 	const setSelectedValue =
@@ -55,6 +57,9 @@ const PayrollReportPage = () => {
 					) : null}
 					{report.viewReport === "Employee Bank Report" ? (
 						<PayrollBankReport />
+					) : null}
+					{report.viewReport === "Salary Report" ? (
+						<PayrollSalaryReport />
 					) : null}
 				</div>
 			</div>
