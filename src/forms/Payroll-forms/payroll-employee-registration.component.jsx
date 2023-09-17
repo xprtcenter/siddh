@@ -24,6 +24,7 @@ const initialState = {
 	EmployeeAddress: "",
 	EmployeePAddress: "",
 	EmployeeContact: "",
+	EmployeeEmgContact: "",
 	EmployeeEmail: "",
 	EmployeeDepartment: "",
 	EmployeeStatusActive: "",
@@ -88,6 +89,7 @@ class PayrollEmpRegMaster extends React.Component {
 							EmployeeAddress: newData.EmployeeAddress,
 							EmployeePAddress: newData.EmployeePAddress,
 							EmployeeContact: newData.EmployeeContact,
+							EmployeeEmgContact: newData.EmployeeEmgContact,
 							EmployeeEmail: newData.EmployeeEmail,
 							EmployeeDepartment: newData.EmployeeDepartment,
 							EmployeeStatusActive: newData.EmployeeStatusActive,
@@ -207,6 +209,7 @@ class PayrollEmpRegMaster extends React.Component {
 				EmployeeAddress: this.state.EmployeeAddress,
 				EmployeePAddress: this.state.EmployeePAddress,
 				EmployeeContact: this.state.EmployeeContact,
+				EmployeeEmgContact: this.state.EmployeeEmgContact,
 				EmployeeEmail: this.state.EmployeeEmail,
 				EmployeeDepartment: this.state.EmployeeDepartment,
 				EmployeeStatusActive: this.state.EmployeeStatusActive,
@@ -227,7 +230,7 @@ class PayrollEmpRegMaster extends React.Component {
 				salaryInBank: this.state.salaryInBank,
 			};
 			if (!this.state.Editid) {
-				ParollEmpRegService.create(sData)
+				await ParollEmpRegService.create(sData)
 					.then(() => {
 						alert("Created new Employee successfully!");
 						this.setState(initialState);
@@ -236,7 +239,7 @@ class PayrollEmpRegMaster extends React.Component {
 						console.log(e);
 					});
 			} else {
-				ParollEmpRegService.update(this.state.Editid, sData)
+				await ParollEmpRegService.update(this.state.Editid, sData)
 					.then(() => {
 						alert("Employee Update successfully!");
 						this.setState(initialState);
@@ -264,6 +267,7 @@ class PayrollEmpRegMaster extends React.Component {
 			EmployeeAddress,
 			EmployeePAddress,
 			EmployeeContact,
+			EmployeeEmgContact,
 			EmployeeEmail,
 			EmployeeDepartment,
 			EmployeeStatusActive,
@@ -402,6 +406,14 @@ class PayrollEmpRegMaster extends React.Component {
 										value={EmployeeContact || ""}
 										onChange={this.handleChange}
 										label="Employee Contact"
+										required
+									/>
+									<FormInput
+										type="text"
+										name="EmployeeEmgContact"
+										value={EmployeeEmgContact || ""}
+										onChange={this.handleChange}
+										label="Employee Emergency Contact"
 										required
 									/>
 									<FormInput
@@ -553,7 +565,7 @@ class PayrollEmpRegMaster extends React.Component {
 
 								<Select
 									className="form-dropdown"
-									placeholder="Salary In Bank or Cash"
+									placeholder="Bank Name"
 									value={
 										options.Banks.find(
 											(obj) => obj.value === EmployeeBankName,
@@ -582,7 +594,7 @@ class PayrollEmpRegMaster extends React.Component {
 								/>
 								<Select
 									className="form-dropdown"
-									placeholder="Bank Name"
+									placeholder="Salary in Cash or Bank"
 									value={
 										options.cashBankOption.find(
 											(obj) => obj.value === salaryInBank,

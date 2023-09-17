@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/siddh/static/css/main.44d2907c.chunk.css",
-    "main.js": "/siddh/static/js/main.867c9d90.chunk.js",
-    "main.js.map": "/siddh/static/js/main.867c9d90.chunk.js.map",
-    "runtime-main.js": "/siddh/static/js/runtime-main.42c115ae.js",
-    "runtime-main.js.map": "/siddh/static/js/runtime-main.42c115ae.js.map",
+    "main.js": "/siddh/static/js/main.10228673.chunk.js",
+    "main.js.map": "/siddh/static/js/main.10228673.chunk.js.map",
+    "runtime-main.js": "/siddh/static/js/runtime-main.cc33a149.js",
+    "runtime-main.js.map": "/siddh/static/js/runtime-main.cc33a149.js.map",
     "static/css/2.ff602127.chunk.css": "/siddh/static/css/2.ff602127.chunk.css",
-    "static/js/2.fb968f45.chunk.js": "/siddh/static/js/2.fb968f45.chunk.js",
-    "static/js/2.fb968f45.chunk.js.map": "/siddh/static/js/2.fb968f45.chunk.js.map",
-    "static/js/3.cbbba1ad.chunk.js": "/siddh/static/js/3.cbbba1ad.chunk.js",
-    "static/js/3.cbbba1ad.chunk.js.map": "/siddh/static/js/3.cbbba1ad.chunk.js.map",
+    "static/js/2.ddda9dee.chunk.js": "/siddh/static/js/2.ddda9dee.chunk.js",
+    "static/js/2.ddda9dee.chunk.js.map": "/siddh/static/js/2.ddda9dee.chunk.js.map",
+    "static/js/3.8653ffb4.chunk.js": "/siddh/static/js/3.8653ffb4.chunk.js",
+    "static/js/3.8653ffb4.chunk.js.map": "/siddh/static/js/3.8653ffb4.chunk.js.map",
     "static/js/4.995340da.chunk.js": "/siddh/static/js/4.995340da.chunk.js",
     "static/js/4.995340da.chunk.js.map": "/siddh/static/js/4.995340da.chunk.js.map",
     "static/js/5.1aedf56a.chunk.js": "/siddh/static/js/5.1aedf56a.chunk.js",
@@ -17,8 +17,8 @@
     "index.html": "/siddh/index.html",
     "static/css/2.ff602127.chunk.css.map": "/siddh/static/css/2.ff602127.chunk.css.map",
     "static/css/main.44d2907c.chunk.css.map": "/siddh/static/css/main.44d2907c.chunk.css.map",
-    "static/js/2.fb968f45.chunk.js.LICENSE.txt": "/siddh/static/js/2.fb968f45.chunk.js.LICENSE.txt",
-    "static/js/3.cbbba1ad.chunk.js.LICENSE.txt": "/siddh/static/js/3.cbbba1ad.chunk.js.LICENSE.txt",
+    "static/js/2.ddda9dee.chunk.js.LICENSE.txt": "/siddh/static/js/2.ddda9dee.chunk.js.LICENSE.txt",
+    "static/js/3.8653ffb4.chunk.js.LICENSE.txt": "/siddh/static/js/3.8653ffb4.chunk.js.LICENSE.txt",
     "static/js/4.995340da.chunk.js.LICENSE.txt": "/siddh/static/js/4.995340da.chunk.js.LICENSE.txt",
     "static/js/5.1aedf56a.chunk.js.LICENSE.txt": "/siddh/static/js/5.1aedf56a.chunk.js.LICENSE.txt",
     "static/media/COMLOGO2.079029bc.png": "/siddh/static/media/COMLOGO2.079029bc.png",
@@ -35,10 +35,10 @@
     "static/media/xraysample.cc1e4dd5.jpg": "/siddh/static/media/xraysample.cc1e4dd5.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.42c115ae.js",
+    "static/js/runtime-main.cc33a149.js",
     "static/css/2.ff602127.chunk.css",
-    "static/js/2.fb968f45.chunk.js",
+    "static/js/2.ddda9dee.chunk.js",
     "static/css/main.44d2907c.chunk.css",
-    "static/js/main.867c9d90.chunk.js"
+    "static/js/main.10228673.chunk.js"
   ]
 }

@@ -105,8 +105,8 @@ const options = {
 		{ value: "	Yes Bank Ltd	", label: "	Yes Bank Ltd	" },
 	],
 	cashBankOption: [
-		{ value: "Yes", label: "Yes" },
-		{ value: "No", label: "No" },
+		{ value: "Cash", label: "Cash" },
+		{ value: "Bank", label: "Bank" },
 	],
 };
 export default options;

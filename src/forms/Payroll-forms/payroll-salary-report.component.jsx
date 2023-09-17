@@ -1,53 +1,71 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { EmployeeData } from "./Functions/getemployeedetails";
-import CustomTable from "../../component/table/custom-table-material.component";
+import SalaryTable from "../../component/table/custom-table-salary.component";
 import { useHistory } from "react-router-dom";
 import { firestore } from "../../firebase/firebase.utils";
-const PayrollSalaryReport = () => {
-	const history = useHistory();
 
-	const registrationEditPath = (id) => {
-		let path = `payrollempregmaster/${id}`;
-		history.push(path);
-	};
-	function addFunction() {
-		let path = `payrollempregmaster`;
-		history.push(path);
-	}
-	const deleteFunction = (id) => {
-		const db = firestore.doc(
-			`payrollData/payrollEmpRegistration/payrollEmployee/${id}`,
-		);
-		db.delete().then(() => {
-			alert("deleted");
+const PayrollSalaryReport = (salaryReportDropdown) => {
+	const { year, month, monthNo } = salaryReportDropdown.salaryReportDropdown;
+	const history = useHistory();
+	const [salaryData, setSalaryData] = useState([]);
+	const [mydata, setMyData] = useState([]);
+	const [activeEmployeeList, setActiveEmployeeList] = useState([]);
+	const EmployeeSalaryData = firestore
+		.collection("payrollData")
+		.doc("Salary")
+		.collection("8Sh6sPKmLmN86AlShud6");
+
+	const getData = async () => {
+		let employees = [];
+		const updatedData = await EmployeeSalaryData.get();
+		console.log("updated data in use effect salary report page", updatedData);
+		updatedData.docs.forEach((doc) => {
+			let adata = doc.data();
+			employees.push({ ...adata, id: doc.id });
 		});
 
-		console.log("user for delete", id);
+		console.log(
+			"updated employee data in use effect salary report page",
+			employees,
+		);
+		const filteredArray = employees.filter((item) =>
+			activeEmployeeList.some((obj) => obj.id === item.id),
+		);
+
+		setMyData(filteredArray);
 	};
-	const tableTitle = "Payroll Employee List";
+	useEffect(() => {
+		if (salaryData.length === 0) {
+			EmployeeData.onSnapshot((items) => {
+				let employeeList = [];
+				items.forEach((item) => {
+					let data = item.data();
+					let id = item.id;
+
+					employeeList.push({ id, ...data });
+				});
+				const employeeListnew = employeeList.filter(
+					(item) => item.EmployeeStatusActive !== "Leaving",
+				);
+				setSalaryData(employeeListnew);
+				setActiveEmployeeList(employeeListnew.id);
+			});
+		}
+		if (mydata.length === 0) {
+			getData();
+		}
+	}, [mydata]);
+	console.log("dropdown log from salary report page", salaryReportDropdown);
+
+	console.log("myData state", mydata);
+	//console.log("activeEmployeelist from table component", activeEmployeeList);
+	const tableTitle = "Payroll Employee Salary List";
 	const columns = [
 		{
 			title: "Employee Code",
 			field: "EmployeeCode",
 			type: "numeric",
-			cellStyle: { padding: "0 1.5vw", textAlign: "center" },
-		},
-		{
-			title: "Employee Image",
-			field: "EmployeeImgUrl",
-			render: (rowData) => (
-				<img
-					src={rowData.EmployeeImgUrl}
-					style={{
-						width: 35,
-						height: 35,
-						objectFit: "cover",
-						borderRadius: "50%",
-					}}
-					alt="Emp Img"
-				/>
-			),
 			cellStyle: { padding: "0 1.5vw", textAlign: "center" },
 		},
 
@@ -56,32 +74,12 @@ const PayrollSalaryReport = () => {
 			field: "EmployeeName",
 			cellStyle: { padding: "0 1.5vw" },
 		},
-		{ title: "Email", field: "EmployeeEmail", cellStyle: { padding: 0 } },
-		{
-			title: "Company Name",
-			field: "PayrollCompanyName",
-			cellStyle: { padding: "0 1.5vw" },
-		},
-		{
-			title: "Address",
-			field: "EmployeeAddress",
-			cellStyle: { padding: "0 1.5vw" },
-		},
-		{
-			title: "Contact",
-			field: "EmployeeContact",
-			cellStyle: { padding: "0 1.5vw" },
-		},
 	];
 	return (
-		<CustomTable
-			data={EmployeeData}
-			columns={columns}
-			tableTitle={tableTitle}
-			editFunction={registrationEditPath}
-			addFunction={addFunction}
-			deleteFunction={deleteFunction}
-		/>
+		<div>
+			<h1>Table Component</h1>
+			year: {year}, month:{month}, monthNo:{monthNo}
+		</div>
 	);
 };
 export default PayrollSalaryReport;
