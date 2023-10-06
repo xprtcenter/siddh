@@ -1,7 +1,7 @@
 import React from "react";
 import "./list-table.style.scss";
 
-const List = ({ item }) => {
+const List1 = ({ item }) => {
 	const {
 		id,
 		EmployeeCode,
@@ -14,7 +14,7 @@ const List = ({ item }) => {
 	} = item;
 	const defaultImage =
 		"https://www.pngarts.com/files/3/Avatar-PNG-Download-Image.png";
-	console.log(EmployeeImgUrl);
+	//console.log(EmployeeImgUrl);
 	return (
 		<>
 			<tr className="table-data-row">
@@ -39,4 +39,4 @@ const List = ({ item }) => {
 	);
 };
 
-export default List;
+export default List1;

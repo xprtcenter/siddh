@@ -6,7 +6,7 @@
 	-webkit-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
 	-moz-box-shadow: 13px 17px 10px -5px rgba(20, 18, 18, 0.68);
 
-	 .table-header-formasterpage {
+	.table-header-formasterpage {
 		border: 0.07rem solid var(--primary-color);
 		background-color: var(--primary-color);
 
@@ -17,7 +17,7 @@
 		.th2 {
 			width: 2rem;
 		}
-	} 
+	}
 	tbody {
 		.table-data-row-formasterpage {
 			td {
@@ -45,7 +45,25 @@
 		}
 	}
 }
-
+.custom-table {
+	.table-export-button {
+		align-self: center;
+		padding: 5px;
+		width: 80px;
+		margin: 5px;
+		border-radius: 0.5rem;
+		text-align: center;
+		font-size: 0.8rem;
+		background-color: var(--primary-color);
+		color: black;
+		text-transform: uppercase;
+		font-family: "Open Sans Condensed";
+		font-weight: bolder;
+		border: none;
+		cursor: pointer;
+		box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+	}
+}
 .btn-formasterpage {
 	width: 4rem;
 	height: 1.5rem;

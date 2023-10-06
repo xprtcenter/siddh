@@ -1,84 +1,125 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { EmployeeData } from "./Functions/getemployeedetails";
-import SalaryTable from "../../component/table/custom-table-salary.component";
-import { useHistory } from "react-router-dom";
+
+//import { useHistory } from "react-router-dom";
 import { firestore } from "../../firebase/firebase.utils";
+
+import "../../component/table/list-table.style.scss";
+import "../../component/spinners/loder.css";
+
+import { useDownloadExcel } from "react-export-table-to-excel";
 
 const PayrollSalaryReport = (salaryReportDropdown) => {
 	const { year, month, monthNo } = salaryReportDropdown.salaryReportDropdown;
-	const history = useHistory();
+	//const history = useHistory();
+
 	const [salaryData, setSalaryData] = useState([]);
-	const [mydata, setMyData] = useState([]);
-	const [activeEmployeeList, setActiveEmployeeList] = useState([]);
-	const EmployeeSalaryData = firestore
-		.collection("payrollData")
-		.doc("Salary")
-		.collection("8Sh6sPKmLmN86AlShud6");
 
-	const getData = async () => {
-		let employees = [];
-		const updatedData = await EmployeeSalaryData.get();
-		console.log("updated data in use effect salary report page", updatedData);
-		updatedData.docs.forEach((doc) => {
-			let adata = doc.data();
-			employees.push({ ...adata, id: doc.id });
-		});
+	const [loder, setLoder] = useState(true);
 
-		console.log(
-			"updated employee data in use effect salary report page",
-			employees,
-		);
-		const filteredArray = employees.filter((item) =>
-			activeEmployeeList.some((obj) => obj.id === item.id),
-		);
-
-		setMyData(filteredArray);
-	};
-	useEffect(() => {
-		if (salaryData.length === 0) {
-			EmployeeData.onSnapshot((items) => {
-				let employeeList = [];
-				items.forEach((item) => {
-					let data = item.data();
-					let id = item.id;
-
-					employeeList.push({ id, ...data });
-				});
-				const employeeListnew = employeeList.filter(
-					(item) => item.EmployeeStatusActive !== "Leaving",
-				);
-				setSalaryData(employeeListnew);
-				setActiveEmployeeList(employeeListnew.id);
+	const employeeData = () => {
+		console.log("employeedata function");
+		let salaryDataArray = [];
+		EmployeeData.onSnapshot((employees) => {
+			//get 1st employee items
+			employees.forEach((employee) => {
+				let data = employee.data();
+				let id = employee.id;
+				//employeeData.push({ id, ...data });
+				//check active employee
+				if (data.EmployeeStatusActive !== "Leaving") {
+					//console.log("id", id);
+					//console.log("data", data);
+					//get salary data
+					let EmployeePath = firestore
+						.collection("payrollData")
+						.doc("Salary")
+						.collection(id);
+					EmployeePath.onSnapshot((salaryData) => {
+						salaryData.forEach((salary) => {
+							let sdata = salary.data();
+							let sid = salary.id;
+							const monthyear = `${monthNo}${year}`;
+							//check month year
+							if (monthyear === sid) {
+								//console.log("monthyear", monthyear);
+								//console.log("salary id", sid);
+								//console.log("salary data", sdata);
+								//combine employee and salary data
+								//create array
+								salaryDataArray.push({ ...data, ...sdata });
+							}
+						});
+					});
+				}
 			});
-		}
-		if (mydata.length === 0) {
-			getData();
-		}
-	}, [mydata]);
-	console.log("dropdown log from salary report page", salaryReportDropdown);
+		});
+		//set salaryData
+		//console.log("salaryDataArray", salaryDataArray);
+		setSalaryData(salaryDataArray);
+		setLoder(false);
+	};
+	const tableRef = useRef(null);
 
-	console.log("myData state", mydata);
-	//console.log("activeEmployeelist from table component", activeEmployeeList);
-	const tableTitle = "Payroll Employee Salary List";
-	const columns = [
-		{
-			title: "Employee Code",
-			field: "EmployeeCode",
-			type: "numeric",
-			cellStyle: { padding: "0 1.5vw", textAlign: "center" },
-		},
+	const { onDownload } = useDownloadExcel({
+		currentTableRef: tableRef.current,
+		filename: `Employee Salary Sheet ${month}${year}`,
+		sheet: `Salary of month ${month}${year}`,
+	});
+	useEffect(() => {
+		console.log("useeffect");
+		if (salaryData.length === 0) {
+			employeeData();
+		}
 
-		{
-			title: "Employee Name",
-			field: "EmployeeName",
-			cellStyle: { padding: "0 1.5vw" },
-		},
-	];
+		console.log("salaryData inside useeffect", salaryData);
+	}, [salaryData.length, month, year]);
+	const tableData = salaryData;
 	return (
-		<div>
-			<h1>Table Component</h1>
-			year: {year}, month:{month}, monthNo:{monthNo}
+		<div className="custom-table">
+			<button className="table-export-button" onClick={onDownload}>
+				{" "}
+				Export excel{" "}
+			</button>
+			{loder ? (
+				<div id="cover-spin"></div>
+			) : (
+				<table className="table-page-formasterpage" ref={tableRef}>
+					<thead>
+						<tr className="table-header-formasterpage">
+							<th className="th1">Employee Code</th>
+							<th className="th3">Employee Name</th>
+							<th className="th3">Salary Month</th>
+							<th className="th3">Salary Year</th>
+							<th className="th3">Basic Salary</th>
+							<th className="th3">Total Deduction</th>
+							<th className="th3">Total Addition</th>
+							<th className="th3">In Hand Salary</th>
+							<th className="th3">CTC</th>
+						</tr>
+					</thead>
+					<tbody>
+						{tableData.map((item) => (
+							<tr
+								className="table-data-row-formasterpage"
+								key={item.EmployeeId}
+							>
+								<td className="emp-code-formasterpage">{item.EmployeeCode}</td>
+
+								<td>{item.EmployeeName}</td>
+								<td>{item.month}</td>
+								<td>{item.year}</td>
+								<td>{item.EmployeeBasicSalary}</td>
+								<td>{item.totalDeduction}</td>
+								<td>{item.totalAddition}</td>
+								<td>{item.inHandSalary}</td>
+								<td>{item.ctc}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			)}
 		</div>
 	);
 };

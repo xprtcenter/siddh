@@ -27,7 +27,7 @@ const PayrollReportPage = () => {
 	function onSubmit() {
 		setReport({ ...report, viewReport: report.selectedReport });
 	}
-	console.log("dropdown log", salaryReportDropdown);
+	//console.log("dropdown log", salaryReportDropdown);
 	return (
 		<div className="form-container">
 			<p className="tite">Payroll Report Page</p>
@@ -74,7 +74,7 @@ const PayrollReportPage = () => {
 							} // set selected value
 							options={yearsList} // set list of the data
 							onChange={(e) => {
-								console.log("Inside the year change dropdown", e);
+								//console.log("Inside the year change dropdown", e);
 								setSalaryReportDropdown({
 									...salaryReportDropdown,
 									year: e.value,

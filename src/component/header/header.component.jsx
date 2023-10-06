@@ -29,6 +29,7 @@ const Header = ({
 	toggleMenuHidden,
 	activeheader,
 	activeHeaderButton,
+	cName,
 }) => {
 	/* const data = firestore().collection("moduleAndPageMaster");
 	const [mydata, setMyData] = useState([]);
@@ -50,13 +51,13 @@ const Header = ({
 	return (
 		<div className="main-header">
 			<div className="header1">
-				<p>SIDDH MULTISPECIALITY HOSPITAL</p>
+				<p>{cName}</p>
 				<HeaderDateTime />
 			</div>
 			<div className="header">
 				<div onClick={() => activeHeaderButton("home")}>
 					<Link to="/" className="logo-container">
-						<img src={logo} alt="swamiji" />
+						<img src={logo} alt="logofile" />
 
 						<span
 							className={

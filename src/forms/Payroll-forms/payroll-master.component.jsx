@@ -136,7 +136,7 @@ class PayrollMaster extends React.Component {
 						.child(image.name)
 						.getDownloadURL()
 						.then((url) => {
-							console.log(url);
+							//console.log(url);
 							this.setState({
 								CompanyLogo: url,
 								CompanyLogoStatus: "Upload Successfully",

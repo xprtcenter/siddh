@@ -23,18 +23,18 @@ const config = {
 };
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-	console.log("user Auth only at the time of function run", userAuth);
+	//console.log("user Auth only at the time of function run", userAuth);
 	if (!userAuth) return;
-	console.log("user Auth info", userAuth.uid);
+	//console.log("user Auth info", userAuth.uid);
 	const userRef = firestore.doc(`users/${userAuth.uid}`);
-	console.log("User Ref Info", userRef);
+	//console.log("User Ref Info", userRef);
 	const snapShot = await userRef.get();
 
 	if (!snapShot.exists) {
 		const { displayName, userType = "Guest", email } = userAuth;
-		console.log("Display Name ", displayName);
-		console.log("User Type ", userType);
-		console.log("email ", email);
+		//console.log("Display Name ", displayName);
+		//console.log("User Type ", userType);
+		//console.log("email ", email);
 		const createdAt = new Date();
 
 		var role = ["user"];

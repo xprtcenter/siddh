@@ -124,7 +124,7 @@ const PayrollSalaryEntry = () => {
 			const selectedEmployeeInfo = newOptions.EmployeeArray.filter((item) => {
 				return item.value === e.value;
 			});
-			console.log("selectedEmployeeInfo items", selectedEmployeeInfo);
+			//console.log("selectedEmployeeInfo items", selectedEmployeeInfo);
 			EmployeeSalaryEntryCollectionPath.onSnapshot((items) => {
 				let SalaryDataList = [];
 				items.forEach((item) => {
@@ -254,12 +254,12 @@ const PayrollSalaryEntry = () => {
 			inHandSalary: salaryData.inHandSalary,
 			ctc: salaryData.ctc,
 		};
-		console.log("sData", sData);
+		/* console.log("sData", sData);
 		console.log("Salary data employee id", salaryData.EmployeeId);
 		console.log(
 			"path string",
 			salaryData.monthNo.toString() + salaryData.year.toString(),
-		);
+		); */
 		const EmployeeSalaryEntryDocumentPath = firestore
 			.collection("payrollData")
 			.doc("Salary")
@@ -343,7 +343,7 @@ const PayrollSalaryEntry = () => {
 						value={yearsList.find((obj) => obj.value === year) || ""} // set selected value
 						options={yearsList} // set list of the data
 						onChange={(e) => {
-							console.log("Inside the year change dropdown", e);
+							//console.log("Inside the year change dropdown", e);
 							setSalaryData({
 								...salaryData,
 								year: e.value,

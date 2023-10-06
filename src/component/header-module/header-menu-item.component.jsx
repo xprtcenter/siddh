@@ -15,21 +15,19 @@ const HeaderMenuItem = ({
 	activeheader,
 }) => {
 	return (
-		<React.Fragment>
-			<div
-				className={
-					activeheader.toLowerCase() === linkUrl.toLowerCase()
-						? "nav-option active-header-button"
-						: "nav-option"
-				}
-				onClick={() => {
-					history.push(`${match.url}${linkUrl}`);
-					activeHeaderButton(linkUrl);
-				}}
-			>
-				<span>{title}</span>
-			</div>
-		</React.Fragment>
+		<div
+			className={
+				activeheader.toLowerCase() === linkUrl.toLowerCase()
+					? "nav-option active-header-button"
+					: "nav-option"
+			}
+			onClick={() => {
+				history.push(`${match.url}${linkUrl}`);
+				activeHeaderButton(linkUrl);
+			}}
+		>
+			<span>{title}</span>
+		</div>
 	);
 };
 

@@ -47,7 +47,7 @@ const PayrollSalaryCaculationMaster = () => {
 				const companyList = companyList1.filter(
 					(item) => item.status === "Active",
 				);
-				console.log(companyList);
+				//console.log(companyList);
 				setCompanynameList({ companyList });
 			});
 		}

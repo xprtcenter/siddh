@@ -8,6 +8,7 @@ import { createStructuredSelector } from "reselect";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.action";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import { selectCompanyDetails } from "./redux/appLicence/appLicence.selectors";
 
 /****************************************************  Page  ************************************************************/
 import HomePage from "./pages/homepage/homepage.component";
@@ -59,14 +60,14 @@ class App extends Component {
 	];
 	render() {
 		//console.log("user print from home component", this.props.currentUser);
+		console.log("weight testing", window.innerWidth);
 		return (
 			<div className="root-container">
-				<Header />
+				<Header cName={this.props.companyDetails.cName} />
 				<div className="main-section">
 					<Switch>
 						<Route exact path="/" render={() => <HomePage />} />
 						<Route exact path="/profile" render={() => <UserProfile />} />
-
 						<Route
 							path="/shop"
 							render={() =>
@@ -87,7 +88,6 @@ class App extends Component {
 								)
 							}
 						/>
-
 						<Route
 							path="/payroll"
 							render={() =>
@@ -143,8 +143,9 @@ class App extends Component {
 								componentname={pagecomponent.component}
 							/>
 						))}
-					</Switch> */}
+					</Switch>  */}
 				</div>
+
 				<Footer />
 			</div>
 		);
@@ -153,6 +154,7 @@ class App extends Component {
 
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
+	companyDetails: selectCompanyDetails,
 });
 
 const mapDispatchToProps = (dispatch) => ({

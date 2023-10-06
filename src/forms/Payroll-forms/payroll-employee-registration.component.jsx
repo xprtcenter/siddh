@@ -148,7 +148,7 @@ class PayrollEmpRegMaster extends React.Component {
 						.child(image.name)
 						.getDownloadURL()
 						.then((url) => {
-							console.log(url);
+							//console.log(url);
 							this.setState({
 								ImgFile: image,
 								ImgPreviewUrl: url,

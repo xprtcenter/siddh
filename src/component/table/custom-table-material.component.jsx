@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./list-table.style.scss";
 import "../spinners/loder.css";
 import MaterialTable from "material-table";
+//import MaterialTable from "@material-table/core";
 import tableIcons from "./MaterialTableIcons";
 
 const CustomTable = ({

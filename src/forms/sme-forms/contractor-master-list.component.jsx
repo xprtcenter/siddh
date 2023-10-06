@@ -33,7 +33,7 @@ const ContractorMasterList = () => {
 				mydata: mydata,
 			});
 		});
-		console.log("Testing newData from sme", newData);
+		//console.log("Testing newData from sme", newData);
 	}, []);
 
 	return (

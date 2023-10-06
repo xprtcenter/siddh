@@ -42,7 +42,7 @@ const ImageBox = (storageAddress) => {
 						.child(image.name)
 						.getDownloadURL()
 						.then((url) => {
-							console.log(url);
+							//console.log(url);
 							setData({
 								ImgFile: image,
 								ImgPreviewUrl: url,
