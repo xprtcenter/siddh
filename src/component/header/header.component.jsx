@@ -55,29 +55,33 @@ const Header = ({
 				<HeaderDateTime />
 			</div>
 			<div className="header">
-				<div onClick={() => activeHeaderButton("home")}>
-					<Link to="/" className="logo-container">
-						<img src={logo} alt="logofile" />
+				<Link
+					to="/"
+					className="logo-container"
+					onClick={() => activeHeaderButton("home")}
+				>
+					<img src={logo} alt="logofile" />
 
-						<span
-							className={
-								activeheader.toLowerCase() === "home"
-									? "active-header-button text"
-									: "text"
-							}
-						>
-							HOME
-						</span>
-					</Link>
-				</div>
-				<div className="nav-options-container .nav__menu">
-					{!menuhidden ? (
+					<span
+						className={
+							activeheader.toLowerCase() === "home"
+								? "active-header-button text"
+								: "text"
+						}
+					>
+						HOME
+					</span>
+				</Link>
+
+				<div className="nav-options-container nav__menu">
+					{menuhidden ? (
 						<div className="header-menu">
 							{currentUser ? (
 								<HeaderModules userrole={currentUser.role} />
 							) : null}
 						</div>
 					) : null}
+
 					<div className="menu-button-icon" onClick={toggleMenuHidden}>
 						<img src={Menubutton} alt="menubutton" />
 					</div>
@@ -132,13 +136,8 @@ class Submenu extends React.Component {
 				<div
 					className="nav-option drop"
 					onClick={() => {
-						const confirmBox = window.confirm(
-							"Do you really want to SIGN OUT?",
-						);
-						if (confirmBox) {
-							auth.signOut();
-							activeHeaderButton("signin");
-						}
+						auth.signOut();
+						activeHeaderButton("signin");
 					}}
 				>
 					SIGN OUT

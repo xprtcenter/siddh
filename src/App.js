@@ -1,5 +1,5 @@
 /****************************************************  Data Configuration  ************************************************************/
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.scss";
 
@@ -25,6 +25,104 @@ import ReceptionHomePage from "./forms/Reception-forms/ReceptionHomePages/Recept
 /****************************************************  Header Footer Component  ************************************************************/
 import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
+
+/* const App = ({ currentUser, companyDetails, setCurrentUser }) => {
+	//const [currentUser,setCurrentUser] = useState('')
+
+	//const { setCurrentUser } = this.props;
+	useEffect(() => {
+		let unsubscriveFromAuth = null;
+
+		unsubscriveFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+			if (userAuth) {
+				const userRef = await createUserProfileDocument(userAuth);
+
+				userRef.onSnapshot((snapShot) => {
+					setCurrentUser({
+						id: snapShot.id,
+						...snapShot.data(),
+					});
+				});
+			}
+
+			setCurrentUser(userAuth);
+		});
+		unsubscriveFromAuth();
+	}, [currentUser]);
+
+	return (
+		<div className="root-container">
+			<Header cName={companyDetails.cName} />
+			<div className="main-section">
+				<Switch>
+					<Route
+						exact
+						path="/"
+						render={() =>
+							this.props.currentUser ? <HomePage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route exact path="/profile" render={() => <UserProfile />} />
+					<Route
+						path="/shop"
+						render={() =>
+							currentUser ? <ShopPage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route
+						path="/sme"
+						render={() =>
+							currentUser ? <SmeHomePage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route
+						path="/payroll"
+						render={() =>
+							currentUser ? <PayrollHomePage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route
+						path="/reception"
+						render={() =>
+							currentUser ? <ReceptionHomePage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route
+						path="/checkout"
+						render={() =>
+							currentUser ? <CheckoutPage /> : <Redirect to="/signin" />
+						}
+					/>
+					<Route
+						exact
+						path="/signin"
+						render={() =>
+							currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+						}
+					/>
+					<Route exact path="/xray" render={() => <XrayImages />} />
+					<Route
+						exact
+						path="/modulecreation"
+						render={() => <ModuleCreation />}
+					/>
+				</Switch>
+				
+			</div>
+
+			<Footer />
+		</div>
+	);
+};
+const mapStateToProps = createStructuredSelector({
+	currentUser: selectCurrentUser,
+	companyDetails: selectCompanyDetails,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(App); */
 
 class App extends Component {
 	unsubscriveFromAuth = null;
@@ -66,7 +164,17 @@ class App extends Component {
 				<Header cName={this.props.companyDetails.cName} />
 				<div className="main-section">
 					<Switch>
-						<Route exact path="/" render={() => <HomePage />} />
+						<Route
+							exact
+							path="/"
+							render={() =>
+								this.props.currentUser ? (
+									<HomePage />
+								) : (
+									<Redirect to="/signin" />
+								)
+							}
+						/>
 						<Route exact path="/profile" render={() => <UserProfile />} />
 						<Route
 							path="/shop"

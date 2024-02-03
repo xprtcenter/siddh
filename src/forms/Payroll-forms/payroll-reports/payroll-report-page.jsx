@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import PayrollEmpListDetails from "../payroll-emp-list-details.component";
 import PayrollBankReport from "../payroll-bank-report.component";
@@ -11,15 +11,28 @@ const PayrollReportPage = () => {
 		selectedReport: "",
 		viewReport: "",
 	});
+
+	let dt = new Date();
+	let monthNois = dt.getMonth();
+	let currentMonthName = monthsList[monthNois !== 0 ? monthNois - 1 : 12]; // "July" (or current month)
+	let currentYear = dt.getFullYear(); // "2022" (or current year)
+
 	const [salaryReportDropdown, setSalaryReportDropdown] = useState({
-		year: "",
-		month: "",
+		year: currentYear,
+		month: currentMonthName,
 	});
 	let reportSelection = [
 		{ value: "1", label: "Employee Details List" },
 		{ value: "2", label: "Employee Bank Report" },
 		{ value: "3", label: "Salary Report" },
 	];
+
+	useEffect(() => {
+		console.log("inside report page");
+		if (report.selectedReport !== report.viewReport) {
+			setReport({ ...report, viewReport: "" });
+		}
+	}, [report.selectedReport]);
 	// set selected value
 	const setSelectedValue =
 		reportSelection.find((obj) => obj.label === report.selectedReport) || "";

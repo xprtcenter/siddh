@@ -10,55 +10,80 @@ import "../../component/spinners/loder.css";
 
 import { useDownloadExcel } from "react-export-table-to-excel";
 
-const PayrollSalaryReport = (salaryReportDropdown) => {
-	const { year, month, monthNo } = salaryReportDropdown.salaryReportDropdown;
+const PayrollSalaryReport = ({ salaryReportDropdown }) => {
+	let salaryDataArray = [];
+	const { month, year } = salaryReportDropdown;
+	//const { year, month, monthNo } = salaryReportDropdown.salaryReportDropdown;
 	//const history = useHistory();
-
+	const getMonthFromString = (mon) => {
+		var d = Date.parse(mon + "1, 2012");
+		if (!isNaN(d)) {
+			return new Date(d).getMonth() + 1;
+		}
+		return -1;
+	};
 	const [salaryData, setSalaryData] = useState([]);
+	const [ctcTotalArray, setCtCtotalArray] = useState([]);
 
 	const [loder, setLoder] = useState(true);
 
 	const employeeData = () => {
 		console.log("employeedata function");
-		let salaryDataArray = [];
+
+		let ctcArray = [];
+
 		EmployeeData.onSnapshot((employees) => {
-			//get 1st employee items
+			/*************************************************get 1st employee items ********************************/
 			employees.forEach((employee) => {
-				let data = employee.data();
-				let id = employee.id;
-				//employeeData.push({ id, ...data });
-				//check active employee
-				if (data.EmployeeStatusActive !== "Leaving") {
-					//console.log("id", id);
-					//console.log("data", data);
-					//get salary data
-					let EmployeePath = firestore
+				const edata = employee.data();
+				let activeEid = employee.id;
+				if (edata.EmployeeStatusActive !== "Leaving") {
+					/*************************************************get Active employee *************************************/
+
+					let SalDataPath = firestore
 						.collection("payrollData")
 						.doc("Salary")
-						.collection(id);
-					EmployeePath.onSnapshot((salaryData) => {
+						.collection(activeEid);
+					/*************************************************get Salary by Active employee *****************************/
+					SalDataPath.onSnapshot((salaryData) => {
 						salaryData.forEach((salary) => {
 							let sdata = salary.data();
 							let sid = salary.id;
-							const monthyear = `${monthNo}${year}`;
-							//check month year
+							const month1 = getMonthFromString(month);
+							const monthyear = `${month1}${year}`;
+
+							/*************************************************get salary by monthyear ********************************/
 							if (monthyear === sid) {
-								//console.log("monthyear", monthyear);
-								//console.log("salary id", sid);
-								//console.log("salary data", sdata);
+								console.log("monthyear", monthyear);
+								console.log("salary id", sid);
+								console.log("salary data", sdata);
+								salaryDataArray.push({ ...edata, ...sdata });
+								console.log("sa;asdasdasd 2", salaryDataArray);
 								//combine employee and salary data
 								//create array
-								salaryDataArray.push({ ...data, ...sdata });
+
+								//creating array of ctc data
+								/* 	let ctc = sdata.ctc;
+								ctcArray.push(parseFloat(ctc)); */
 							}
 						});
+						setSalaryData(salaryDataArray);
 					});
 				}
 			});
+			//check active employee
+			//get salary data
+			//check month year
+			console.log("sa;asdasdasd", salaryDataArray);
 		});
+
 		//set salaryData
-		//console.log("salaryDataArray", salaryDataArray);
-		setSalaryData(salaryDataArray);
-		setLoder(false);
+		// const ctcsum = ctcArray.reduce(
+		// 	(previousValue, currentValue, index) => previousValue + currentValue,
+		// 	0,
+		// );
+		// setCtCtotalArray(ctcsum);
+		// setLoder(false);
 	};
 	const tableRef = useRef(null);
 
@@ -72,9 +97,12 @@ const PayrollSalaryReport = (salaryReportDropdown) => {
 		if (salaryData.length === 0) {
 			employeeData();
 		}
+		if (salaryData.length !== 0) {
+			setLoder(false);
+		}
 
 		console.log("salaryData inside useeffect", salaryData);
-	}, [salaryData.length, month, year]);
+	}, [salaryData.length, salaryDataArray]);
 	const tableData = salaryData;
 	return (
 		<div className="custom-table">
@@ -117,6 +145,8 @@ const PayrollSalaryReport = (salaryReportDropdown) => {
 								<td>{item.ctc}</td>
 							</tr>
 						))}
+
+						{ctcTotalArray}
 					</tbody>
 				</table>
 			)}
