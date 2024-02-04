@@ -1,0 +1,164 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+::selection {
+	background: #ffffff;
+}
+
+header .navbar {
+	width: 90%;
+	display: flex;
+	margin: 20px auto 0 auto;
+	align-items: center;
+	justify-content: space-between;
+}
+header .navbar .logo {
+	height: 8vh;
+}
+header .navbar .logo img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+}
+header .navbar .menu {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+header .navbar .menu li {
+	list-style: none;
+}
+header .navbar .menu a {
+	color: #020100;
+	font-size: 17px;
+	font-weight: 500;
+	text-decoration: none;
+	padding: 10px 20px;
+	transition: all 0.3s ease;
+}
+header .navbar .menu a:hover {
+	background-color: #ff7300;
+}
+.custom-button-portfolio {
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-family: "Lato", sans-serif;
+	font-weight: 500;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+		7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	outline: none;
+	margin: 2rem;
+}
+
+.content {
+	display: flex;
+	justify-content: space-between;
+}
+.content .text-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 5vw;
+}
+.content .text-content .text {
+	font-size: 2rem;
+}
+.content .text-content .name {
+	font-size: 5rem;
+	font-weight: 100;
+}
+.content .text-content .name span {
+	color: #e00505;
+}
+/* -------- Animated text code css --------*/
+
+.animated-text {
+	font-size: 34px;
+	font-weight: 600;
+	min-width: 280px;
+}
+
+.animated-text span {
+	position: relative;
+}
+.animated-text span::before {
+	content: "Youtuber";
+	color: #fe4400;
+	animation: words 20s infinite;
+}
+
+.animated-text span::after {
+	content: "";
+	position: absolute;
+	width: calc(100% + 8px);
+	height: 100%;
+	background-color: rgb(255, 255, 255);
+	border-left: 2px solid #f04000;
+	right: -8px;
+	animation: cursor 0.8s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor {
+	to {
+		border-left: 2px solid #ff7f5000;
+	}
+}
+
+@keyframes words {
+	0%,
+	20% {
+		content: "Youtuber";
+	}
+	21%,
+	40% {
+		content: "Blogger";
+	}
+	41%,
+	60% {
+		content: "Developer";
+	}
+	61%,
+	80% {
+		content: "Designer";
+	}
+	81%,
+	100% {
+		content: "Gamer";
+	}
+}
+
+@keyframes typing {
+	10%,
+	15%,
+	30%,
+	35%,
+	50%,
+	55%,
+	70%,
+	75%,
+	90%,
+	95% {
+		width: 0;
+	}
+	5%,
+	20%,
+	25%,
+	40%,
+	45%,
+	60%,
+	65%,
+	80%,
+	85% {
+		width: calc(100% + 8px);
+	}
+}

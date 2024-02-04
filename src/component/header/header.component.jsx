@@ -56,7 +56,7 @@ const Header = ({
 			</div>
 			<div className="header">
 				<Link
-					to="/"
+					to="/xprtapp/"
 					className="logo-container"
 					onClick={() => activeHeaderButton("home")}
 				>

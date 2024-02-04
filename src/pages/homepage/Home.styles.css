@@ -1,0 +1,136 @@
+@keyframes welcome {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.2;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	75% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.home_wrapper {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.home_wrapper .home_header {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 10px;
+	background: linear-gradient(
+		326deg,
+		rgba(255, 27, 0, 1) 0%,
+		rgba(26, 1, 133, 1) 100%
+	);
+}
+.home_wrapper .home_footer {
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	height: 10px;
+	background: linear-gradient(
+		131deg,
+		rgba(255, 27, 0, 1) 0%,
+		rgba(26, 1, 133, 1) 100%
+	);
+}
+.home_wrapper img {
+	width: 15rem;
+	opacity: 1;
+	animation-name: welcome;
+	animation-duration: 4s;
+}
+.home_wrapper h1,
+h2 {
+	font-family: "Work Sans", sans-serif;
+	font-size: 5rem;
+}
+.home_wrapper h2 {
+	font-size: 3rem;
+}
+
+.home_wrapper .button_wrapper {
+	margin: 2rem;
+}
+@media screen and (max-width: 492px) {
+	.home_wrapper .button_wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+.custom-btn-home {
+	color: #fff;
+	border-radius: 5px;
+	padding: 10px 25px;
+	font-family: "Lato", sans-serif;
+	font-weight: 500;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+		7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+	outline: none;
+	margin: 2rem;
+}
+.custom-btn-home a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* 5 */
+.btn-5 {
+	width: 150px;
+	height: 40px;
+	line-height: 42px;
+	padding: 0;
+	border: none;
+	background: rgb(255, 27, 0);
+	background: linear-gradient(
+		0deg,
+		rgba(255, 27, 0, 1) 0%,
+		rgba(251, 75, 2, 1) 100%
+	);
+}
+.btn-5:hover {
+	color: #f0094a;
+	background: transparent;
+	box-shadow: none;
+}
+.btn-5:before,
+.btn-5:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #f0094a;
+	box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+		4px 4px 5px 0px #0002;
+	transition: 400ms ease all;
+}
+.btn-5:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
