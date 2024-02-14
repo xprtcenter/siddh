@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Home.styles.css";
+/* import "./Home.styles.css"; */
 import logo from "../websitePage/portfolio/Ritesh/xprtlogo.png";
 
 const Home = () => {

@@ -61,7 +61,7 @@ const moduleNamedata = {
 			imageUrl: payroll,
 
 			id: 7,
-			linkUrl: "/payroll",
+			linkUrl: "payroll",
 		},
 		{
 			title: "COMPLAINT",

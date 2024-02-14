@@ -9,7 +9,7 @@ const middlewares = [];
 if (process.env.NODE_ENV === "development") {
 	middlewares.push(logger);
 }
-/* onst composeEnhancer =
+/* const composeEnhancer =
 	process.env.NODE_ENV !==
 		("production" && window && window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE__) ||
 	compose;

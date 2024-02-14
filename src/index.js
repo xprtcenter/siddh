@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import "./orange-theme.css";
-
 import { PersistGate } from "redux-persist/integration/react";
 
 import { store, persistor } from "./redux/store";
@@ -13,7 +12,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
 	<Provider store={store}>
-		<BrowserRouter basename={process.env.PUBLIC_URL}>
+		<BrowserRouter>
 			<PersistGate persistor={persistor}>
 				<App />
 			</PersistGate>

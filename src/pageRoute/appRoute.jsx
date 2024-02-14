@@ -25,31 +25,31 @@ import Footer from "../component/footer/footer.component";
 
 const AppRoute = ({ currentUser, companyDetails }) => {
 	return (
-		<div className="root-container">
+		<React.Fragment>
 			<Header cName={companyDetails.cName} />
 			<div className="main-section">
 				<Switch>
-					<Route
-						exact
-						path="/xprtapp"
-						render={() =>
-							currentUser ? <HomePage /> : <Redirect to="/signin" />
-						}
-					/>
+					<Route exact path="/xprtapp" render={() => <HomePage />} />
+
 					<Route exact path="/profile" render={() => <UserProfile />} />
 					<Route
-						path="xprtapp/shop"
+						path="/shop"
 						render={() =>
 							currentUser ? <ShopPage /> : <Redirect to="/signin" />
 						}
 					/>
 					<Route
-						path="/xprtapp/sme"
+						path="/sme"
 						render={() =>
 							currentUser ? <SmeHomePage /> : <Redirect to="/signin" />
 						}
 					/>
-					<Route path="xprtapp/payroll" render={() => <PayrollHomePage />} />
+					<Route
+						path="/xprtapp/payroll"
+						render={() =>
+							currentUser ? <PayrollHomePage /> : <Redirect to="/signin" />
+						}
+					/>
 					<Route
 						path="/reception"
 						render={() =>
@@ -64,22 +64,22 @@ const AppRoute = ({ currentUser, companyDetails }) => {
 					/>
 					<Route
 						exact
-						path="xprtapp/signin"
+						path="/signin"
 						render={() =>
 							currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
 						}
 					/>
-					<Route exact path="/xray" render={() => <XrayImages />} />
 					<Route
 						exact
 						path="/modulecreation"
 						render={() => <ModuleCreation />}
 					/>
+					<Route exact path="/xray" render={() => <XrayImages />} />
 				</Switch>
 			</div>
 
 			<Footer />
-		</div>
+		</React.Fragment>
 	);
 };
 
