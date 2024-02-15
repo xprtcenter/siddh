@@ -43,7 +43,7 @@ const PayrollReportPage = () => {
 	//console.log("dropdown log", salaryReportDropdown);
 	return (
 		<div className="form-container">
-			<p className="tite">Payroll Report Page</p>
+			<h2 className="section-title">Payroll Report Page</h2>
 			<div className="selection-menu-forreportpage">
 				<FormDropDown
 					className="form-dropdown form-dropdown-fix"

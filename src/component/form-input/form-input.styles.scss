@@ -18,8 +18,8 @@ $main-color: black;
 		/* padding: 10px 10px 10px 5px; */
 		padding: 0.7rem;
 		display: block;
-		//width: 16rem;
-		width: fit-content;
+		width: 16rem;
+		//width: fit-content;
 		border: none;
 		border-radius: 0;
 		border-bottom: 1px solid $sub-color;
@@ -61,5 +61,12 @@ $main-color: black;
 	}
 	.date-picker-after {
 		color: rgb(0, 0, 0);
+	}
+}
+@media only screen and (max-width: 1200px) {
+	.group {
+		.form-input {
+			width: fit-content;
+		}
 	}
 }

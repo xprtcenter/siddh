@@ -7,8 +7,8 @@
 		border-radius: 5px;
 		border-color: black;
 	}
-	//width: 16rem;
-	width: 100%;
+	width: 16rem;
+
 	margin: 5px 0;
 	//display: block;
 }
@@ -31,5 +31,10 @@
 	//display: block;
 	div:hover {
 		border-color: rgb(248, 134, 4);
+	}
+}
+@media only screen and (max-width: 1200px) {
+	.form-dropdown {
+		width: 100%;
 	}
 }
