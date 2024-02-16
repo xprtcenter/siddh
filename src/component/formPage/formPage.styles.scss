@@ -1,6 +1,7 @@
 .form-page {
 	display: flex;
 	background-color: var(--form-page-background);
+	height: 87vh;
 	.leftside-menu-block {
 		background-color: var(--left-side-menu-block);
 		position: sticky;
@@ -8,7 +9,7 @@
 		left: 0;
 		z-index: 10;
 		padding: 2vh 1vw;
-		height: 80vh;
+		height: 87vh;
 	}
 
 	.right-side-main-section {
@@ -123,6 +124,7 @@
 			.image-form-page {
 				display: flex;
 				background-color: var(--primary-color-m);
+
 				.image-container {
 					width: 12vw;
 					/* height: 70vh; */
@@ -154,6 +156,7 @@
 
 @media only screen and (max-width: 1200px) {
 	.form-page {
+		height: auto;
 		.leftside-menu-block {
 			height: 93vh;
 		}

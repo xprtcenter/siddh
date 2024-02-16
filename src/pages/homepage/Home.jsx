@@ -9,7 +9,7 @@ const Home = () => {
 			<h1>Welcome </h1>
 			<h2>to</h2>
 
-			<img src={logo} alt="" />
+			<img src={logo} alt="logo" />
 			<div className="button_wrapper">
 				<button className="custom-btn-home btn-5">
 					<Link to="/app">Project</Link>

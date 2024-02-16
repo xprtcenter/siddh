@@ -16,7 +16,7 @@ header .navbar {
 	justify-content: space-between;
 }
 header .navbar .logo {
-	height: 8vh;
+	height: 4vw;
 }
 header .navbar .logo img {
 	height: 100%;
@@ -160,5 +160,14 @@ header .navbar .menu a:hover {
 	80%,
 	85% {
 		width: calc(100% + 8px);
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	header .navbar .menu {
+		display: none;
+	}
+	header .navbar .logo {
+		height: 10vw;
 	}
 }

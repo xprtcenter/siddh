@@ -31,6 +31,7 @@ import ReceptionHomePage from "./forms/Reception-forms/ReceptionHomePages/Recept
 import Header from "./component/header/header.component";
 import Footer from "./component/footer/footer.component";
 import Home from "./pages/homepage/Home";
+import Ritesh from "./pages/websitePage/portfolio/Ritesh/Ritesh";
 
 class App extends Component {
 	unsubscriveFromAuth = null;
@@ -69,34 +70,11 @@ class App extends Component {
 		console.log("weight testing", window.innerWidth);
 		return (
 			<div className="root-container">
-				<Switch>
-					<Route exact path="/" render={() => <Home />} />
-				</Switch>
-				
-				<Switch>
-					<div className="main-section">
+				<div className="main-section">
+					<Switch>
+						<Route exact path="/" render={() => <Home />} />
 						<Route exact path="/app" render={() => <HomePage />} />
-						<Route exact path="/profile" render={() => <UserProfile />} />
-						<Route
-							path="/shop"
-							render={() =>
-								this.props.currentUser ? (
-									<ShopPage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
-						<Route
-							path="/sme"
-							render={() =>
-								this.props.currentUser ? (
-									<SmeHomePage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
+						<Route exact path="/riteshportfolio" render={() => <Ritesh />} />
 						<Route
 							path="/app/payroll"
 							render={() =>
@@ -107,26 +85,7 @@ class App extends Component {
 								)
 							}
 						/>
-						<Route
-							path="/reception"
-							render={() =>
-								this.props.currentUser ? (
-									<ReceptionHomePage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
-						<Route
-							path="/checkout"
-							render={() =>
-								this.props.currentUser ? (
-									<CheckoutPage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
+
 						<Route
 							exact
 							path="/signin"
@@ -138,24 +97,19 @@ class App extends Component {
 								)
 							}
 						/>
-						<Route exact path="/xray" render={() => <XrayImages />} />
+						<Route exact path="/app/xray" render={() => <XrayImages />} />
 						<Route
-							exact
-							path="/modulecreation"
-							render={() => <ModuleCreation />}
+							path="/app/sme"
+							render={() =>
+								this.props.currentUser ? (
+									<SmeHomePage />
+								) : (
+									<Redirect to="/signin" />
+								)
+							}
 						/>
-
-						{/* <Switch>
-						{this.pageLink.map((pagecomponent) => (
-							<RouteComponent
-								path={pagecomponent.path}
-								componentname={pagecomponent.component}
-							/>
-						))}
-					</Switch>  */}
-					</div>
-				</Switch>
-				<Footer />
+					</Switch>
+				</div>
 			</div>
 		);
 	}
