@@ -14,6 +14,7 @@ const HeaderMenuItem = ({
 	activeHeaderButton,
 	activeheader,
 }) => {
+	console.log("match value", match);
 	return (
 		<div
 			className={
@@ -22,7 +23,7 @@ const HeaderMenuItem = ({
 					: "nav-option"
 			}
 			onClick={() => {
-				history.push(`${match.url}${linkUrl}`);
+				history.push(`/app/${linkUrl}`);
 				activeHeaderButton(linkUrl);
 			}}
 		>

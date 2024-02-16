@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-/* import "./Home.styles.css"; */
+import "./Home.styles.css";
 import logo from "../websitePage/portfolio/Ritesh/xprtlogo.png";
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
 			<img src={logo} alt="" />
 			<div className="button_wrapper">
 				<button className="custom-btn-home btn-5">
-					<Link to="/xprtapp">Project</Link>
+					<Link to="/app">Project</Link>
 				</button>
 				<button className="custom-btn-home btn-5">
 					<Link to="/riteshportfolio">Go to my Portfolio</Link>

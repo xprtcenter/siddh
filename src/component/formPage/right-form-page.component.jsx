@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 /********************************************* Payroll Pages *****************************************************/
 import PayrollDashboardPage from "../../forms/Payroll-forms/payroll-dashboard";
@@ -28,43 +29,47 @@ const RightFormPageContainer = () => {
 				{/* ************* Payroll Route************** */}
 				<Route
 					exact
-					path="/payroll/paymaster"
+					path="/app/payroll/paymaster"
 					render={() => <PayrollMaster />}
 				/>
 				<Route
 					exact
-					path="/payroll/paymaster/:id"
+					path="/app/payroll/paymaster/:id"
 					render={() => <PayrollMaster />}
 				/>
 				<Route
 					exact
-					path="/payroll/PayrollEmpRegMaster"
+					path="/app/payroll/PayrollEmpRegMaster"
 					render={() => <PayrollEmpRegMaster />}
 				/>
 				<Route
 					exact
-					path="/payroll/PayrollEmpRegMaster/:id"
+					path="/app/payroll/PayrollEmpRegMaster/:id"
 					render={() => <PayrollEmpRegMaster />}
 				/>
 				<Route
 					exact
-					path="/payroll/PayrollEmpList"
+					path="/app/payroll/PayrollEmpList"
 					render={() => <PayrollEmpList />}
 				/>
 				<Route
 					exact
-					path="/payroll/salentry"
+					path="/app/payroll/salentry"
 					render={() => <PayrollSalaryEntry />}
 				/>
-				<Route exact path="/payroll" render={() => <PayrollDashboardPage />} />
 				<Route
 					exact
-					path="/payroll/salcalcmaster"
+					path="/app/payroll"
+					render={() => <PayrollDashboardPage />}
+				/>
+				<Route
+					exact
+					path="/app/payroll/salcalcmaster"
 					render={() => <PayrollSalaryCaculationMaster />}
 				/>
 				<Route
 					exact
-					path="/payroll/payreports"
+					path="/app/payroll/payreports"
 					render={() => <PayrollReportPage />}
 				/>
 

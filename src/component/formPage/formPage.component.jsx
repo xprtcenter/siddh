@@ -6,12 +6,13 @@ import { ReactComponent as SidebarClosebutton } from "../../assets/arrow-right.s
 import { sideMenuHide } from "../../redux/menu/menu.action";
 import RightFormPageContainer from "../../component/formPage/right-form-page.component";
 import { createStructuredSelector } from "reselect";
-
+import Header from "../../component/header/header.component";
 import { selectSideHide } from "../../redux/menu/menu.selectors";
 
 const FormPage = ({ data, sideMenuHide, sidehide }) => {
 	return (
 		<div className="form-page">
+			<Header cName="xprt center" />
 			<div className="leftside-menu-block open">
 				<div className="side-menu-text-block">
 					{data.map(({ id, ...otherProps }) => (

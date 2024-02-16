@@ -17,7 +17,7 @@
 }
 .home_wrapper {
 	display: flex;
-	width: 100vw;
+	/* width: 100vw; */
 	height: 100vh;
 	flex-direction: column;
 	justify-content: center;
@@ -34,6 +34,25 @@
 		rgba(26, 1, 133, 1) 100%
 	);
 }
+.home_wrapper h1,
+.home_wrapper h2 {
+	font-size: 10rem;
+	font-family: "Work Sans", sans-serif;
+	font-weight: 200;
+}
+.home_wrapper h2 {
+	font-weight: 300;
+	font-size: 3rem;
+}
+.home_wrapper img {
+	width: 15rem;
+	opacity: 1;
+	animation-name: welcome;
+	animation-duration: 4s;
+}
+.home_wrapper .button_wrapper {
+	margin: 2rem;
+}
 .home_wrapper .home_footer {
 	position: fixed;
 	bottom: 0;
@@ -45,29 +64,20 @@
 		rgba(26, 1, 133, 1) 100%
 	);
 }
-.home_wrapper img {
-	width: 15rem;
-	opacity: 1;
-	animation-name: welcome;
-	animation-duration: 4s;
-}
-.home_wrapper h1,
-h2 {
-	font-family: "Work Sans", sans-serif;
-	font-size: 5rem;
-}
-.home_wrapper h2 {
-	font-size: 3rem;
-}
 
-.home_wrapper .button_wrapper {
-	margin: 2rem;
-}
-@media screen and (max-width: 492px) {
+@media only screen and (max-width: 729px) {
 	.home_wrapper .button_wrapper {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+	}
+	.home_wrapper h1,
+	.home_wrapper h2 {
+		font-size: 5em;
+	}
+	.home_wrapper h2 {
+		font-weight: 300;
+		font-size: 3rem;
 	}
 }
 .custom-btn-home {

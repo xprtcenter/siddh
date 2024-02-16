@@ -28,7 +28,7 @@ const MenuItem = ({
 				alert("You are not Authorize please ask Administrator for this Module");
 				return;
 			} */
-			history.push(`${match.url}${linkUrl}`);
+			history.push(`${match.url}/${linkUrl}`);
 			activeHeaderButton(linkUrl);
 		}}
 	>

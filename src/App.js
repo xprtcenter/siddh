@@ -69,10 +69,13 @@ class App extends Component {
 		console.log("weight testing", window.innerWidth);
 		return (
 			<div className="root-container">
-				<Header cName={this.props.companyDetails.cName} />
-				<div className="main-section">
-					<Switch>
-						<Route exact path="/" render={() => <HomePage />} />
+				<Switch>
+					<Route exact path="/" render={() => <Home />} />
+				</Switch>
+				
+				<Switch>
+					<div className="main-section">
+						<Route exact path="/app" render={() => <HomePage />} />
 						<Route exact path="/profile" render={() => <UserProfile />} />
 						<Route
 							path="/shop"
@@ -95,7 +98,7 @@ class App extends Component {
 							}
 						/>
 						<Route
-							path="/payroll"
+							path="/app/payroll"
 							render={() =>
 								this.props.currentUser ? (
 									<PayrollHomePage />
@@ -141,8 +144,8 @@ class App extends Component {
 							path="/modulecreation"
 							render={() => <ModuleCreation />}
 						/>
-					</Switch>
-					{/* <Switch>
+
+						{/* <Switch>
 						{this.pageLink.map((pagecomponent) => (
 							<RouteComponent
 								path={pagecomponent.path}
@@ -150,8 +153,8 @@ class App extends Component {
 							/>
 						))}
 					</Switch>  */}
-				</div>
-
+					</div>
+				</Switch>
 				<Footer />
 			</div>
 		);
