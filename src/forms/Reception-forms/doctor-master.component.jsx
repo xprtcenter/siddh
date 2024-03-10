@@ -6,7 +6,6 @@ import { firestore } from "../../firebase/firebase.utils";
 
 const initialState = {
 	Editid: "",
-
 	DoctorCode: "",
 	DoctorName: "",
 	DoctorSpecialization: "",
@@ -16,7 +15,6 @@ const initialState = {
 	DoctorBank: "",
 	DoctorIFSC: "",
 	DoctorPAN: "",
-
 	mydata: [],
 	fillStatus: 1,
 	uploadstatus: 0,

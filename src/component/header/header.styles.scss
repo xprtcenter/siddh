@@ -183,6 +183,7 @@
 			}
 			.nav-options-container {
 				width: 50vw;
+				flex-direction: row-reverse;
 				.header-menu {
 					flex-direction: column;
 					position: absolute;

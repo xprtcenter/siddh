@@ -4,7 +4,7 @@ import { OpdData } from "./Functions/getopddetails";
 import CustomTable from "../../component/table/custom-table-material.component";
 
 const OpdRegList = () => {
-	const tableTitle = "Payroll Employee List";
+	const tableTitle = "Patient List";
 	const columns = [
 		{
 			title: "Employee Code",

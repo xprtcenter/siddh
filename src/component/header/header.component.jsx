@@ -110,7 +110,7 @@ const Header = ({
 									? "sign-in active-header-button"
 									: "sign-in"
 							}
-							to="/signin"
+							to="/app/signin"
 						>
 							SIGN IN
 						</Link>

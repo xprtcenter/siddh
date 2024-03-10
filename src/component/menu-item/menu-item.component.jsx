@@ -35,7 +35,8 @@ const MenuItem = ({
 		<div
 			className="background-image"
 			style={{
-				backgroundImage: `url(${imageUrl})`,
+				// background: `linear-gradient(#4a4a4a7d, #222222bd),url(${imageUrl})`,
+				background: `url(${imageUrl})`,
 			}}
 		/>
 		<div className="content">

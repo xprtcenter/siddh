@@ -2,14 +2,15 @@ import React from "react";
 
 import "./form-input.styles.scss";
 
-const FormInput = ({ handleChange, label, ...otherProps }) => {
+const FormInput = ({ onChange, label, type, ...otherProps }) => {
 	return (
 		<div className="group">
 			<input
-				className={`${(otherProps.type = "date"
-					? "date-picker-after"
-					: "date-picker")} form-input`}
-				onChange={handleChange}
+				className={`${
+					otherProps.type === "date" ? "date-picker-after" : "date-picker"
+				} form-input`}
+				onChange={onChange}
+				type={type}
 				{...otherProps}
 			/>
 			{label ? (

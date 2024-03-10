@@ -12,26 +12,27 @@ import { selectCompanyDetails } from "./redux/appLicence/appLicence.selectors";
 
 /****************************************************  Page  ************************************************************/
 
-import HomePage from "./pages/homepage/homepage.component";
-import ShopPage from "./pages/shop/shop.component";
+// import HomePage from "./pages/homepage/homepage.component";
+// import ShopPage from "./pages/shop/shop.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import CheckoutPage from "./pages/checkout/checkout.component";
-import SmeHomePage from "./pages/smePages/smeHomePage.component";
+// import CheckoutPage from "./pages/checkout/checkout.component";
+// import SmeHomePage from "./pages/smePages/smeHomePage.component";
 
 /* import AdmissionForm from "./pages/student/AdmissionForm"; */
 
 import PayrollHomePage from "./pages/payrollPages/payrollHomePage.component";
 
-import UserProfile from "./pages/user/user-profile.component";
+// import UserProfile from "./pages/user/user-profile.component";
 
-import XrayImages from "./component/x-ray-images/xray-images.component";
-import ModuleCreation from "./forms/Admin-form/AppMasters/ModuleCreation.component";
-import ReceptionHomePage from "./forms/Reception-forms/ReceptionHomePages/ReceptionHomePage.component";
+// import XrayImages from "./component/x-ray-images/xray-images.component";
+// import ModuleCreation from "./forms/Admin-form/AppMasters/ModuleCreation.component";
+// import ReceptionHomePage from "./forms/Reception-forms/ReceptionHomePages/ReceptionHomePage.component";
 
-import Header from "./component/header/header.component";
-import Footer from "./component/footer/footer.component";
+// import Header from "./component/header/header.component";
+// import Footer from "./component/footer/footer.component";
 import Home from "./pages/homepage/Home";
 import Ritesh from "./pages/websitePage/portfolio/Ritesh/Ritesh";
+import AppRoute from "./pageRoute/appRoute";
 
 class App extends Component {
 	unsubscriveFromAuth = null;
@@ -70,46 +71,11 @@ class App extends Component {
 		console.log("weight testing", window.innerWidth);
 		return (
 			<div className="root-container">
-				<div className="main-section">
-					<Switch>
-						<Route exact path="/" render={() => <Home />} />
-						<Route exact path="/app" render={() => <HomePage />} />
-						<Route exact path="/riteshportfolio" render={() => <Ritesh />} />
-						<Route
-							path="/app/payroll"
-							render={() =>
-								this.props.currentUser ? (
-									<PayrollHomePage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
-
-						<Route
-							exact
-							path="/signin"
-							render={() =>
-								this.props.currentUser ? (
-									<Redirect to="/" />
-								) : (
-									<SignInAndSignUpPage />
-								)
-							}
-						/>
-						<Route exact path="/app/xray" render={() => <XrayImages />} />
-						<Route
-							path="/app/sme"
-							render={() =>
-								this.props.currentUser ? (
-									<SmeHomePage />
-								) : (
-									<Redirect to="/signin" />
-								)
-							}
-						/>
-					</Switch>
-				</div>
+				<Switch>
+					<Route exact path="/" render={() => <Home />} />
+					<Route path="/app" render={() => <AppRoute />} />
+					<Route path="/riteshportfolio" render={() => <Ritesh />} />
+				</Switch>
 			</div>
 		);
 	}

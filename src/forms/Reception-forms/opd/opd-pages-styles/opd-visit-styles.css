@@ -1,0 +1,47 @@
+.cardHeaderdate {
+	background-color: rgba(245, 245, 245, 0.822);
+	display: flex;
+	gap: 30px;
+	padding: 10px;
+}
+.patDetaildBox {
+	position: relative;
+	width: 100%;
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 30px;
+}
+
+.patDetaildBox .card {
+	position: relative;
+	background: var(--white);
+	padding: 30px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	cursor: pointer;
+	box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.patDetaildBox .card .cardName {
+	margin: 0 20px;
+	font-size: 2rem;
+}
+.patDetaildBox .card:hover {
+	background: var(--blue);
+}
+.patDetaildBox .card:hover .numbers,
+.patDetaildBox .card:hover .cardName,
+.patDetaildBox .card:hover .iconBox {
+	color: var(--white);
+}
+.no-visit-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50%;
+}
+.no-visit-found {
+	color: var(--blue);
+}
