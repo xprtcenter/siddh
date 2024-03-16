@@ -3,31 +3,39 @@ import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import http from "../../http-common.js";
 import Moment from "moment";
+import { firestore } from "../../../../firebase/firebase.utils.js";
+import "../opd-pages-styles/opd-prescruption-style.css";
 
 const PrescriptionPage = () => {
 	var getidArray = window.location.href.split("/");
 	const getIDData = getidArray[getidArray.length - 1];
+	console.log("URLSearchParams", getIDData); // ▶ URLSearchParams {}
 	const [patientVisitData, setPatientVisitData] = useState([]);
 	const [companyInfo, setCompanyInfo] = useState([]);
-	console.log(getIDData); // ▶ URLSearchParams {}
 	const componentRef = useRef();
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
 	});
-	const getPatientVisitData = (id) => {
-		http.get(`/patvisit/patientvisitdata/${id}`).then((response) => {
-			console.log(
-				"patient visit details recive from OPD Prescruption",
-				response.data,
-			);
-			setPatientVisitData(response.data[0]);
+
+	const getPatientVisitData = async (id) => {
+		const dbReg = firestore
+			.collection("receptionData")
+			.doc("receptionOpdVisit")
+			.collection(id);
+		const snapshot = await dbReg.get();
+		snapshot.forEach((doc) => {
+			console.log(doc.id, "=>", doc.data());
 		});
+		/* setPatientVisitData(response.data[0]); */
 	};
 	const getCompanyInfo = () => {
-		http.get("/appconfig/companyinfo").then((response) => {
-			console.log("App Company Info", response.data);
-			setCompanyInfo(response.data[0]);
-		});
+		const comPanyInfoData = {
+			company_name: "Siddh Hospital",
+			company_address: "Kanth Road Moradabad",
+			company_email: "it@siddhhospital.org",
+			company_mobile: "9745845125",
+		};
+		setCompanyInfo(comPanyInfoData);
 	};
 	useEffect(() => {
 		getCompanyInfo();
@@ -36,7 +44,7 @@ const PrescriptionPage = () => {
 	return (
 		<div className="page">
 			<div className="header-button">
-				<Link to="/patientreg">
+				<Link to="/app/reception/PatientRegistration">
 					<div className="back">Back</div>
 				</Link>
 				<button onClick={handlePrint} className="print__button">

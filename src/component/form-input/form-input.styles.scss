@@ -51,10 +51,13 @@ $main-color: black;
 			@include shrinkLabel();
 		}
 	}
-	.date-picker {
+	input[type="date"] {
 		color: rgb(255, 255, 255);
-		//width: 100%;
 	}
+	/* .date-picker {
+		color: rgb(255, 255, 255);
+		
+	} */
 
 	input[type="date"]:focus {
 		color: black;

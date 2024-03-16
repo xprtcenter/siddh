@@ -7,12 +7,18 @@ const OpdRegList = () => {
 	const tableTitle = "Patient List";
 	const columns = [
 		{
-			title: "Employee Code",
-			field: "EmployeeCode",
-			type: "numeric",
+			title: "Registration Date",
+			field: "regDate",
+			type: "datetime",
 			cellStyle: { padding: "0 1.5vw", textAlign: "center" },
 		},
 		{
+			title: "Patient Name",
+			field: "patientname",
+			type: "text",
+			cellStyle: { padding: "0 1.7vw", textAlign: "left" },
+		},
+		/* 	{
 			title: "Employee Image",
 			field: "EmployeeImgUrl",
 			render: (rowData) => (
@@ -28,27 +34,26 @@ const OpdRegList = () => {
 				/>
 			),
 			cellStyle: { padding: "0 1.5vw", textAlign: "center" },
-		},
+		}, */
 
 		{
-			title: "Employee Name",
-			field: "EmployeeName",
+			title: "Mobile No",
+			field: "mobileno",
 			cellStyle: { padding: "0 1.5vw" },
 		},
-		{ title: "Email", field: "EmployeeEmail", cellStyle: { padding: 0 } },
 		{
-			title: "Company Name",
-			field: "PayrollCompanyName",
-			cellStyle: { padding: "0 1.5vw" },
+			title: "Guardian Name",
+			field: "guardianname",
+			cellStyle: { padding: 0 },
 		},
 		{
 			title: "Address",
-			field: "EmployeeAddress",
+			field: "address",
 			cellStyle: { padding: "0 1.5vw" },
 		},
 		{
-			title: "Contact",
-			field: "EmployeeContact",
+			title: "Age",
+			field: "age",
 			cellStyle: { padding: "0 1.5vw" },
 		},
 	];

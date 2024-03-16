@@ -31,6 +31,7 @@ const PatientRegistration = () => {
 	const [patientList, setPatientList] = useState([]);
 	const [selectedPatient, setSelectedPatient] = useState({});
 	const [serarchTerm, setSearchTerm] = useState("");
+
 	const [searchDate, setSearchDate] = useState({
 		frmDate: today,
 		toDate: today,
@@ -76,9 +77,15 @@ const PatientRegistration = () => {
 		updatedData.docs.forEach((doc) => {
 			patient.push({ ...doc.data(), id: doc.id });
 		});
-		console.log("patient for List from firebase", patient);
+		//console.log("patient for List from firebase", patient);
 
 		setPatientList(patient);
+	};
+	const selectPatient = (id) => {
+		if (id !== undefined) {
+			const selectedPatient = patientList.filter((pat) => pat.id === id);
+			setSelectedPatient(selectedPatient[0]);
+		}
 	};
 	useEffect(() => {
 		getData();
@@ -149,7 +156,7 @@ const PatientRegistration = () => {
 									<TableCell align="right">Action</TableCell>
 								</TableRow>
 							</TableHead>
-							<TableBody>
+							<TableBody id="opd-table-body">
 								{patientList
 									.filter((pat) => {
 										if (serarchTerm === "") {
@@ -173,6 +180,12 @@ const PatientRegistration = () => {
 										<TableRow
 											key={idx}
 											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+											onClick={() => {
+												selectPatient(pat.id);
+											}}
+											className={
+												pat.id === selectedPatient.id ? "selected-row" : ""
+											}
 										>
 											<TableCell component="th" scope="row">
 												{idx + 1}

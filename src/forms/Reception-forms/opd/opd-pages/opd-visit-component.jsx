@@ -7,13 +7,25 @@ import http from "../../http-common";
 import Moment from "moment";
 import { useHistory } from "react-router-dom";
 import avtar from "../../../../assets/avatar.png";
+import { firestore } from "../../../../firebase/firebase.utils";
 
 const OpdVisit = (selectedPatent) => {
-	console.log("Patient from OPDVisit", selectedPatent);
+	//console.log("Patient from OPDVisit", selectedPatent);
 	const [data, setData] = useState({});
 	const [patientVisitList, setPatientVisitList] = useState([]);
+	const [docName, setDocName] = useState([]);
 
-	console.log("Patient from data", data);
+	//console.log("Patient from data", data);
+
+	const getDocName = (id) => {
+		let docdata = [
+			{ value: "12321", label: "Dr Mohan Singh", fees: 200 },
+			{ value: "23212", label: "Dr Sachin", fees: 350 },
+		];
+		return docdata.filter((doc) => {
+			return doc.value === id;
+		});
+	};
 
 	useEffect(() => {
 		setData(selectedPatent.selectedPatent);
@@ -23,13 +35,23 @@ const OpdVisit = (selectedPatent) => {
 	}, [selectedPatent, data]);
 
 	const getPatientVisitList = (id) => {
-		http.get(`/patvisit/${id}`).then((response) => {
-			console.log("patient visit details recive from server", response.data);
-			setPatientVisitList(response.data);
+		const dbReg = firestore
+			.collection("receptionData")
+			.doc("receptionOpdVisit")
+			.collection(data.id);
+		dbReg.onSnapshot((visits) => {
+			const visitArray = [];
+			console.log("patient visit details recive from server", data);
+			visits.forEach((visit) => {
+				let visitData = visit.data();
+				console.log("patient visit data recive from server", visitData);
+				visitArray.push({ ...visitData });
+			});
+			setPatientVisitList(visitArray);
 		});
 	};
 	const history = useHistory();
-	const handlePrint = (id) => history.push(`/prescription/${id}`);
+	const handlePrint = (id) => history.push(`/app/reception/prescription/${id}`);
 
 	return (
 		<Fragment>
@@ -62,21 +84,23 @@ const OpdVisit = (selectedPatent) => {
 							<tr>
 								<th>Date</th>
 								<th>Doctor Name</th>
+								<th>Doctor Fees</th>
 								<th>Prescription</th>
 							</tr>
 						</thead>
 						<tbody>
-							{patientVisitList.map((visit) => {
+							{patientVisitList.map((visit, idx) => {
 								return (
-									<tr key={visit.id}>
+									<tr key={idx}>
 										<td>
 											{Moment(visit.visitDate).format("D MMM yyyy hh:mma")}
 										</td>
-										<td>{visit.doc_name}</td>
+										<td>{}</td>
+										<td>{visit.docfees}</td>
 										<td>
 											<span
 												className="btn print"
-												onClick={() => handlePrint(visit.id)}
+												onClick={() => handlePrint(visit.patid)}
 											>
 												Print
 											</span>

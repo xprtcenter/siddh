@@ -74,7 +74,7 @@ const PayrollSalaryCaculationMaster = () => {
 		<form className="form-container">
 			<h2 className="section-title">Payroll Salary Caculation Master Page</h2>
 			<Select
-				className="form-dropdown form-dropdown-center"
+				className="form-dropdown"
 				placeholder="Select Employer Company Name"
 				value={
 					companyNameList.companyList.find(

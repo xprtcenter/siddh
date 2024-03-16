@@ -1,6 +1,6 @@
 import { firestore } from "../../../firebase/firebase.utils";
 
 export const OpdData = firestore
-	.collection("payrollData")
-	.doc("payrollEmpRegistration")
-	.collection("payrollEmployee");
+	.collection("receptionData")
+	.doc("receptionOpdRegistration")
+	.collection("opdPatient");

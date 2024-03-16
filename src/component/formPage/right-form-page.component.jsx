@@ -17,7 +17,9 @@ import PayrollPayslip from "../../forms/Payroll-forms/payroll-payslip.component"
 // import ContractorEmployeeEntry from "../../forms/sme-forms/contractor-employee-entry.component";
 // /********************************************* Reception Pages *****************************************************/
 import ReceptionDashboardPage from "../../forms/Reception-forms/reception-dashboard";
-// import DoctorMaster from "../../forms/Reception-forms/doctor-master.component";
+import DoctorMaster from "../../forms/Reception-forms/doctor-master.component";
+import OpdRegList from "../../forms/Reception-forms/reception-opd-list.component";
+import PrescriptionPage from "../../forms/Reception-forms/opd/opd-pages/prescription-page";
 // import OpdRegList from "../../forms/Reception-forms/reception-opd-list.component";
 // import ReceptionOpdRegistration from "../../forms/Reception-forms/reception-opd-registration.component";
 /****************************** Reception Pages **********************************/
@@ -90,6 +92,21 @@ const RightFormPageContainer = () => {
 					exact
 					path="/app/reception/PatientRegistration"
 					render={() => <PatientRegistration />}
+				/>
+				<Route
+					exact
+					path="/app/reception/docmaster"
+					render={() => <DoctorMaster />}
+				/>
+				<Route
+					exact
+					path="/app/reception/opdlist"
+					render={() => <OpdRegList />}
+				/>
+				<Route
+					exact
+					path="/app/reception/prescription/:id"
+					render={() => <PrescriptionPage />}
 				/>
 
 				{/* <Route path="/home" element={<Home />} />

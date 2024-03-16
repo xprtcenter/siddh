@@ -151,42 +151,40 @@ class DoctorMaster extends React.Component {
 					<h2 className="section-title">Doctor Master form</h2>
 
 					<div className="image-form-page">
-						<div className="tab-container">
-							<FormInput
-								type="text"
-								name="DoctorName"
-								value={DoctorName || ""}
-								onChange={this.handleChange}
-								label="Doctor Name"
-								required
-							/>
+						<FormInput
+							type="text"
+							name="DoctorName"
+							value={DoctorName || ""}
+							onChange={this.handleChange}
+							label="Doctor Name"
+							required
+						/>
 
-							<FormInput
-								type="text"
-								name="DoctorSpecialization"
-								value={DoctorSpecialization || ""}
-								onChange={this.handleChange}
-								label="Doctor Specialization"
-								required
-							/>
+						<FormInput
+							type="text"
+							name="DoctorSpecialization"
+							value={DoctorSpecialization || ""}
+							onChange={this.handleChange}
+							label="Doctor Specialization"
+							required
+						/>
 
-							<FormInput
-								type="text"
-								name="DoctorContact"
-								value={DoctorContact || ""}
-								onChange={this.handleChange}
-								label="Doctor Contact"
-								required
-							/>
-							<FormInput
-								type="email"
-								name="DoctorEmail"
-								value={DoctorEmail || ""}
-								onChange={this.handleChange}
-								label="Email Address"
-								required
-							/>
-						</div>
+						<FormInput
+							type="text"
+							name="DoctorContact"
+							value={DoctorContact || ""}
+							onChange={this.handleChange}
+							label="Doctor Contact"
+							required
+						/>
+						<FormInput
+							type="email"
+							name="DoctorEmail"
+							value={DoctorEmail || ""}
+							onChange={this.handleChange}
+							label="Email Address"
+							required
+						/>
 					</div>
 					<CustomButton type="submit" sizefix>
 						SUBMIT
@@ -198,7 +196,7 @@ class DoctorMaster extends React.Component {
 				<table className="table-page">
 					<thead>
 						<tr className="table-header">
-							<th className="th1">Doctor Code</th>
+							<th className="th1">Sr No.</th>
 
 							<th className="th3">Doctor Name</th>
 							<th className="th4">Email</th>
@@ -209,9 +207,9 @@ class DoctorMaster extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-						{mydata.map((item) => (
+						{mydata.map((item, idx) => (
 							<tr className="table-data-row">
-								<td className="emp-code">{item.DoctorCode}</td>
+								<td className="emp-code">{idx + 1}</td>
 
 								<td>{item.DoctorName}</td>
 								<td>{item.DoctorEmail}</td>

@@ -1,0 +1,95 @@
+a,
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+	color: inherit;
+}
+.page {
+	display: flex;
+	flex-direction: column;
+	align-content: flex-start;
+	width: 100%;
+}
+.header-button {
+	display: flex;
+	justify-content: space-between;
+}
+.header-button .print__button {
+	margin: 10px;
+	width: 100px;
+	height: 30px;
+	background-color: var(--blue);
+	color: var(--white);
+	border-radius: 10px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+}
+.header-button .print__button:hover {
+	background-color: var(--blue2);
+}
+.header-button a .back {
+	position: relative;
+	margin: 10px;
+	width: 100px;
+	height: 30px;
+	background-color: rgb(255, 255, 255);
+	color: var(--blue);
+	font-weight: 600;
+	border-radius: 10px;
+	font-style: none;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 30px;
+}
+.header-button a .back:hover {
+	background-color: rgb(198, 222, 243);
+}
+.prescription-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.874);
+	padding-top: 20px;
+	font-family: "Times New Roman", Georgia, serif;
+	/* border-bottom: 1px solid red;
+    height: 1050px; */
+}
+.prescription-page .company-title {
+	font-size: 3rem;
+	font-family: "Brush Script MT", "Brush Script Std", "cursive";
+}
+.prescription-page .company-address {
+	font-size: 1.2rem;
+}
+.prescription-page .company-address-subaddress {
+	font-size: 1.2rem;
+}
+.patient-card {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 10px 30px;
+	border-top: 1px solid red;
+	border-bottom: 1px solid red;
+	background-color: rgb(241, 241, 191);
+}
+
+.name-group {
+	display: flex;
+	width: 350px;
+	height: 25px;
+	margin: 2px;
+	flex-wrap: nowrap;
+}
+.name-group h3 {
+	margin-right: 10px;
+	font-family: "Times New Roman", Georgia, serif;
+	width: 150px;
+}
+.name-group span {
+	margin: 2px 5px;
+	font-family: "Times New Roman", Georgia, serif;
+	overflow: hidden;
+}

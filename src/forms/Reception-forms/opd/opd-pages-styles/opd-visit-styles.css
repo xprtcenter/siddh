@@ -45,3 +45,6 @@
 .no-visit-found {
 	color: var(--blue);
 }
+#opd-table-body .selected-row {
+	background-color: var(--blue);
+}
