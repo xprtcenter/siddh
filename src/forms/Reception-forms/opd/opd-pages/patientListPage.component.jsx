@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import "../form-setting/forms.styles.css";
+import "../form-setting/forms.styles.scss";
 import Moment from "moment";
 import OpdVisit from "./opd-visit-component";
 import http from "../../http-common";
@@ -138,90 +138,8 @@ const PatientRegistration = () => {
 							id="toDate"
 						/>
 					</div>
-					<TableContainer component={Paper}>
-						<Table
-							sx={{ minWidth: 400 }}
-							size="small"
-							aria-label="a dense table"
-						>
-							<TableHead>
-								<TableRow>
-									<TableCell>Sr No.</TableCell>
-									<TableCell align="right">Registration Date</TableCell>
-									<TableCell align="right">Patient Name</TableCell>
-									<TableCell align="right">Age</TableCell>
-									<TableCell align="right">Guardian Name</TableCell>
-									<TableCell align="right">Address</TableCell>
-									<TableCell align="right">Mobile No.</TableCell>
-									<TableCell align="right">Action</TableCell>
-								</TableRow>
-							</TableHead>
-							<TableBody id="opd-table-body">
-								{patientList
-									.filter((pat) => {
-										if (serarchTerm === "") {
-											let regDate = new Date(
-												Moment(pat.regDate).format().slice(0, -15),
-											);
-											const newRegDate = regDate.getTime();
-											return newRegDate <= sd && ed <= newRegDate;
-										} else if (
-											pat.patientname
-												.toLowerCase()
-												.includes(serarchTerm.toLowerCase()) ||
-											pat.mobileno
-												.toLowerCase()
-												.includes(serarchTerm.toLowerCase())
-										) {
-											return pat;
-										}
-									})
-									.map((pat, idx) => (
-										<TableRow
-											key={idx}
-											sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-											onClick={() => {
-												selectPatient(pat.id);
-											}}
-											className={
-												pat.id === selectedPatient.id ? "selected-row" : ""
-											}
-										>
-											<TableCell component="th" scope="row">
-												{idx + 1}
-											</TableCell>
-											<TableCell align="right">
-												{Moment(pat.regDate).format("D MMM yyyy hh:mma")}
-											</TableCell>
-											<TableCell align="right">{pat.patientname}</TableCell>
-											<TableCell align="right">{pat.age}</TableCell>
-											<TableCell align="right">{pat.guardianname}</TableCell>
-											<TableCell align="right">{pat.address}</TableCell>
-											<TableCell align="right">{pat.mobileno}</TableCell>
-											<TableCell align="right">
-												<Container
-													Form={PatientRegistrationEditForm}
-													triggerText={
-														<ion-icon name="create-outline"></ion-icon>
-													}
-													id={pat.id}
-													btnstyle="btn-icon"
-												/>
-												{/* 	<ion-icon
-													onClick={() => {}}
-													name="create-outline"
-												></ion-icon> */}
-												<ion-icon onClick={() => {}} name="trash"></ion-icon>
-											</TableCell>
-										</TableRow>
-									))}
-							</TableBody>
-						</Table>
-					</TableContainer>
 
-					{/*	
-					
-					<table id="opd-table">
+					<table id="opd-table-body">
 						<thead>
 							<tr>
 								<th>Sr No.</th>
@@ -252,7 +170,13 @@ const PatientRegistration = () => {
 								})
 								.map((pat, idx) => {
 									return (
-										<tr key={idx} onClick={() => selectPatient(pat.id)}>
+										<tr
+											key={idx}
+											onClick={() => selectPatient(pat.id)}
+											className={
+												pat.id === selectedPatient.id ? "selected-row" : ""
+											}
+										>
 											<td>{idx + 1}</td>
 											<td>{Moment(pat.regDate).format("D MMM yyyy hh:mma")}</td>
 											<td>{pat.patientname}</td>
@@ -268,19 +192,13 @@ const PatientRegistration = () => {
 													id={pat.id}
 													btnstyle="btn edit"
 												/>
-												<ion-icon
-													onClick={() => {
-														onClickConfirm(pat.id);
-													}}
-													name="trash"
-												></ion-icon>
+												<ion-icon onClick={() => {}} name="trash"></ion-icon>
 											</td>
 										</tr>
 									);
 								})}
 						</tbody>
 					</table>
-				*/}
 				</div>
 				<OpdVisit selectedPatent={selectedPatient} />
 			</div>

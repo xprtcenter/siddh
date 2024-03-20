@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import "../opd-pages-styles/opd-visit-styles.css";
-import "../form-setting/forms.styles.css";
+import "../form-setting/forms.styles.scss";
 import Container from "../../../../component/model-component/container.component";
 import PatientVisitAddForm from "./pat-visit-add-form.component";
 import http from "../../http-common";

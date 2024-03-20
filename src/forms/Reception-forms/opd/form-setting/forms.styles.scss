@@ -83,12 +83,12 @@ tbody tr:hover ion-icon {
 	width: 100%;
 	border-collapse: collapse;
 	margin-top: 10px;
-	font-size: 0.8rem;
+	font-size: 1rem;
 }
 .table-box .custom-table table thead th,
 .table-box .custom-table table tbody td {
-	/* padding: 0;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+	padding: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	text-align: start;
 }
 .table-box .custom-table table tbody tr td:first-child,
@@ -305,5 +305,38 @@ tbody tr:hover ion-icon {
 	.table-box {
 		display: flex;
 		flex-direction: column;
+
+		.custom-table {
+			overflow: auto;
+			.cardHeader {
+				flex-direction: column;
+				gap: 1vh;
+				.search {
+					width: 100%;
+				}
+			}
+
+			.cardHeaderdate {
+				flex-direction: column;
+				gap: 1vh;
+				flex-wrap: nowrap;
+				padding: 0;
+				span {
+					text-align: center;
+				}
+				label,
+				input {
+					display: inline-block;
+				}
+			}
+			#opd-table-body {
+				/* 	thead tr,
+				tbody tr {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr;
+					gap: 10vh;
+				} */
+			}
+		}
 	}
 }
