@@ -4,8 +4,9 @@ import FormSidebarMenu from "../form-sidebar-menu/form-sidebar-menu.component";
 import { connect } from "react-redux";
 import { ReactComponent as SidebarClosebutton } from "../../assets/arrow-right.svg";
 import { sideMenuHide } from "../../redux/menu/menu.action";
-import RightFormPageContainer from "../../component/formPage/right-form-page.component";
+
 import { createStructuredSelector } from "reselect";
+import RouteComponent from "../../route/route.component";
 
 import { selectSideHide } from "../../redux/menu/menu.selectors";
 
@@ -28,7 +29,9 @@ const FormPage = ({ data, sideMenuHide, sidehide, companyDetails }) => {
 				</div>
 			</div>
 
-			<RightFormPageContainer />
+			<div className="right-side-main-section">
+				<RouteComponent />
+			</div>
 		</div>
 	);
 };

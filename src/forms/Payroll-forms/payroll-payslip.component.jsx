@@ -18,25 +18,23 @@ const PayrollPayslip = () => {
 	let currentMonthName = monthsList[monthNois !== 0 ? monthNois - 1 : 12]; // "July" (or current month)
 	let currentYear = dt.getFullYear(); // "2022" (or current year)
 
-	const [salaryReportDropdown, setSalaryReportDropdown] = useState({
+	const [monthyearSelection, setMonthYearSelection] = useState({
 		year: currentYear,
 		month: currentMonthName,
 	});
-	let reportSelection = [
-		{ value: "1", label: "Employee Details List" },
-		{ value: "2", label: "Employee Bank Report" },
-		{ value: "3", label: "Salary Report" },
+	let reportType = [
+		{ value: "1", label: "Selected Employee Payslip" },
+		{ value: "2", label: "All Employee Payslip" },
 	];
 
 	useEffect(() => {
-		console.log("inside report page");
 		if (report.selectedReport !== report.viewReport) {
 			setReport({ ...report, viewReport: "" });
 		}
 	}, [report.selectedReport]);
 	// set selected value
 	const setSelectedValue =
-		reportSelection.find((obj) => obj.label === report.selectedReport) || "";
+		reportType.find((obj) => obj.label === report.selectedReport) || "";
 
 	function onSubmit() {
 		setReport({ ...report, viewReport: report.selectedReport });
@@ -46,11 +44,43 @@ const PayrollPayslip = () => {
 		<div className="form-container">
 			<h2 className="section-title">Payroll Payslip</h2>
 			<div className="selection-menu-forreportpage">
+				<Select
+					className="form-dropdown"
+					placeholder="Month for Deduction"
+					value={
+						monthsObject.find(
+							(obj) => obj.label === monthyearSelection.month,
+						) || ""
+					} // set selected value
+					options={monthsObject} // set list of the data
+					onChange={(e) => {
+						setMonthYearSelection({
+							...monthyearSelection,
+							month: e.label,
+							monthNo: e.value,
+						});
+					}} // assign onChange function
+				/>
+				<Select
+					className="form-dropdown"
+					placeholder="Year for Deduction"
+					value={
+						yearsList.find((obj) => obj.value === monthyearSelection.year) || ""
+					} // set selected value
+					options={yearsList} // set list of the data
+					onChange={(e) => {
+						//console.log("Inside the year change dropdown", e);
+						setMonthYearSelection({
+							...monthyearSelection,
+							year: e.value,
+						});
+					}} // assign onChange function
+				/>
 				<FormDropDown
 					className="form-dropdown form-dropdown-fix"
 					placeholder="Select Report Type"
 					value={setSelectedValue}
-					data={reportSelection} // set list of the data
+					data={reportType} // set list of the data
 					onChange={(e) => {
 						setReport({
 							...report,
@@ -59,43 +89,23 @@ const PayrollPayslip = () => {
 					}} // assign onChange function
 				/>
 
-				{report.selectedReport === "Salary Report" ? (
-					<>
-						<Select
-							className="form-dropdown"
-							placeholder="Month for Deduction"
-							value={
-								monthsObject.find(
-									(obj) => obj.label === salaryReportDropdown.month,
-								) || ""
-							} // set selected value
-							options={monthsObject} // set list of the data
-							onChange={(e) => {
-								setSalaryReportDropdown({
-									...salaryReportDropdown,
-									month: e.label,
-									monthNo: e.value,
-								});
-							}} // assign onChange function
-						/>
-						<Select
-							className="form-dropdown"
-							placeholder="Year for Deduction"
-							value={
-								yearsList.find(
-									(obj) => obj.value === salaryReportDropdown.year,
-								) || ""
-							} // set selected value
-							options={yearsList} // set list of the data
-							onChange={(e) => {
-								//console.log("Inside the year change dropdown", e);
-								setSalaryReportDropdown({
-									...salaryReportDropdown,
-									year: e.value,
-								});
-							}} // assign onChange function
-						/>
-					</>
+				{report.selectedReport === "Selected Employee Payslip" ? (
+					<Select
+						className="form-dropdown"
+						placeholder="Year for Deduction"
+						value={
+							yearsList.find((obj) => obj.value === monthyearSelection.year) ||
+							""
+						} // set selected value
+						options={yearsList} // set list of the data
+						onChange={(e) => {
+							//console.log("Inside the year change dropdown", e);
+							setMonthYearSelection({
+								//...salaryReportDropdown,
+								year: e.value,
+							});
+						}} // assign onChange function
+					/>
 				) : null}
 				<div
 					onClick={() => {
