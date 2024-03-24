@@ -9,7 +9,7 @@ class ReceptionHomePage extends React.Component {
 	}
 	render() {
 		const { history, match, location } = this.props;
-
+		console.log(this.state);
 		return (
 			<FormPage
 				data={this.state.receptionMenu}
@@ -27,24 +27,11 @@ export default ReceptionHomePage;
 /* import React, { useState, useEffect } from "react";
 
 import FormPage from "../../component/formPage/formPage.component";
-import payrolldata from "./payrollmenudata";
-const PayrollHomePage = (props) => {
-	const [data, setData] = useState({});
-	useEffect(() => {
-		setData(payrolldata);
-	}, []);
+import receptiondata from "./receptionmenudata";
+const ReceptionHomePage = () => {
+	console.log(receptiondata);
 
-	const { history, match, location } = props;
-
-	return (
-		<FormPage
-			data={data.payrollMenu}
-			history={history}
-			match={match}
-			location={location}
-		/>
-	);
+	return <FormPage data={receptiondata} />;
 };
 
-export default PayrollHomePage;
- */
+export default ReceptionHomePage; */

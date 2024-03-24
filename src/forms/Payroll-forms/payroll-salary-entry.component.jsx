@@ -364,6 +364,7 @@ const PayrollSalaryEntry = () => {
 							getSalaryData(e);
 						}} // assign onChange function
 					/>
+					
 				</div>
 			</div>
 

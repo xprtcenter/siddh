@@ -59,13 +59,7 @@ class App extends Component {
 	componentWillUnmount() {
 		this.unsubscriveFromAuth();
 	}
-	pageLink = [
-		{
-			path: "/",
-			component: "Homepage",
-		},
-		{ path: "/sme", component: "SmeHomePage" },
-	];
+
 	render() {
 		//console.log("user print from home component", this.props.currentUser);
 		console.log("weight testing", window.innerWidth);

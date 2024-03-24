@@ -15,7 +15,7 @@
 	.right-side-main-section {
 		display: flex;
 		flex: 1 1 auto;
-		align-items: center;
+		/* align-items: center; */
 		flex-direction: column;
 		padding: 0 2rem;
 		justify-content: flex-start;
@@ -164,7 +164,7 @@
 		.right-side-main-section {
 			display: flex;
 			overflow: hidden;
-			align-items: center;
+			/* align-items: center; */
 			flex-direction: column;
 			padding: 0;
 			justify-content: flex-start;
