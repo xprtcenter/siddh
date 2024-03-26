@@ -52,17 +52,16 @@ $main-color: black;
 		}
 	}
 	input[type="date"] {
-		color: rgb(255, 255, 255);
+		color: rgba(0, 0, 0, 0);
 	}
-	/* .date-picker {
-		color: rgb(255, 255, 255);
-		
-	} */
 
 	input[type="date"]:focus {
-		color: black;
+		color: rgb(0, 0, 0);
 	}
 	.date-picker-after {
+		color: rgb(0, 0, 0);
+	}
+	input[type="date"].date-picker {
 		color: rgb(0, 0, 0);
 	}
 }

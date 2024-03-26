@@ -210,7 +210,7 @@ const PayrollSalaryEntry = () => {
 			esicEmployer: new_esicEmployer,
 			pfEmployer: new_pfEmployer,
 			pfEmployee: new_pfEmployee,
-			totalDeduction: new_totalDeduction,
+			totalDeduction: new_totalDeduction.toFixed(2),
 			totalAddition: new_totalAddition,
 			calculativeBasic: new_calculativeBasic,
 			inHandSalary: new_inHandSalary,
@@ -364,7 +364,6 @@ const PayrollSalaryEntry = () => {
 							getSalaryData(e);
 						}} // assign onChange function
 					/>
-					
 				</div>
 			</div>
 

@@ -7,7 +7,11 @@ const FormInput = ({ onChange, label, type, ...otherProps }) => {
 		<div className="group">
 			<input
 				className={`${
-					otherProps.type === "date" ? "date-picker-after" : ""
+					otherProps.type === "date"
+						? "date-picker-after"
+						: otherProps.value.length
+						? "date-picker"
+						: ""
 				} form-input`}
 				onChange={onChange}
 				type={type}
