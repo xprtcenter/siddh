@@ -25,6 +25,7 @@
     "react": "^16.13.1",
     "react-confirm-box": "^1.2.0",
     "react-countup": "^6.1.1",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^16.8.6",
     "react-double-scrollbar": "https://github.com/IniterWorker/react-double-scrollbar.git",
     "react-dropzone": "^14.2.3",

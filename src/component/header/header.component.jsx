@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -21,6 +21,7 @@ import HeaderDateTime from "./Timer.component";
 
 import { auth } from "../../firebase/firebase.utils";
 import "./header.styles.scss";
+import { isMobile } from "react-device-detect";
 
 const Header = ({
 	currentUser,
@@ -47,6 +48,11 @@ const Header = ({
 		console.log(mydata);
 		getData();
 	}, [data]); */
+	useEffect(() => {
+		if (isMobile) {
+			toggleMenuHidden();
+		}
+	}, []);
 
 	return (
 		<div className="main-header">
