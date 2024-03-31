@@ -28,20 +28,13 @@ const AppRoute = ({ currentUser, companyDetails }) => {
 	return (
 		<React.Fragment>
 			<Header cName={companyDetails.cName} />
-			<div className="main-section">
-				<Switch>
-					<Route exact path="/app" render={() => <HomePage />} />
-					<Route path={`${url}/payroll`} render={() => <PayrollHomePage />} />
-					<Route
-						path={`${url}/reception`}
-						render={() => <ReceptionHomePage />}
-					/>
-					<Route
-						path={`${url}/signin`}
-						render={() => <SignInAndSignUpPage />}
-					/>
-				</Switch>
-			</div>
+
+			<Switch>
+				<Route exact path="/app" render={() => <HomePage />} />
+				<Route path={`${url}/payroll`} render={() => <PayrollHomePage />} />
+				<Route path={`${url}/reception`} render={() => <ReceptionHomePage />} />
+				<Route path={`${url}/signin`} render={() => <SignInAndSignUpPage />} />
+			</Switch>
 
 			<Footer />
 		</React.Fragment>
