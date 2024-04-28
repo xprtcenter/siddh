@@ -12,7 +12,7 @@ const Home = () => {
 			<img src={logo} alt="logo" />
 			<div className="button_wrapper">
 				<button className="custom-btn-home btn-5">
-					<Link to="/app">Project</Link>
+					<Link to="/app">Hospital App</Link>
 				</button>
 				<button className="custom-btn-home btn-5">
 					<Link to="/riteshportfolio">Go to my Portfolio</Link>

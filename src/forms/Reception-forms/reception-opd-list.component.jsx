@@ -15,9 +15,10 @@ const OpdRegList = () => {
 		{
 			title: "Patient Name",
 			field: "patientname",
-			type: "text",
+			type: "string",
 			cellStyle: { padding: "0 1.7vw", textAlign: "left" },
 		},
+
 		/* 	{
 			title: "Employee Image",
 			field: "EmployeeImgUrl",

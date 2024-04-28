@@ -155,7 +155,7 @@ const PatientRegistration = () => {
 						<tbody>
 							{patientList
 								.filter((pat) => {
-									if (serarchTerm === "") {
+									/* if (serarchTerm === "") {
 										return pat;
 									} else if (
 										pat.patientname
@@ -166,7 +166,22 @@ const PatientRegistration = () => {
 											.includes(serarchTerm.toLowerCase())
 									) {
 										return pat;
-									}
+									} */
+									if (serarchTerm === "") {
+										let regDate = new Date(
+											Moment(pat.regDate).format().slice(0, -15),
+										);
+										const newRegDate = regDate.getTime();
+										return newRegDate <= sd && ed <= newRegDate;
+									} else if (
+										pat.patientname
+											.toLowerCase()
+											.includes(serarchTerm.toLowerCase()) ||
+										pat.mobileno
+											.toLowerCase()
+											.includes(serarchTerm.toLowerCase())
+									)
+										return pat;
 								})
 								.map((pat, idx) => {
 									return (

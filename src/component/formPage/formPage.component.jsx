@@ -6,7 +6,7 @@ import { ReactComponent as SidebarClosebutton } from "../../assets/arrow-right.s
 import { sideMenuHide } from "../../redux/menu/menu.action";
 
 import { createStructuredSelector } from "reselect";
-import RouteComponent from "../../route/route.component";
+import PageRouteComponent from "../../route/pageRoute.component";
 
 import { selectSideHide } from "../../redux/menu/menu.selectors";
 
@@ -30,7 +30,7 @@ const FormPage = ({ data, sideMenuHide, sidehide, companyDetails }) => {
 			</div>
 
 			<div className="right-side-main-section">
-				<RouteComponent />
+				<PageRouteComponent />
 			</div>
 		</div>
 	);
