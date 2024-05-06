@@ -5,6 +5,7 @@ import { createStructuredSelector } from "reselect";
 
 import { selectCurrentUser } from "../redux/user/user.selectors";
 import { selectCompanyDetails } from "../redux/appLicence/appLicence.selectors";
+
 /***************************** Payroll Pages *********************************/
 import PayrollDashboardPage from "../forms/Payroll-forms/payroll-dashboard";
 import PayrollEmpRegMaster from "../forms/Payroll-forms/payroll-employee-registration.component";
@@ -14,12 +15,14 @@ import PayrollSalaryEntry from "../forms/Payroll-forms/payroll-salary-entry.comp
 import PayrollSalaryCaculationMaster from "../forms/Payroll-forms/payroll-salary-calculation-master";
 import PayrollReportPage from "../forms/Payroll-forms/payroll-reports/payroll-report-page";
 import PayrollPayslip from "../forms/Payroll-forms/payroll-payslip.component";
+
 // /*************************** SME Pages **********************************/
 // import SMEDashboardPage from "../forms/sme-forms/sme-dashboard";
 // import ContractorPayment from "../forms/sme-forms/contractor-payment-details.component";
 // import ContractorMasterList from "../forms/sme-forms/contractor-master-list.component";
 // import ContractorMaster from "../forms/sme-forms/contractor-master.component";
 // import ContractorEmployeeEntry from "../forms/sme-forms/contractor-employee-entry.component";
+
 // /************************* Reception Pages *****************************************/
 import ReceptionDashboardPage from "../forms/Reception-forms/reception-dashboard";
 import DoctorMaster from "../forms/Reception-forms/doctor-master.component";
@@ -27,6 +30,11 @@ import OpdRegList from "../forms/Reception-forms/reception-opd-list.component";
 import PrescriptionPage from "../forms/Reception-forms/opd/opd-pages/prescription-page";
 import PatientRegistration from "../forms/Reception-forms/opd/opd-pages/patientListPage.component";
 /****************************** End Reception Pages **********************************/
+// /************************* Complaint Pages *****************************************/
+
+import ComplaintDashboardPage from "../forms/Complaint-forms/complaint-dashboard";
+import ComplaintListEntryForm from "../forms/Complaint-forms/complaint-list-entry.component";
+
 // import OpdRegList from "../forms/Reception-forms/reception-opd-list.component";
 // import ReceptionOpdRegistration from "../forms/Reception-forms/reception-opd-registration.component";
 
@@ -44,11 +52,7 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 	return (
 		<Switch>
 			{/* ************* Payroll Route************** */}
-			{/* <Route
-				exact
-				path="/app/payroll"
-				render={() => <PayrollDashboardPage />}
-			/> */}
+
 			<Route
 				exact
 				path="/app/payroll"
@@ -107,6 +111,8 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 				render={() => <PayrollReportPage />}
 			/>
 			<Route exact path={`${path}/payslip`} render={() => <PayrollPayslip />} />
+
+			{/* ************* Reception Route************** */}
 			<Route
 				exact
 				path="/app/reception"
@@ -127,10 +133,34 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 				path="/app/reception/opdlist"
 				render={() => <OpdRegList />}
 			/>
+
 			<Route
 				exact
 				path="/app/reception/prescription/:id"
 				render={() => <PrescriptionPage />}
+			/>
+			{/* ************* Complaint Route************** */}
+
+			<Route
+				exact
+				path="/app/complaint"
+				render={() =>
+					currentUser ? (
+						currentUser?.role.includes("COMPLAINT") ? (
+							<ComplaintDashboardPage />
+						) : (
+							(alert("You are Not Autorised for Complaint app"),
+							(<Redirect to="/app" />))
+						)
+					) : (
+						<Redirect to="/app/signin" />
+					)
+				}
+			/>
+			<Route
+				exact
+				path="/app/complaint/complaintlistentryform"
+				render={() => <ComplaintListEntryForm />}
 			/>
 		</Switch>
 	);

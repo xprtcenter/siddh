@@ -12,7 +12,7 @@ const PayrollEmpList = () => {
 			var THarray = [];
 			var table = document.getElementById(elmID);
 			var ths = table.getElementsByTagName("th");
-			for (var i = 0; i < ths.length; i++) {
+			for (let i = 0; i < ths.length; i++) {
 				var headingText = ths[i].innerHTML;
 				THarray.push(headingText);
 			}
@@ -20,7 +20,7 @@ const PayrollEmpList = () => {
 				styleSheet;
 			document.head.appendChild(styleElm);
 			styleSheet = styleElm.sheet;
-			for (var i = 0; i < THarray.length; i++) {
+			for (let i = 0; i < THarray.length; i++) {
 				styleSheet.insertRule(
 					"#" +
 						elmID +
@@ -43,28 +43,28 @@ const PayrollEmpList = () => {
 	function AddTableARIA() {
 		try {
 			var allTables = document.querySelectorAll("table");
-			for (var i = 0; i < allTables.length; i++) {
+			for (let i = 0; i < allTables.length; i++) {
 				allTables[i].setAttribute("role", "table");
 			}
 			var allRowGroups = document.querySelectorAll("thead, tbody, tfoot");
-			for (var i = 0; i < allRowGroups.length; i++) {
+			for (let i = 0; i < allRowGroups.length; i++) {
 				allRowGroups[i].setAttribute("role", "rowgroup");
 			}
 			var allRows = document.querySelectorAll("tr");
-			for (var i = 0; i < allRows.length; i++) {
+			for (let i = 0; i < allRows.length; i++) {
 				allRows[i].setAttribute("role", "row");
 			}
 			var allCells = document.querySelectorAll("td");
-			for (var i = 0; i < allCells.length; i++) {
+			for (let i = 0; i < allCells.length; i++) {
 				allCells[i].setAttribute("role", "cell");
 			}
 			var allHeaders = document.querySelectorAll("th");
-			for (var i = 0; i < allHeaders.length; i++) {
+			for (let i = 0; i < allHeaders.length; i++) {
 				allHeaders[i].setAttribute("role", "columnheader");
 			}
 			// this accounts for scoped row headers
 			var allRowHeaders = document.querySelectorAll("th[scope=row]");
-			for (var i = 0; i < allRowHeaders.length; i++) {
+			for (let i = 0; i < allRowHeaders.length; i++) {
 				allRowHeaders[i].setAttribute("role", "rowheader");
 			}
 			// caption role not needed as it is not a real role and

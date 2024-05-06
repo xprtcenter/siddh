@@ -258,55 +258,6 @@ class PayrollMaster extends React.Component {
 
 		return (
 			<div className="form-container">
-				<h2 className="section-title-formasterpage">Employer List</h2>
-
-				<table className="table-page-formasterpage">
-					<thead>
-						<tr className="table-header-formasterpage">
-							<th className="th1">Employer Code</th>
-							<th className="th2">Company Logo</th>
-							<th className="th3">Employer Name</th>
-							<th className="th4">Email</th>
-							<th className="th5">Company Name</th>
-							<th className="th6">Address</th>
-							<th className="th7">Contact</th>
-							<th className="th8">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{mydata.map((item) => (
-							<tr className="table-data-row-formasterpage">
-								<td className="emp-code-formasterpage">{item.EmployerCode}</td>
-								<td className="table-image-container-formasterpage">
-									<img
-										src={item.CompanyLogo ? item.CompanyLogo : comlogo}
-										alt="dummyimg"
-									/>
-								</td>
-								<td>{item.EmployerName}</td>
-								<td>{item.EmployerEmail}</td>
-								<td>{item.EmployerCompanyName}</td>
-								<td>{item.EmployerAddress}</td>
-								<td>{item.EmployerContact}</td>
-								<td>
-									<button className="btn-formasterpage btn-view-formasterpage">
-										View
-									</button>
-
-									<Link to={`/payroll/paymaster/${item.id}`}>
-										<button className="btn-formasterpage btn-edit-formasterpage">
-											Edit
-										</button>
-									</Link>
-
-									<button className="btn-formasterpage btn-delete-formasterpage">
-										Delete
-									</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
 				<form onSubmit={this.handleSubmit}>
 					<h2 className="section-title">Employer Registration form</h2>
 
@@ -428,6 +379,55 @@ class PayrollMaster extends React.Component {
 						SUBMIT
 					</CustomButton>
 				</form>
+				<h2 className="section-title-formasterpage">Employer List</h2>
+
+				<table className="table-page-formasterpage">
+					<thead>
+						<tr className="table-header-formasterpage">
+							<th className="th1">Employer Code</th>
+							<th className="th2">Company Logo</th>
+							<th className="th3">Employer Name</th>
+							<th className="th4">Email</th>
+							<th className="th5">Company Name</th>
+							<th className="th6">Address</th>
+							<th className="th7">Contact</th>
+							<th className="th8">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{mydata.map((item) => (
+							<tr className="table-data-row-formasterpage">
+								<td className="emp-code-formasterpage">{item.EmployerCode}</td>
+								<td className="table-image-container-formasterpage">
+									<img
+										src={item.CompanyLogo ? item.CompanyLogo : comlogo}
+										alt="dummyimg"
+									/>
+								</td>
+								<td>{item.EmployerName}</td>
+								<td>{item.EmployerEmail}</td>
+								<td>{item.EmployerCompanyName}</td>
+								<td>{item.EmployerAddress}</td>
+								<td>{item.EmployerContact}</td>
+								<td>
+									<button className="btn-formasterpage btn-view-formasterpage">
+										View
+									</button>
+
+									<Link to={`/payroll/paymaster/${item.id}`}>
+										<button className="btn-formasterpage btn-edit-formasterpage">
+											Edit
+										</button>
+									</Link>
+
+									<button className="btn-formasterpage btn-delete-formasterpage">
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 		);
 	}

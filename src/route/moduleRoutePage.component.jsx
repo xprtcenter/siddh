@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import React from "react";
+import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -9,15 +9,11 @@ import { selectCompanyDetails } from "../redux/appLicence/appLicence.selectors";
 
 /**************************************  Page  *****************************************/
 import HomePage from "../pages/homepage/homepage.component";
-// import ShopPage from "../pages/shop/shop.component";
 import SignInAndSignUpPage from "../pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-// import CheckoutPage from "../pages/checkout/checkout.component";
 import ReceptionHomePage from "../pages/receptionPages/receptionHomePage.component";
-// import UserProfile from "../pages/user/user-profile.component";
 import PayrollHomePage from "../pages/payrollPages/payrollHomePage.component";
-// import XrayImages from "../component/x-ray-images/xray-images.component";
-// import ModuleCreation from "../forms/Admin-form/AppMasters/ModuleCreation.component";
-// import ReceptionHomePage from "../forms/Reception-forms/ReceptionHomePages/ReceptionHomePage.component";
+import ComplaintHomePage from "../pages/complaint/complaintHomePage.component";
+import AdminHomePage from "../pages/admin/adminHomePage.component";
 
 /***********************************  Header Footer Component  *********************************************/
 import Header from "../component/header/header.component";
@@ -25,14 +21,59 @@ import Footer from "../component/footer/footer.component";
 
 const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 	const { url, path } = useRouteMatch();
+	const history = useHistory();
+	let userrole = currentUser?.role;
+	const message = "You are not authorised please login with an authorised user";
 	return (
 		<React.Fragment>
 			<Header cName={companyDetails.cName} />
 
 			<Switch>
 				<Route exact path="/app" render={() => <HomePage />} />
-				<Route path={`${url}/payroll`} render={() => <PayrollHomePage />} />
-				<Route path={`${url}/reception`} render={() => <ReceptionHomePage />} />
+
+				<Route
+					path={`${url}/payroll`}
+					render={() =>
+						userrole?.includes("PAYROLL") ? (
+							<PayrollHomePage />
+						) : (
+							(alert(message), history.push("/app"))
+						)
+					}
+				/>
+
+				<Route
+					path={`${url}/complaint`}
+					render={() =>
+						userrole?.includes("COMPLAINT") ? (
+							<ComplaintHomePage />
+						) : (
+							(alert(message), history.push("/app"))
+						)
+					}
+				/>
+
+				<Route
+					path={`${url}/reception`}
+					render={() =>
+						userrole?.includes("RECEPTION") ? (
+							<ReceptionHomePage />
+						) : (
+							(alert(message), history.push("/app"))
+						)
+					}
+				/>
+				<Route
+					path={`${url}/admin`}
+					render={() =>
+						userrole?.includes("ADMIN") ? (
+							<AdminHomePage />
+						) : (
+							(alert(message), history.push("/app"))
+						)
+					}
+				/>
+
 				<Route path={`${url}/signin`} render={() => <SignInAndSignUpPage />} />
 			</Switch>
 

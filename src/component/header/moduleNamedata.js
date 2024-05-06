@@ -21,7 +21,7 @@ const moduleNamedata = {
 			title: "ADMIN",
 			imageUrl: admin,
 			id: 1,
-			linkUrl: "modulecreation",
+			linkUrl: "admin",
 		},
 		{
 			title: "SME",
@@ -68,7 +68,7 @@ const moduleNamedata = {
 			imageUrl: complaint,
 
 			id: 8,
-			linkUrl: "SHOP",
+			linkUrl: "complaint",
 		},
 	],
 };

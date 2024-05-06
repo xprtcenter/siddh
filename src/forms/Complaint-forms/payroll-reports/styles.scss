@@ -1,0 +1,50 @@
+.right-side-main-section {
+	.payroll-report-page-title {
+		font-size: 1.6rem;
+		font-weight: 400;
+	}
+	.selection-menu-forreportpage {
+		display: flex;
+		justify-content: left;
+		gap: 10px;
+		.button-submit-formpage {
+			align-self: center;
+			padding: 5px;
+			width: 80px;
+			margin: 5px;
+			border-radius: 0.5rem;
+			text-align: center;
+			font-size: 0.8rem;
+			background-color: var(--primary-color);
+			color: black;
+			text-transform: uppercase;
+			font-family: "Open Sans Condensed";
+			font-weight: bolder;
+			border: none;
+			cursor: pointer;
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+	.report-container-forreportpage {
+		background-color: white;
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		margin: 1vh 2vw;
+		padding: 1vh 0 0 1vw;
+
+		/* .selection-menu-forreportpage {
+			//width: 100%;
+			display: flex;
+		} */
+	}
+}
+@media only screen and (max-width: 1200px) {
+	.right-side-main-section {
+		.selection-menu-forreportpage {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+}
