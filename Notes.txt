@@ -1,0 +1,13 @@
+Document 
+requirement for CRUD operations
+    path
+    funtion type  ( data recieing (get)table data, textbox data for edit, )
+                
+   
+database credencials
+default setting page
+    database type
+
+
+
+Route page data

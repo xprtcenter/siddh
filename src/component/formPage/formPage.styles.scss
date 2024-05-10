@@ -26,6 +26,17 @@
 		.section-subtitle {
 			padding: 0 1rem;
 		}
+		.form-table-container {
+			display: flex;
+			flex-direction: row;
+			padding: 1.6vh 2vw;
+			width: 100%;
+			background-color: var(--primary-color-m);
+			margin-top: 1vw;
+			.table-container {
+				max-width: 63vw;
+			}
+		}
 		.form-container {
 			display: flex;
 			flex-direction: column;
@@ -170,6 +181,7 @@
 			.section-subtitle {
 				padding: 0 1rem;
 			}
+
 			.form-container {
 				display: flex;
 				flex-direction: column;
