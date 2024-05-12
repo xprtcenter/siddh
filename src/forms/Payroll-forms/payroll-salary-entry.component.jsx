@@ -211,7 +211,7 @@ const PayrollSalaryEntry = () => {
 			pfEmployer: new_pfEmployer,
 			pfEmployee: new_pfEmployee,
 			totalDeduction: new_totalDeduction.toFixed(2),
-			totalAddition: new_totalAddition,
+			totalAddition: new_totalAddition.toFixed(2),
 			calculativeBasic: new_calculativeBasic,
 			inHandSalary: new_inHandSalary,
 			ctc: new_ctc,

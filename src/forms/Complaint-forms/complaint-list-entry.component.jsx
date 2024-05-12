@@ -7,8 +7,12 @@ import options from "./data/complaint-dropdown.option";
 
 import Select from "react-select";
 import CustomTable from "../../component/table/custom-table-material.component";
+import "./styles/complaint.styles.scss";
+import { Today } from "@material-ui/icons";
 
 const ComplaintListEntryForm = () => {
+	let todayDate = new Date();
+
 	const initialState = {
 		Editid: "",
 		ComplaintCode: "",
@@ -20,6 +24,8 @@ const ComplaintListEntryForm = () => {
 		ComplaintRemark: "",
 		ComplaintStatus: "",
 		ComplaintStatusRemark: "",
+		ComplaintDate: "",
+		ComplaintDoneDate: "",
 		mydata: [],
 		fillStatus: 1,
 		uploadstatus: 0,
@@ -42,84 +48,7 @@ const ComplaintListEntryForm = () => {
 			});
 		}
 	}, []);
-	/*	constructor(props) {
-		super(props);
-		this.onDataChange = this.onDataChange.bind(this);
-		this.state = initialState;
-		this.unsubscribe = undefined;
-	}
-	componentWillUpdate() {
-		if (this.state.fillStatus === 1) {
-			var getidArray = window.location.href.split("/");
-			const getIDData = getidArray[getidArray.length - 1];
-			const dbRef = firestore.doc(
-				`complaintData/complaintEntryList/complaint/${getIDData}`,
-			);
 
-			dbRef
-				.get()
-				.then((doc) => {
-					if (doc.exists) {
-						const newData = doc.data();
-						setData({
-							Editid: getIDData,
-							DoctorName: newData.DoctorName,
-							DoctorSpecialization: newData.DoctorSpecialization,
-							DoctorContact: newData.DoctorContact,
-							DoctorEmail: newData.DoctorEmail,
-
-							fillStatus: 2,
-						});
-					} else {
-						// doc.data() will be undefined in this case
-						console.log("No such document!");
-					}
-				})
-				.catch((error) => {
-					console.log("Error getting document:", error);
-				});
-		}
-	}
- 	componentDidMount() {
-		const db = firestore
-			.collection("complaintData")
-			.doc("complaintEntryList")
-			.collection("complaint");
-
-		this.unsubscribe = db
-			.orderBy("ComplaintCode", "asc")
-			.onSnapshot(this.onDataChange);
-	}
-
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
- 
-	const onDataChange(items) {
-		let mydata = [];
-
-		items.forEach((item) => {
-			let id = item.id;
-			let data = item.data();
-			mydata.push({
-				id: id,
-
-				ComplaintType: data.ComplaintType,
-				ComplaintSubType: data.ComplaintSubType,
-				ComplaintBy: data.ComplaintBy,
-				ComplaintDepartment: data.ComplaintDepartment,
-				ComplaintDescruption: data.ComplaintDescruption,
-				ComplaintRemark: data.ComplaintRemark,
-				ComplaintStatus: data.ComplaintStatus,
-				ComplaintStatusRemark: data.ComplaintStatusRemark,
-			});
-		});
-
-		setData({
-			mydata: mydata,
-		});
-	}
-*/
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
@@ -132,6 +61,8 @@ const ComplaintListEntryForm = () => {
 			ComplaintRemark: data.ComplaintRemark,
 			ComplaintStatus: data.ComplaintStatus,
 			ComplaintStatusRemark: data.ComplaintStatusRemark,
+			ComplaintDate: data.ComplaintDate,
+			ComplaintDoneDate: data.ComplaintDoneDate,
 		};
 		const db = firestore
 			.collection("complaintData")
@@ -172,6 +103,12 @@ const ComplaintListEntryForm = () => {
 	};
 	const tableTitle = "Complaint List";
 	const columns = [
+		{
+			title: "Complaint Date",
+			field: "ComplaintDate",
+
+			cellStyle: { padding: "0 0.5vw", textAlign: "center" },
+		},
 		{
 			title: "Complaint type",
 			field: "ComplaintType",
@@ -220,6 +157,12 @@ const ComplaintListEntryForm = () => {
 
 			cellStyle: { padding: "0 0.5vw", textAlign: "center" },
 		},
+		{
+			title: "Complaint Done Date",
+			field: "ComplaintDoneDate",
+
+			cellStyle: { padding: "0 0.5vw", textAlign: "center" },
+		},
 	];
 	const {
 		ComplaintType,
@@ -230,7 +173,8 @@ const ComplaintListEntryForm = () => {
 		ComplaintRemark,
 		ComplaintStatus,
 		ComplaintStatusRemark,
-		mydata,
+		ComplaintDate,
+		ComplaintDoneDate,
 	} = data;
 	const dbpath = firestore
 		.collection("complaintData")
@@ -242,6 +186,15 @@ const ComplaintListEntryForm = () => {
 				<h2 className="section-title">Complaint Entry form</h2>
 
 				<div className="image-form-page">
+					<FormInput
+						type="date"
+						name="ComplaintDate"
+						value={ComplaintDate || todayDate.toISOString().substr(0, 10)}
+						onChange={handleChange}
+						label="Complaint Date"
+						required
+						readonly="true"
+					/>
 					<Select
 						className="form-dropdown"
 						placeholder="Select Department"
@@ -255,23 +208,31 @@ const ComplaintListEntryForm = () => {
 							setData({ ...data, ComplaintDepartment: e.value });
 						}} // assign onChange function
 					/>
-
-					<FormInput
-						type="text"
-						name="ComplaintType"
-						value={ComplaintType || ""}
-						onChange={handleChange}
-						label="Complaint Type"
-						required
+					<Select
+						className="form-dropdown"
+						placeholder="Complaint Type"
+						value={
+							options.ComplaintType?.find(
+								(obj) => obj.value === ComplaintType,
+							) || ""
+						} // set selected value
+						options={options.ComplaintType} // set list of the data
+						onChange={(e) => {
+							setData({ ...data, ComplaintType: e.value });
+						}} // assign onChange function
 					/>
-
-					<FormInput
-						type="text"
-						name="ComplaintSubType"
-						value={ComplaintSubType || ""}
-						onChange={handleChange}
-						label="Complaint Sub Type"
-						required
+					<Select
+						className="form-dropdown"
+						placeholder="Complaint Sub Type"
+						value={
+							options.ComplaintSubType?.find(
+								(obj) => obj.value === ComplaintSubType,
+							) || ""
+						} // set selected value
+						options={options.ComplaintSubType} // set list of the data
+						onChange={(e) => {
+							setData({ ...data, ComplaintSubType: e.value });
+						}} // assign onChange function
 					/>
 
 					<FormInput
@@ -319,57 +280,19 @@ const ComplaintListEntryForm = () => {
 						label="Complaint Status Remark"
 						required
 					/>
+					<FormInput
+						type="date"
+						name="ComplaintDoneDate"
+						value={ComplaintDoneDate || ""}
+						onChange={handleChange}
+						label="Complaint Done Date"
+					/>
 				</div>
 				<CustomButton type="submit" sizefix>
 					SUBMIT
 				</CustomButton>
 			</form>
 			<div className="table-container">
-				{/*<table className="table-page">
-					<thead>
-						<tr className="table-header">
-							<th className="th1">Sr No.</th>
-
-							<th className="th3">Complaint Type</th>
-							<th className="th4">ComplaintSub Type</th>
-
-							<th className="th6">Complaint By</th>
-							<th className="th7">Complaint Department</th>
-							<th className="th7">Complaint Descruption</th>
-							<th className="th7">Complaint Remark</th>
-							<th className="th7">Complaint Status</th>
-							<th className="th7">Complaint Status Remark</th>
-
-							<th className="th8">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{mydata.map((item, idx) => (
-							<tr className="table-data-row">
-								<td className="emp-code">{idx + 1}</td>
-
-								<td>{item.ComplaintType}</td>
-								<td>{item.ComplaintSubType}</td>
-
-								<td>{item.ComplaintBy}</td>
-								<td>{item.ComplaintDepartment}</td>
-								<td>{item.ComplaintDescruption}</td>
-								<td>{item.ComplaintRemark}</td>
-								<td>{item.ComplaintStatus}</td>
-								<td>{item.ComplaintStatusRemark}</td>
-								<td>
-									<button className="btn btn-view">View</button>
-
-									<Link to={`/reception/doctormaster/${item.id}`}>
-										<button className="btn btn-edit">Edit</button>
-									</Link>
-
-									<button className="btn btn-delete">Delete</button>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>*/}
 				<CustomTable
 					data={dbpath}
 					columns={columns}

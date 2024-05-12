@@ -1,16 +1,21 @@
 const options = {
 	ComplaintStatus: [
 		{ value: "Active", label: "Active" },
-		{ value: "Hold", label: "Hold" },
-		{ value: "Leaving", label: "Leaving" },
+		{ value: "Done", label: "Done" },
+		{ value: "Pending", label: "Pending" },
 	],
-	ESIC: [
-		{ value: "Yes", label: "Yes" },
-		{ value: "No", label: "No" },
+	ComplaintType: [
+		{ value: "Hardware", label: "Hardware" },
+		{ value: "Software", label: "Software" },
+		{ value: "Networking", label: "Networking" },
+		{ value: "Civil", label: "Civil" },
 	],
-	PFOption: [
-		{ value: "Yes", label: "Yes" },
-		{ value: "No", label: "No" },
+	ComplaintSubType: [
+		{ value: "Telephone", label: "Telephone" },
+		{ value: "TV", label: "TV" },
+		{ value: "HIS", label: "HIS" },
+		{ value: "Mobile", label: "Mobile" },
+		{ value: "Other", label: "Other" },
 	],
 	Gender: [
 		{ value: "Male", label: "Male" },

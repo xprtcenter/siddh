@@ -1,5 +1,11 @@
 import React from "react";
-import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
+import {
+	Switch,
+	Route,
+	useRouteMatch,
+	useHistory,
+	Redirect,
+} from "react-router-dom";
 
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -24,57 +30,54 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 	const history = useHistory();
 	let userrole = currentUser?.role;
 	const message = "You are not authorised please login with an authorised user";
+	const RouteData = [
+		{
+			id: 1,
+			path: "payroll",
+			elementName: PayrollHomePage,
+			roll: "PAYROLL",
+		},
+		{
+			id: 2,
+			path: "complaint",
+			elementName: ComplaintHomePage,
+			roll: "COMPLAINT",
+		},
+		{
+			id: 3,
+			path: "reception",
+			elementName: ReceptionHomePage,
+			roll: "RECEPTION",
+		},
+		{
+			id: 4,
+			path: "admin",
+			elementName: AdminHomePage,
+			roll: "ADMIN",
+		},
+	];
 	return (
 		<React.Fragment>
 			<Header cName={companyDetails.cName} />
 
 			<Switch>
 				<Route exact path="/app" render={() => <HomePage />} />
-
+				{RouteData.map((comp) => (
+					<Route
+						path={`${url}/${comp.path}`}
+						render={() =>
+							userrole?.includes(comp.roll)
+								? React.createElement(comp.elementName)
+								: (alert(message), history.push("/app"))
+						}
+					/>
+				))}
 				<Route
-					path={`${url}/payroll`}
+					path={`/app/signin`}
 					render={() =>
-						userrole?.includes("PAYROLL") ? (
-							<PayrollHomePage />
-						) : (
-							(alert(message), history.push("/app"))
-						)
+						currentUser ? <Redirect to="/app" /> : <SignInAndSignUpPage />
 					}
 				/>
-
-				<Route
-					path={`${url}/complaint`}
-					render={() =>
-						userrole?.includes("COMPLAINT") ? (
-							<ComplaintHomePage />
-						) : (
-							(alert(message), history.push("/app"))
-						)
-					}
-				/>
-
-				<Route
-					path={`${url}/reception`}
-					render={() =>
-						userrole?.includes("RECEPTION") ? (
-							<ReceptionHomePage />
-						) : (
-							(alert(message), history.push("/app"))
-						)
-					}
-				/>
-				<Route
-					path={`${url}/admin`}
-					render={() =>
-						userrole?.includes("ADMIN") ? (
-							<AdminHomePage />
-						) : (
-							(alert(message), history.push("/app"))
-						)
-					}
-				/>
-
-				<Route path={`${url}/signin`} render={() => <SignInAndSignUpPage />} />
 			</Switch>
 
 			<Footer />

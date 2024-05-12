@@ -8,7 +8,7 @@ import ImageBox from "../../component/image-box/image-box.component";
 
 import options from "../Payroll-forms/data/payroll-dropdown.option";
 import Select from "react-select";
-var todayDate = new Date();
+let todayDate = new Date();
 //todayDate.setDate(todayDate.getDate() + 2);
 var finalDate = todayDate.toISOString().substr(0, 10);
 const initialState = {
