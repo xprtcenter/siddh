@@ -37,7 +37,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 						userrole?.includes("PAYROLL") ? (
 							<PayrollHomePage />
 						) : (
-							(alert(message), history.push("/app"))
+							(alert(message), history.push(`${url}`))
 						)
 					}
 				/>
@@ -48,7 +48,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 						userrole?.includes("COMPLAINT") ? (
 							<ComplaintHomePage />
 						) : (
-							(alert(message), history.push("/app"))
+							(alert(message), history.push(`${url}`))
 						)
 					}
 				/>
@@ -59,7 +59,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 						userrole?.includes("RECEPTION") ? (
 							<ReceptionHomePage />
 						) : (
-							(alert(message), history.push("/app"))
+							(alert(message), history.push(`${url}`))
 						)
 					}
 				/>
@@ -69,7 +69,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 						userrole?.includes("ADMIN") ? (
 							<AdminHomePage />
 						) : (
-							(alert(message), history.push("/app"))
+							(alert(message), history.push(`${url}`))
 						)
 					}
 				/>

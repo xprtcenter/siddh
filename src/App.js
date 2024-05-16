@@ -39,7 +39,7 @@ class App extends Component {
 
 	render() {
 		//console.log("user print from home component", this.props.currentUser);
-		console.log("weight testing", window.innerWidth);
+		//console.log("weight testing", window.innerWidth);
 		return (
 			<div className="root-container">
 				<Switch>
