@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from "react";
-
 import { EmployeeData } from "./Functions/getemployeedetails";
-import CustomTable from "../../component/table/custom-table-material.component";
-import { firestore } from "../../firebase/firebase.utils";
+import CustomTable from "../../component/table/custom-salary-table-material.component";
 
 const PayrollSalaryReport = ({ salaryReportDropdown }) => {
-	const [salaryData, setSalaryData] = useState([]);
-	const [ctcTotalArray, setCtCtotalArray] = useState([]);
 	const tableTitle = "Complaint List";
 	const columns = [
 		{
@@ -65,100 +60,23 @@ const PayrollSalaryReport = ({ salaryReportDropdown }) => {
 			cellStyle: { padding: "0 0.5vw", textAlign: "center" },
 		},
 	];
-
-	let salaryDataArray = [];
 	const { month, year } = salaryReportDropdown;
-	const getMonthFromString = (mon) => {
-		var d = Date.parse(mon + "1, 2012");
-		if (!isNaN(d)) {
-			return new Date(d).getMonth() + 1;
-		}
-		return -1;
-	};
 
-	const employeeData = () => {
-		console.log("employeedata function");
-
-		let ctcArray = [];
-
-		EmployeeData.onSnapshot((employees) => {
-			/*************************************************get 1st employee items ********************************/
-			employees.forEach((employee) => {
-				const edata = employee.data();
-				let activeEid = employee.id;
-				if (edata.EmployeeStatusActive !== "Leaving") {
-					/*************************************************get Active employee *************************************/
-
-					let SalDataPath = firestore
-						.collection("payrollData")
-						.doc("Salary")
-						.collection(activeEid);
-					/*************************************************get Salary by Active employee *****************************/
-					SalDataPath.onSnapshot((salaryDatas) => {
-						salaryDatas.forEach((salary) => {
-							let sdata = salary.data();
-							let sid = salary.id;
-							const month1 = getMonthFromString(month);
-							const monthyear = `${month1}${year}`;
-
-							/*************************************************get salary by monthyear ********************************/
-							if (monthyear === sid) {
-								console.log("monthyear", monthyear);
-								console.log("salary id", sid);
-								console.log("salary data", sdata);
-								salaryDataArray.push({ ...edata, ...sdata });
-								console.log("sa;asdasdasd 2", salaryDataArray);
-								//combine employee and salary data
-								//create array
-
-								//creating array of ctc data
-								/* 	let ctc = sdata.ctc;
-								ctcArray.push(parseFloat(ctc)); */
-							}
-						});
-						setSalaryData(salaryDataArray);
-					});
-				}
-			});
-			//check active employee
-			//get salary data
-			//check month year
-			console.log("sa;asdasdasd", salaryDataArray);
-		});
-
-		//set salaryData
-		// const ctcsum = ctcArray.reduce(
-		// 	(previousValue, currentValue, index) => previousValue + currentValue,
-		// 	0,
-		// );
-		// setCtCtotalArray(ctcsum);
-		// setLoder(false);
-	};
-	/* 
-	useEffect(() => {
-		console.log("useeffect");
-		if (salaryData.length === 0) {
-			employeeData();
-		}
-
-		console.log("salaryData inside useeffect", salaryData);
-	}, [salaryData.length, salaryDataArray]);
- */
 	return (
-		<div className="table-container">
-			{salaryData.length > 0 ? (
+		<>
+			<div className="table-container">
 				<CustomTable
-					data={salaryData}
+					data={EmployeeData}
 					columns={columns}
 					tableTitle={tableTitle}
+					month={month}
+					year={year}
 					/* editFunction={registrationEditPath} */
 					/* addFunction={addFunction}
 				deleteFunction={deleteFunction} */
 				/>
-			) : (
-				"No Data Found"
-			)}
-		</div>
+			</div>
+		</>
 	);
 };
 export default PayrollSalaryReport;

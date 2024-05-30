@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import FormInput from "../../component/form-input/form-input.component";
-import CustomButton from "../../component/custom-button/custom-button.component";
-import UserDataServices from "./user-services";
+//import FormInput from "../../component/form-input/form-input.component";
+//import CustomButton from "../../component/custom-button/custom-button.component";
+//import UserDataServices from "./user-services";
 import "./user-profile.styles.scss";
-import { storage } from "../../firebase/firebase.utils";
+//import { storage } from "../../firebase/firebase.utils";
 
 const UserProfile = () => {
 	/* 
@@ -275,6 +275,7 @@ const UserProfile = () => {
 		</div> 
 	);
 	*/
+	return <h2>User Profile Page</h2>;
 };
 
 export default UserProfile;

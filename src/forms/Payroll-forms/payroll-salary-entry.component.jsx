@@ -102,6 +102,8 @@ const PayrollSalaryEntry = () => {
 			calculativeStateUpdatefunction();
 		}
 	}, [
+		currentYear,
+		monthNois,
 		newOptions.EmployeeArray.length,
 		salaryData.EmployeeName,
 		salaryData.weeklyoff,

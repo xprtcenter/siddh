@@ -34,7 +34,7 @@ import PatientRegistration from "../forms/Reception-forms/opd/opd-pages/patientL
 
 import ComplaintDashboardPage from "../forms/Complaint-forms/complaint-dashboard";
 import ComplaintListEntryForm from "../forms/Complaint-forms/complaint-list-entry.component";
-
+import pageData from "./pageRoute.data";
 // import OpdRegList from "../forms/Reception-forms/reception-opd-list.component";
 // import ReceptionOpdRegistration from "../forms/Reception-forms/reception-opd-registration.component";
 
@@ -56,18 +56,7 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 			<Route
 				exact
 				path="/app/payroll"
-				render={() =>
-					currentUser ? (
-						currentUser?.role.includes("PAYROLL") ? (
-							<PayrollDashboardPage />
-						) : (
-							(alert("You are Not Autorised for Payroll app"),
-							(<Redirect to="/app" />))
-						)
-					) : (
-						<Redirect to="/app/signin" />
-					)
-				}
+				render={() => <PayrollDashboardPage />}
 			/>
 			<Route
 				exact
@@ -144,18 +133,7 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 			<Route
 				exact
 				path="/app/complaint"
-				render={() =>
-					currentUser ? (
-						currentUser?.role.includes("COMPLAINT") ? (
-							<ComplaintDashboardPage />
-						) : (
-							(alert("You are Not Autorised for Complaint app"),
-							(<Redirect to="/app" />))
-						)
-					) : (
-						<Redirect to="/app/signin" />
-					)
-				}
+				render={() => <ComplaintDashboardPage />}
 			/>
 			<Route
 				exact

@@ -10,7 +10,7 @@ import PageRouteComponent from "../../route/pageRoute.component";
 
 import { selectSideHide } from "../../redux/menu/menu.selectors";
 
-const FormPage = ({ data, sideMenuHide, sidehide, companyDetails }) => {
+const FormPage = ({ data, sideMenuHide, sidehide }) => {
 	return (
 		<div className="form-page">
 			<div className="leftside-menu-block open">
