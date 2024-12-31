@@ -39,17 +39,13 @@ class App extends Component {
 	}
 
 	render() {
-		//console.log("user print from home component", this.props.currentUser);
-		//console.log("weight testing", window.innerWidth);
 		return (
-			<div className="root-container">
-				<Switch>
-					<Route exact path="/" render={() => <Home />} />
-					<Route path="/app" render={() => <ModuleRoutePage />} />
-					<Route path="/riteshportfolio" render={() => <Ritesh />} />
-					<Route path="/codepenPortfolio" render={() => <CodepenPortfolio />} />
-				</Switch>
-			</div>
+			<Switch>
+				<Route exact path="/" render={() => <Home />} />
+				<Route path="/app" render={() => <ModuleRoutePage />} />
+				<Route path="/riteshportfolio" render={() => <Ritesh />} />
+				<Route path="/codepenPortfolio" render={() => <CodepenPortfolio />} />
+			</Switch>
 		);
 	}
 }

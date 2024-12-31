@@ -35,25 +35,25 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 			id: 1,
 			path: "payroll",
 			elementName: PayrollHomePage,
-			roll: "PAYROLL",
+			role: "PAYROLL",
 		},
 		{
 			id: 2,
 			path: "complaint",
 			elementName: ComplaintHomePage,
-			roll: "COMPLAINT",
+			role: "COMPLAINT",
 		},
 		{
 			id: 3,
 			path: "reception",
 			elementName: ReceptionHomePage,
-			roll: "RECEPTION",
+			role: "RECEPTION",
 		},
 		{
 			id: 4,
 			path: "admin",
 			elementName: AdminHomePage,
-			roll: "ADMIN",
+			role: "ADMIN",
 		},
 	];
 	return (
@@ -67,7 +67,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 						key={i}
 						path={`${url}/${comp.path}`}
 						render={() =>
-							userrole?.includes(comp.roll)
+							userrole?.includes(comp.role)
 								? React.createElement(comp.elementName)
 								: (alert(message), history.push("/app"))
 						}

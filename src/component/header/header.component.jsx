@@ -32,22 +32,6 @@ const Header = ({
 	activeHeaderButton,
 	cName,
 }) => {
-	/* const data = firestore().collection("moduleAndPageMaster");
-	const [mydata, setMyData] = useState([]);
-
-	useEffect(() => {
-		const getData = async () => {
-			const updatedData = await data.get();
-			let employee = [];
-			updatedData.docs.forEach((doc) => {
-				employee.push({ ...doc.data(), id: doc.id });
-			});
-			console.log("Data Ref for Header check", employee);
-			setMyData(employee);
-		};
-		console.log(mydata);
-		getData();
-	}, [data]); */
 	useEffect(() => {
 		if (isMobile) {
 			toggleMenuHidden();

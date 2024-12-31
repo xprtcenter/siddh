@@ -1,6 +1,4 @@
 .main-header {
-	/* background-color: var(--header-background-color); */
-
 	display: flex;
 	flex-direction: column;
 	position: sticky;
@@ -8,7 +6,6 @@
 	top: 0;
 	background-color: var(--header-background-color);
 	width: 100vw;
-	/* overflow: hidden; */
 
 	.header1 {
 		display: flex;
@@ -177,8 +174,84 @@
 		}
 		.header {
 			.logo-container {
+				img {
+					height: 5vw;
+				}
 				.text {
-					padding: 1vh 1vw;
+					font-size: calc(10px + 0.5vw);
+				}
+			}
+			.nav-options-container {
+				width: 30vw;
+				flex-direction: row-reverse;
+				.header-menu {
+					position: absolute;
+					background-color: var(--primary-color-m);
+					padding: 2rem;
+					display: flex;
+					flex-direction: column;
+
+					border: 1px solid black;
+					top: 27vh;
+					right: 40px;
+					z-index: 7;
+
+					.nav-option {
+						color: var(--font-primary-color);
+						display: block;
+						font-size: calc(18px + 0.5vw);
+						text-align: center;
+					}
+					:hover {
+						background-color: var(--primary-color);
+						color: var(--font-secondary-color);
+					}
+				}
+				.menu-button-icon {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					img {
+						height: 3vw;
+						margin: 0.5vh;
+					}
+				}
+				.user-info-container {
+					display: flex;
+					align-items: center;
+					margin-right: 1vw;
+					img {
+						height: 5vw;
+						margin: 0 0.2vw;
+					}
+					.text {
+						font-size: calc(10px + 0.5vw);
+					}
+					.nav__submenu {
+						//width: 30vw;
+						margin-top: 1.5vh;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 700px) {
+	.main-header {
+		.header1 {
+			flex-direction: row;
+			padding: 0 2vw;
+			p:nth-child(1) {
+				font-size: calc(8px+1vw);
+			}
+		}
+		.header {
+			.logo-container {
+				img {
+					height: 7vw;
+				}
+				.text {
+					font-size: calc(10px + 0.5vw);
 				}
 			}
 			.nav-options-container {
@@ -190,6 +263,7 @@
 					/* top: 12vh;
 					width: 52vw;
  */
+
 					background-color: var(--primary-color-m);
 					z-index: 5;
 					position: absolute;
@@ -220,8 +294,8 @@
 					justify-content: center;
 					align-items: center;
 					img {
-						height: 8vw;
-						margin: 0.5vh;
+						height: 4vw;
+						/* margin: 0.5vh; */
 					}
 				}
 				.user-info-container {
@@ -234,7 +308,7 @@
 						font-size: 1rem;
 					}
 					.nav__submenu {
-						width: 30vw;
+						width: 15vw;
 						margin-top: 1.5vh;
 					}
 				}
