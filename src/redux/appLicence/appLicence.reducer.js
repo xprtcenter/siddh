@@ -1,8 +1,8 @@
 import appLicenceActionTypes from "./appLicence.types";
 
 const INITIAL_STATE = {
-	cName: "SIDDH HOSPITAL",
-	cAddress: "company Addres hadkal moradabad",
+	cName: "VIVEKANANDA KENDRA BINA REFIANARY HOSPITAL",
+	cAddress: "BPCL Bina Refianary Bina",
 	cPhoneNo: "89894458455",
 	cEmail: "emailid@company.com",
 	cWebSite: "www.websiteaddres.com",

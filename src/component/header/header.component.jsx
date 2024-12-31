@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import CartIcon from "../../component/card-icon/card-icon.component";
-import logo from "../../assets/siddh-logo.png";
+import logo from "../../assets/swami2.png";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import HeaderModules from "../header-module/header-module.component";
 import avtar from "../../assets/avatar.png";

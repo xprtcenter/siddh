@@ -12,9 +12,9 @@ const CustomTable = ({
 	editFunction,
 	addFunction,
 	deleteFunction,
-	month,
-	year,
 }) => {
+	let month = "November";
+	let year = 2023;
 	const [mySaldata, setMysalData] = useState([]);
 	const [mydata, setMyData] = useState([]);
 	const [loder, setLoder] = useState(false);
@@ -28,9 +28,10 @@ const CustomTable = ({
 	};
 
 	let salaryDataArray = [];
-	const employeeData = async () => {
+	let employeeData = null;
+	let ctcArray = [];
+	employeeData = async () => {
 		console.log("employeedata function");
-		let ctcArray = [];
 		await data.onSnapshot((employees) => {
 			/*************************************************get 1st employee items ********************************/
 
@@ -87,16 +88,19 @@ const CustomTable = ({
 		// );
 		// setCtCtotalArray(ctcsum);
 		//setMyData(mySaldata);
-		console.log("my sal data", mySaldata);
-		console.log("my data", mydata);
+		//console.log("my sal data", mySaldata);
+		//console.log("my data", mydata);
 		//setLoder(false);
 	};
-	useEffect(() => {
+	/* useEffect(() => {
 		if (mydata.length === 0) {
 			employeeData();
 		}
 		setMyData(salaryDataArray);
-	}, [mydata]);
+		return () => {
+			employeeData();
+		};
+	}, [mydata]); */
 
 	return (
 		<div className="custom-table">

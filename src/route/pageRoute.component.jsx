@@ -15,6 +15,7 @@ import PayrollSalaryEntry from "../forms/Payroll-forms/payroll-salary-entry.comp
 import PayrollSalaryCaculationMaster from "../forms/Payroll-forms/payroll-salary-calculation-master";
 import PayrollReportPage from "../forms/Payroll-forms/payroll-reports/payroll-report-page";
 import PayrollPayslip from "../forms/Payroll-forms/payroll-payslip.component";
+import PayrollSalaryReport from "../forms/Payroll-forms/payroll-salary-report.component";
 
 // /*************************** SME Pages **********************************/
 // import SMEDashboardPage from "../forms/sme-forms/sme-dashboard";
@@ -100,6 +101,11 @@ const PageRouteComponent = ({ currentUser, companyDetails }) => {
 				render={() => <PayrollReportPage />}
 			/>
 			<Route exact path={`${path}/payslip`} render={() => <PayrollPayslip />} />
+			<Route
+				exact
+				path={`${path}/payrollreport`}
+				render={() => <PayrollSalaryReport />}
+			/>
 
 			{/* ************* Reception Route************** */}
 			<Route

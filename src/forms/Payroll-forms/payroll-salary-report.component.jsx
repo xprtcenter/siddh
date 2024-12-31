@@ -60,23 +60,21 @@ const PayrollSalaryReport = ({ salaryReportDropdown }) => {
 			cellStyle: { padding: "0 0.5vw", textAlign: "center" },
 		},
 	];
-	const { month, year } = salaryReportDropdown;
+	//const { month, year } = salaryReportDropdown;
 
 	return (
-		<>
-			<div className="table-container">
-				<CustomTable
-					data={EmployeeData}
-					columns={columns}
-					tableTitle={tableTitle}
-					month={month}
-					year={year}
-					/* editFunction={registrationEditPath} */
-					/* addFunction={addFunction}
-				deleteFunction={deleteFunction} */
-				/>
-			</div>
-		</>
+		<div className="table-container">
+			<CustomTable
+				data={EmployeeData}
+				columns={columns}
+				tableTitle={tableTitle}
+				//month={month}
+				//year={year}
+				/* editFunction={registrationEditPath} */
+				/* addFunction={addFunction}
+					deleteFunction={deleteFunction} */
+			/>
+		</div>
 	);
 };
 export default PayrollSalaryReport;

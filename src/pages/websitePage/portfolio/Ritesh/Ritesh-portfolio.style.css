@@ -171,3 +171,39 @@ header .navbar .menu a:hover {
 		height: 10vw;
 	}
 }
+.ritesh-image-box {
+	background-color: rgb(255, 255, 255);
+	display: flex;
+	margin-right: 15vw;
+	height: 90vh;
+	position: relative;
+}
+
+.ritesh-image-box img {
+	height: 75vh;
+	align-self: flex-end;
+	z-index: 1;
+}
+
+.ritesh-image-box .circle {
+	height: 200px;
+	width: 200px;
+	position: absolute;
+
+	border-radius: 50%;
+}
+
+.circle-1 {
+	background-color: rgb(0, 227, 19, 0.2);
+	top: 150px;
+	left: 120px;
+}
+.circle-2 {
+	background-color: rgba(25, 78, 253, 0.2);
+	top: 65px;
+}
+.circle-3 {
+	background-color: rgb(241, 53, 25, 0.2);
+	top: 150px;
+	left: -120px;
+}

@@ -77,6 +77,6 @@ const pageData = {
 			elementName: ComplaintListEntryForm,
 		},
 	],
-	ADMIN: [{ id: 1, path: "/app/admin/userprofile", elementName: UserProfile }],
+	ADMIN: [{ id: 17, path: "/app/admin/userprofile", elementName: UserProfile }],
 };
 export default pageData;

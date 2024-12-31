@@ -9,6 +9,215 @@ import {
 	yearsList,
 } from "../Payroll-forms/data/monthdata.js";
 import { EmployeeData } from "./Functions/getemployeedetails";
+
+const MonthYearSelector = ({ monthyearSelection, setMonthYearSelection }) => (
+	<>
+		<Select
+			className="form-dropdown"
+			placeholder="Month for Deduction"
+			value={
+				monthsObject.find((obj) => obj.label === monthyearSelection.month) || ""
+			}
+			options={monthsObject}
+			onChange={(e) =>
+				setMonthYearSelection({
+					...monthyearSelection,
+					month: e.label,
+					monthNo: e.value,
+				})
+			}
+		/>
+		<Select
+			className="form-dropdown"
+			placeholder="Year for Deduction"
+			value={
+				yearsList.find((obj) => obj.value === monthyearSelection.year) || ""
+			}
+			options={yearsList}
+			onChange={(e) =>
+				setMonthYearSelection({
+					...monthyearSelection,
+					year: e.value,
+				})
+			}
+		/>
+	</>
+);
+
+const EmployeeSelector = ({
+	newOptions,
+	salaryData,
+	setSalaryData,
+	getSalaryData,
+}) => (
+	<Select
+		className="form-dropdown"
+		placeholder="Select Employee"
+		value={
+			newOptions.EmployeeArray.find(
+				(obj) => obj.value === salaryData.EmployeeId,
+			) || null
+		}
+		options={newOptions.EmployeeArray}
+		onChange={(e) => {
+			setSalaryData((prev) => ({
+				...prev,
+				EmployeeId: e.value,
+				EmployeeName: e.label,
+			}));
+			getSalaryData(e);
+		}}
+	/>
+);
+
+const ReportTypeSelector = ({ report, setReport, reportType }) => (
+	<FormDropDown
+		className="form-dropdown form-dropdown-fix"
+		placeholder="Select Report Type"
+		value={reportType.find((obj) => obj.label === report.selectedReport) || ""}
+		data={reportType}
+		onChange={(e) => {
+			setReport({
+				...report,
+				selectedReport: e.label,
+			});
+		}}
+	/>
+);
+
+const SelectedEmployeePayslip = ({ salaryData }) => (
+	<div className="payslip-container">
+		<div className="payslip-card">
+			{/* Header with Logo and Company Info */}
+			<div className="payslip-header">
+				<img
+					src="https://via.placeholder.com/100x50"
+					alt="Company Logo"
+					className="company-logo"
+				/>
+				<div>
+					<h4 className="company-name">Dummy Company Name</h4>
+					<p className="company-info">1234 Street, City, Country</p>
+					<p className="company-info">Phone: +123 456 789</p>
+				</div>
+			</div>
+			{/* Employee Details */}
+			<div className="payslip-details">
+				<p>
+					<strong>Employee ID:</strong> {salaryData.EmployeeId}
+				</p>
+				<p>
+					<strong>Name:</strong> {salaryData.EmployeeName}
+				</p>
+				<p>
+					<strong>Department:</strong> {salaryData.EmployeeDepartment || "N/A"}
+				</p>
+			</div>
+			{/* Salary Details */}
+			<div className="payslip-details">
+				<p>
+					<strong>Basic Salary:</strong>{" "}
+					{salaryData.EmployeeBasicSalary?.toLocaleString() || "N/A"}
+				</p>
+				<p>
+					<strong>Total Deductions:</strong>{" "}
+					{salaryData.totalDeduction?.toLocaleString() || "N/A"}
+				</p>
+				<p>
+					<strong>Total Additions:</strong>{" "}
+					{salaryData.totalAddition?.toLocaleString() || "N/A"}
+				</p>
+				<p>
+					<strong>In-Hand Salary:</strong>{" "}
+					{salaryData.inHandSalary?.toLocaleString() || "N/A"}
+				</p>
+			</div>
+			{/* Footer */}
+			<div className="payslip-footer">
+				<p>Generated on: {new Date().toLocaleDateString()}</p>
+			</div>
+		</div>
+		<div className="print-button-container">
+			<button onClick={() => window.print()} className="print-button">
+				Print Payslip
+			</button>
+		</div>
+	</div>
+);
+const AllEmployeePayslip = ({ employeeList }) => (
+	<div className="payslip-container">
+		<h3 className="title">All Employee Payslips</h3>
+		<div className="payslip-grid">
+			{employeeList.map((employee) => (
+				<div key={employee.EmployeeId} className="payslip-card">
+					{/* Header with Logo and Company Info */}
+					<div className="payslip-header">
+						<img
+							src="https://via.placeholder.com/100x50"
+							alt="Company Logo"
+							className="company-logo"
+						/>
+						<div>
+							<h4 className="company-name">Dummy Company Name</h4>
+							<p className="company-info">1234 Street, City, Country</p>
+							<p className="company-info">Phone: +123 456 789</p>
+						</div>
+					</div>
+					{/* Employee Details */}
+					<div className="payslip-details">
+						<p>
+							<strong>Employee ID:</strong> {employee.EmployeeId}
+						</p>
+						<p>
+							<strong>Name:</strong> {employee.EmployeeName}
+						</p>
+						<p>
+							<strong>Department:</strong>{" "}
+							{employee.EmployeeDepartment || "N/A"}
+						</p>
+					</div>
+					{/* Salary Details */}
+					<div className="payslip-details">
+						<p>
+							<strong>Basic Salary:</strong>{" "}
+							{employee.noSalaryData
+								? "-"
+								: employee.EmployeeBasicSalary?.toLocaleString() || "N/A"}
+						</p>
+						<p>
+							<strong>Total Deductions:</strong>{" "}
+							{employee.noSalaryData
+								? "-"
+								: employee.totalDeduction?.toLocaleString() || "N/A"}
+						</p>
+						<p>
+							<strong>Total Additions:</strong>{" "}
+							{employee.noSalaryData
+								? "-"
+								: employee.totalAddition?.toLocaleString() || "N/A"}
+						</p>
+						<p>
+							<strong>In-Hand Salary:</strong>{" "}
+							{employee.noSalaryData
+								? "-"
+								: employee.inHandSalary?.toLocaleString() || "N/A"}
+						</p>
+					</div>
+					{/* Footer */}
+					<div className="payslip-footer">
+						<p>Generated on: {new Date().toLocaleDateString()}</p>
+					</div>
+				</div>
+			))}
+		</div>
+		<div className="print-button-container">
+			<button onClick={() => window.print()} className="print-button">
+				Print All Payslips
+			</button>
+		</div>
+	</div>
+);
+
 const PayrollPayslip = () => {
 	const initialstate = {
 		EmployeeSalaryPath: "",
@@ -57,169 +266,156 @@ const PayrollPayslip = () => {
 	const [newOptions, setNewOptions] = useState({
 		EmployeeArray: [],
 	});
-	let dt = new Date();
-	let monthNois = dt.getMonth();
-	let currentMonthName = monthsList[monthNois !== 0 ? monthNois - 1 : 12]; // "July" (or current month)
-	let currentYear = dt.getFullYear(); // "2022" (or current year)
 	const [salaryData, setSalaryData] = useState(initialstate);
 	const [monthyearSelection, setMonthYearSelection] = useState({
-		year: currentYear,
-		month: currentMonthName,
+		year: new Date().getFullYear(),
+		month: monthsList[new Date().getMonth() - 1 || 11],
 	});
-	let reportType = [
+	const [employeeList, setEmployeeList] = useState([]);
+
+	const reportType = [
 		{ value: "1", label: "Selected Employee Payslip" },
 		{ value: "2", label: "All Employee Payslip" },
 	];
 
-	const getSalaryData = (e) => {
-		if (e.value !== "") {
+	const getSalaryData = async (e) => {
+		if (!e || !e.value) return;
+
+		try {
 			const EmployeeSalaryEntryCollectionPath = firestore
 				.collection("payrollData")
 				.doc("Salary")
 				.collection(e.value);
 
-			const selectedEmployeeInfo = newOptions.EmployeeArray.filter((item) => {
-				return item.value === e.value;
-			});
-			//console.log("selectedEmployeeInfo items", selectedEmployeeInfo);
+			const selectedEmployeeInfo = newOptions.EmployeeArray.find(
+				(item) => item.value === e.value,
+			);
+
 			EmployeeSalaryEntryCollectionPath.onSnapshot((items) => {
 				let SalaryDataList = [];
 				items.forEach((item) => {
 					let Salary = item.data();
 					SalaryDataList.push({ ...Salary });
 				});
-				let SalaryDataSingle = SalaryDataList.filter(
+
+				let SalaryDataSingle = SalaryDataList.find(
 					(item) =>
-						item.month === salaryData.month && item.year === salaryData.year,
+						item.month === monthyearSelection.month &&
+						item.year === monthyearSelection.year,
 				);
-				let newSalaryDataSingle = SalaryDataSingle[0];
-				setSalaryData({
-					...selectedEmployeeInfo[0],
-					...newSalaryDataSingle,
-					month: salaryData.month,
-					monthNo: salaryData.monthNo,
-					year: salaryData.year,
-					days: salaryData.days,
-				});
+
+				if (SalaryDataSingle) {
+					setSalaryData((prev) => ({
+						...prev,
+						...selectedEmployeeInfo,
+						...SalaryDataSingle,
+					}));
+				} else {
+					console.error("No salary data found for the selected period.");
+				}
 			});
+		} catch (error) {
+			console.error("Error fetching salary data:", error);
 		}
 	};
+
 	useEffect(() => {
-		if (report.selectedReport !== report.viewReport) {
-			setReport({ ...report, viewReport: "" });
-		}
-		if (newOptions.EmployeeArray.length === 0) {
-			EmployeeData.onSnapshot((items) => {
-				let employeeList = [];
-				items.forEach((item) => {
-					let data = item.data();
-					employeeList.push({
-						...data,
-						EmployeeId: item.id,
-						value: item.id,
-						label: data.EmployeeName,
-					});
-					const employeeListnew = employeeList.filter(
-						(item) => item.EmployeeStatusActive !== "Leaving",
-					);
-					setNewOptions({ EmployeeArray: employeeListnew });
+		const unsubscribe = EmployeeData.onSnapshot((items) => {
+			let employeeList = [];
+			items.forEach((item) => {
+				let data = item.data();
+				employeeList.push({
+					...data,
+					EmployeeId: item.id,
+					value: item.id,
+					label: data.EmployeeName,
 				});
 			});
-		}
-	}, [report.selectedReport]);
-	// set selected value
-	const setSelectedValue =
-		reportType.find((obj) => obj.label === report.selectedReport) || "";
+			const employeeListnew = employeeList.filter(
+				(item) => item.EmployeeStatusActive !== "Leaving",
+			);
+			setNewOptions({ EmployeeArray: employeeListnew });
+			setEmployeeList(employeeListnew);
+		});
+		return () => unsubscribe();
+	}, []);
 
-	function onSubmit() {
+	const onSubmit = async () => {
+		if (report.selectedReport === "All Employee Payslip") {
+			try {
+				const allSalaryData = await Promise.all(
+					employeeList.map(async (employee) => {
+						const EmployeeSalaryEntryCollectionPath = firestore
+							.collection("payrollData")
+							.doc("Salary")
+							.collection(employee.EmployeeId);
+
+						const snapshot = await EmployeeSalaryEntryCollectionPath.get();
+						const salaryDataList = [];
+						snapshot.forEach((item) => {
+							const data = item.data();
+							if (
+								data.month === monthyearSelection.month &&
+								data.year === monthyearSelection.year
+							) {
+								salaryDataList.push({
+									...employee,
+									...data,
+								});
+							}
+						});
+
+						return salaryDataList.length > 0
+							? salaryDataList[0]
+							: { ...employee, noSalaryData: true };
+					}),
+				);
+
+				setEmployeeList(allSalaryData);
+			} catch (error) {
+				console.error("Error fetching salary data for all employees:", error);
+			}
+		}
+
 		setReport({ ...report, viewReport: report.selectedReport });
-	}
-	//console.log("dropdown log", salaryReportDropdown);
+	};
+
 	return (
 		<div className="form-container">
 			<h2 className="section-title">Payroll Payslip</h2>
 			<div className="selection-menu-forreportpage">
-				<Select
-					className="form-dropdown"
-					placeholder="Month for Deduction"
-					value={
-						monthsObject.find(
-							(obj) => obj.label === monthyearSelection.month,
-						) || ""
-					} // set selected value
-					options={monthsObject} // set list of the data
-					onChange={(e) => {
-						setMonthYearSelection({
-							...monthyearSelection,
-							month: e.label,
-							monthNo: e.value,
-						});
-					}} // assign onChange function
+				<MonthYearSelector
+					monthyearSelection={monthyearSelection}
+					setMonthYearSelection={setMonthYearSelection}
 				/>
-				<Select
-					className="form-dropdown"
-					placeholder="Year for Deduction"
-					value={
-						yearsList.find((obj) => obj.value === monthyearSelection.year) || ""
-					} // set selected value
-					options={yearsList} // set list of the data
-					onChange={(e) => {
-						//console.log("Inside the year change dropdown", e);
-						setMonthYearSelection({
-							...monthyearSelection,
-							year: e.value,
-						});
-					}} // assign onChange function
+				<ReportTypeSelector
+					report={report}
+					setReport={setReport}
+					reportType={reportType}
 				/>
-				<FormDropDown
-					className="form-dropdown form-dropdown-fix"
-					placeholder="Select Report Type"
-					value={setSelectedValue}
-					data={reportType} // set list of the data
-					onChange={(e) => {
-						setReport({
-							...report,
-							selectedReport: e.label,
-						});
-					}} // assign onChange function
-				/>
-
-				{report.selectedReport === "Selected Employee Payslip" ? (
-					<Select
-						className="form-dropdown"
-						placeholder="Select Employee"
-						value={
-							newOptions.EmployeeArray.find(
-								(obj) => obj.label === salaryData.EmployeeName,
-							) || ""
-						} // set selected value
-						options={newOptions.EmployeeArray} // set list of the data
-						onChange={(e) => {
-							getSalaryData(e);
-						}} // assign onChange function
+				{report.selectedReport === "Selected Employee Payslip" && (
+					<EmployeeSelector
+						newOptions={newOptions}
+						salaryData={salaryData}
+						setSalaryData={setSalaryData}
+						getSalaryData={getSalaryData}
 					/>
-				) : null}
-				<div
-					onClick={() => {
-						onSubmit();
-					}}
-					className="button-submit-formpage"
-				>
+				)}
+
+				<div onClick={onSubmit} className="button-submit-formpage">
 					Submit
 				</div>
 			</div>
 			<div className="report-container-forreportpage">
-				<div>
-					{report.viewReport === "Employee Details List"
-						? "Employee details list"
-						: null}
-					{report.viewReport === "Employee Bank Report"
-						? "Employee Bank Report"
-						: null}
-					{report.viewReport === "Salary Report" ? "Salary Report" : null}
-				</div>
+				{report.viewReport === "Selected Employee Payslip" && (
+					<SelectedEmployeePayslip salaryData={salaryData} />
+				)}
+				{report.viewReport === "All Employee Payslip" && (
+					<AllEmployeePayslip employeeList={employeeList} />
+				)}
 			</div>
 		</div>
 	);
 };
+
 export default PayrollPayslip;

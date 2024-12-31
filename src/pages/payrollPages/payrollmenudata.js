@@ -48,6 +48,12 @@ const payrolldata = {
 			menuName: "Pay Slip",
 			menuUrl: "payslip",
 		},
+		{
+			id: 8,
+			iconname: FaReceipt,
+			menuName: "Pay Salary Report",
+			menuUrl: "payrollreport",
+		},
 	],
 };
 

@@ -1,9 +1,9 @@
 import "./Ritesh-portfolio.style.css";
 import { Link } from "react-router-dom";
+import rit from "./ritesh2.png";
 
-import RiteshImage from "./ritesh-image";
 import logo from "./xprtlogo.png";
-import BurgerMenu from "../../burger/burger-menu";
+
 const Ritesh = () => {
 	return (
 		<>
@@ -13,20 +13,19 @@ const Ritesh = () => {
 						<img src={logo} alt="" />
 					</div>
 
-					<BurgerMenu />
 					<ul className="menu">
 						<li>
 							<a href="/">Home</a>
 						</li>
 						<li>
-							<a href="project">Projects</a>
+							<a href="/codepenPortfolio">Projects</a>
 						</li>
 
 						<li>
-							<a href="Services">Services</a>
+							<a href="/Services">Services</a>
 						</li>
 						<li>
-							<a href="Contact">Contact</a>
+							<a href="/Contact">Contact</a>
 						</li>
 					</ul>
 				</div>
@@ -43,10 +42,6 @@ const Ritesh = () => {
 						I'm a <span></span>
 					</div>
 
-					{/* <div className="button_wrapper">
-						<button className="custom-btn btn-5">About Me</button>
-						<button className="custom-btn btn-5">Follow Me</button>
-					</div> */}
 					<div className="button_wrapper">
 						<button className="custom-btn-home btn-5">
 							<Link to="/aboutme">About Me</Link>
@@ -56,7 +51,12 @@ const Ritesh = () => {
 						</button>
 					</div>
 				</div>
-				<RiteshImage />
+				<div className="ritesh-image-box">
+					<div className="circle circle-1"></div>
+					<div className="circle circle-2"></div>
+					<div className="circle circle-3"></div>
+					<img src={rit} alt="ritesh" />
+				</div>
 			</div>
 		</>
 	);

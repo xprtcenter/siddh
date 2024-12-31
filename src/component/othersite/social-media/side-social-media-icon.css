@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+.socialicon-box {
+	position: fixed;
+	text-align: center;
+	/* padding: 10px; */
+	/* margin-left: 10px; */
+	margin-top: 365px;
+	/* height: 250px; */
+	width: 20px;
+	z-index: 1000;
+}
+
+.socialicon-box a {
+	text-decoration: none;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 2;
+	font-size: 16px;
+}
+
+.socialicon-box p {
+	color: #fff;
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px;
+	align-items: center;
+	left: -10px;
+	/* margin-left: 80px; */
+	text-wrap: nowrap;
+}
+
+.socialicon-box p svg {
+	vertical-align: middle;
+	/* text-align: center; */
+	font-size: 24px;
+}
+
+.socialicon-box .single-box {
+	margin-left: -195px;
+	width: 230px;
+	padding: 0;
+	display: inline-table;
+	height: 0;
+	transition: margin-left 0.5s;
+	cursor: pointer;
+	border-radius: 0 50px 50px 0;
+}
+
+.socialicon-box .single-box:hover {
+	margin-left: -30px;
+}

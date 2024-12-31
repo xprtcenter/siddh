@@ -62,8 +62,9 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 
 			<Switch>
 				<Route exact path="/app" render={() => <HomePage />} />
-				{RouteData.map((comp) => (
+				{RouteData.map((comp, i) => (
 					<Route
+						key={i}
 						path={`${url}/${comp.path}`}
 						render={() =>
 							userrole?.includes(comp.roll)
