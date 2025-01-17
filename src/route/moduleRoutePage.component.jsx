@@ -13,6 +13,8 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../redux/user/user.selectors";
 import { selectCompanyDetails } from "../redux/appLicence/appLicence.selectors";
 
+import ScrollToTop from "../ScrollToTopAuto";
+
 /**************************************  Page  *****************************************/
 import HomePage from "../pages/homepage/homepage.component";
 import SignInAndSignUpPage from "../pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
@@ -80,7 +82,7 @@ const ModuleRoutePage = ({ currentUser, companyDetails }) => {
 					}
 				/>
 			</Switch>
-
+			<ScrollToTop />
 			<Footer />
 		</React.Fragment>
 	);

@@ -179,3 +179,79 @@
 		display: none;
 	}
 }
+
+/* Only for Salary Entry Form Mobile view*/
+
+@media only screen and (max-width: 700px) {
+	.deduction-dropdown-with-header {
+		.selection-menu {
+			width: 100%;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	.card-for-image-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 1rem 0;
+		border: 0.5px solid var(--primary-color);
+		border-radius: 5px;
+		padding: 2px;
+		.header-image {
+			margin-right: 10px;
+			border: 2px solid rgb(189, 30, 30);
+			border-radius: 50%;
+			width: 80px;
+			height: 80px;
+			background-color: rgb(255, 255, 255);
+		}
+
+		.card-for-header {
+			display: flex;
+			flex-direction: column;
+			width: 95%;
+			flex-wrap: nowrap;
+			background-color: var(--primary-color-m);
+
+			.header-text {
+				width: 80%;
+				padding: 5px 5px;
+			}
+		}
+	}
+	.card-for-add-ded {
+		display: flex;
+		align-self: center;
+		//flex-direction: column;
+		width: 95%;
+		flex-wrap: wrap;
+		/* padding: 0 0 3px 0; */
+		background-color: var(--primary-color);
+		margin-bottom: 24px;
+
+		.header-text {
+			width: 50%;
+			padding: 3px 0;
+			strong {
+				background-color: #fff;
+				color: #0056b3;
+				padding: 0.2rem;
+				align-self: end;
+			}
+		}
+	}
+	.form-container {
+		.container {
+			background-color: #0056b3;
+			.content-tabs {
+				background-color: brown;
+				height: auto;
+			}
+		}
+	}
+}

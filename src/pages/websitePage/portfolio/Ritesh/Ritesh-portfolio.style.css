@@ -207,3 +207,37 @@ header .navbar .menu a:hover {
 	top: 150px;
 	left: -120px;
 }
+
+.about-me,
+.projects,
+.services,
+.contact {
+	padding: 2rem;
+	text-align: center;
+}
+
+.project-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
+}
+
+.project-card {
+	background: #f9f9f9;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+	background: #333;
+	color: white;
+	padding: 1rem;
+	text-align: center;
+}
+
+.social-links a {
+	margin: 0 0.5rem;
+	color: white;
+	text-decoration: none;
+}

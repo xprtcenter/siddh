@@ -248,10 +248,11 @@
 		.header {
 			.logo-container {
 				img {
-					height: 7vw;
+					height: 12vw;
 				}
 				.text {
-					font-size: calc(10px + 0.5vw);
+					font-size: calc(15px + 0.5vw);
+					padding: 1vh 1vw;
 				}
 			}
 			.nav-options-container {
@@ -294,14 +295,14 @@
 					justify-content: center;
 					align-items: center;
 					img {
-						height: 4vw;
+						height: 8vw;
 						/* margin: 0.5vh; */
 					}
 				}
 				.user-info-container {
 					margin-right: 1vw;
 					img {
-						height: 5vw;
+						height: 10vw;
 						margin: 0 0.2vw;
 					}
 					.text {

@@ -2,43 +2,13 @@ import React from "react";
 
 import FormPage from "../../component/formPage/formPage.component";
 import payrolldata from "./payrollmenudata";
-class PayrollHomePage extends React.Component {
-	constructor() {
-		super();
-		this.state = payrolldata;
-	}
-	render() {
-		const { history, match, location } = this.props;
 
-		return (
-			<FormPage
-				data={this.state.payrollMenu}
-				history={history}
-				match={match}
-				location={location}
-			/>
-		);
-	}
-}
-
-export default PayrollHomePage;
-/* --------------------------- Functional component not working ------------------------*/
-
-/* import React, { useState, useEffect } from "react";
-
-import FormPage from "../../component/formPage/formPage.component";
-import payrolldata from "./payrollmenudata";
-const PayrollHomePage = (props) => {
-	const [data, setData] = useState({});
-	useEffect(() => {
-		setData(payrolldata);
-	}, []);
-
-	const { history, match, location } = props;
+const PayrollHomePage = ({ history, match, location }) => {
+	const [state] = React.useState(payrolldata);
 
 	return (
 		<FormPage
-			data={data.payrollMenu}
+			data={state.payrollMenu}
 			history={history}
 			match={match}
 			location={location}
@@ -47,4 +17,3 @@ const PayrollHomePage = (props) => {
 };
 
 export default PayrollHomePage;
- */
